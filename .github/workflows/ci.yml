@@ -1,0 +1,29 @@
+name: CI Syntax Validation
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate PowerShell Script Syntax
+        shell: pwsh
+        run: |
+          $script = Get-Content -Path .\MephistoCleaner.ps1 -Raw
+          $errors = $null
+          $tokens = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseInput($script, [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) {
+              Write-Error "Syntax errors detected in MephistoCleaner.ps1!"
+              $errors | ForEach-Object { Write-Host $_.Message -ForegroundColor Red }
+              exit 1
+          } else {
+              Write-Host "MephistoCleaner.ps1 syntax validated successfully!" -ForegroundColor Green
+          }

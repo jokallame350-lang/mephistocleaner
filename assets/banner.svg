@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F141C"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0B0F17"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="450" fill="url(#bg)" rx="16"/>
+  <rect x="2" y="2" width="1196" height="446" fill="none" stroke="#334155" stroke-width="2" rx="14"/>
+
+  <!-- Glowing Accent Lines -->
+  <path d="M 0,225 Q 300,180 600,225 T 1200,225" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Main Title -->
+  <text x="600" y="160" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="url(#accent)" filter="url(#glow)">
+    ⚡ MEPHISTOCLEANER
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="210" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#E2E8F0" letter-spacing="1">
+    The Ultimate Open-Source Windows 10 &amp; 11 Gaming, Privacy &amp; Optimization Suite
+  </text>
+
+  <!-- Feature Badges in Row -->
+  <g transform="translate(130, 270)">
+    <!-- Badge 1 -->
+    <rect x="0" y="0" width="200" height="50" rx="8" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="100" y="31" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#38BDF8">🔥 150+ Modular Tweaks</text>
+
+    <!-- Badge 2 -->
+    <rect x="240" y="0" width="220" height="50" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+    <text x="350" y="31" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#34D399">🛡️ 100% Safe &amp; Reversible</text>
+
+    <!-- Badge 3 -->
+    <rect x="490" y="0" width="210" height="50" rx="8" fill="#1E293B" stroke="#A855F7" stroke-width="1.5"/>
+    <text x="595" y="31" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#C084FC">🌐 20 Languages Native</text>
+
+    <!-- Badge 4 -->
+    <rect x="730" y="0" width="210" height="50" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="835" y="31" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#FBBF24">🎨 10 Dynamic Themes</text>
+  </g>
+
+  <!-- Footer Tagline -->
+  <text x="600" y="385" text-anchor="middle" font-family="Consolas, monospace" font-size="14" fill="#94A3B8">
+    No Telemetry • Zero External Dependencies • Native Hardware Auto-Detection
+  </text>
+</svg>

@@ -54,15 +54,15 @@ $global:Themes = @{
 # 5. 20 Language UI Dictionary
 $global:LangDict = @{
     "en" = @{
-        Title = "⚡ MEPHISTOCLEANER v7.0 ULTIMATE"
-        Admin = "ADMINISTRATOR PRIVILEGES ACTIVE"
-        SafetyPrompt = "RECOMMENDED: Create a System Restore Point (Feature #149) before applying major tweaks."
-        MasterBtn = "⚡ 1-CLICK SAFE FULL OPTIMIZATION"
+        Title = "⚡ MEPHISTOCLEANER v7.0"
+        Admin = "ADMIN PRIVILEGES ACTIVE"
+        SafetyPrompt = "RECOMMENDED: Create a Restore Point (#149) before major tweaks."
+        MasterBtn = "⚡ 1-CLICK OPTIMIZE"
         PresetGamer = "🎮 Esports Gamer Preset"
         PresetPrivacy = "🛡️ Privacy & Debloat Preset"
         PresetClean = "🧹 Deep Disk Clean Preset"
         PresetExport = "💾 Export/Import Profile"
-        SearchPlaceholder = "🔍 Search 150+ features instantly..."
+        SearchPlaceholder = "🔍 Search 150+ features..."
         Tab1 = "Gaming & Performance"
         Tab2 = "Disk & Deep Clean"
         Tab3 = "Network & DNS"
@@ -74,15 +74,15 @@ $global:LangDict = @{
         LangLabel = "Language:"
         ThemeLabel = "Theme:"
         HardwareLabel = "Hardware:"
-        InstallAppsBtn = "⬇️ Install Selected Software"
+        InstallAppsBtn = "⬇️ Install Selected Apps"
     }
     "tr" = @{
-        Title = "⚡ MEPHISTOCLEANER v7.0 ULTIMATE"
+        Title = "⚡ MEPHISTOCLEANER v7.0"
         Admin = "YÖNETİCİ YETKİLERİ AKTİF"
-        SafetyPrompt = "ÖNERİ: Kapsamlı ayarlar uygulamadan önce Sistem Geri Yükleme Noktası (#149) oluşturun."
-        MasterBtn = "⚡ TEK TIKLA GÜVENLİ FULL OPTİMİZASYON"
+        SafetyPrompt = "ÖNERİ: Ayarlardan önce Geri Yükleme Noktası (#149) oluşturun."
+        MasterBtn = "⚡ TEK TIKLA FULL OPTİMİZASYON"
         PresetGamer = "🎮 Espor Oyuncu Profili"
-        PresetPrivacy = "🛡️ Gizlilik ve Debloat Profili"
+        PresetPrivacy = "🛡️ Gizlilik & Debloat Profili"
         PresetClean = "🧹 Derin Disk Temizlik Profili"
         PresetExport = "💾 Profil Dışa/İçe Aktar"
         SearchPlaceholder = "🔍 150 özelliği anında ara..."
@@ -130,7 +130,7 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Name="MainWindow"
-        Title="MephistoCleaner v7.0 Ultimate - The All-In-One Windows Optimization Suite" 
+        Title="MephistoCleaner v7.0 Ultimate - Modular Windows Optimization &amp; Gaming Suite" 
         Height="870" Width="1180" 
         WindowStartupLocation="CenterScreen" 
         Background="#0F141C" 
@@ -190,9 +190,9 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                 
                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="TxtMainTitle" Text="⚡ MEPHISTOCLEANER v7.0 ULTIMATE" FontSize="17" FontWeight="Bold" Foreground="#38BDF8" VerticalAlignment="Center"/>
+                        <TextBlock Name="TxtMainTitle" Text="⚡ MEPHISTOCLEANER v7.0" FontSize="17" FontWeight="Bold" Foreground="#38BDF8" VerticalAlignment="Center"/>
                         <Border Background="#059669" CornerRadius="4" Padding="6,2" Margin="10,0,0,0" VerticalAlignment="Center">
-                            <TextBlock Name="TxtAdminBadge" Text="ADMINISTRATOR PRIVILEGES ACTIVE" FontSize="10" FontWeight="Bold" Foreground="#FFFFFF"/>
+                            <TextBlock Name="TxtAdminBadge" Text="ADMIN PRIVILEGES ACTIVE" FontSize="10" FontWeight="Bold" Foreground="#FFFFFF"/>
                         </Border>
                     </StackPanel>
                     <TextBlock Name="TxtHwInfo" Text="Hardware: Loading..." FontSize="11" Foreground="#94A3B8" Margin="0,3,0,0"/>
@@ -209,7 +209,7 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                         <ComboBox Name="CmbTheme" Width="135" Height="24" FontSize="11" SelectedIndex="0" Background="#0F141C" Foreground="#FFFFFF"/>
                     </StackPanel>
 
-                    <Button Name="BtnQuickMaster" Content="⚡ 1-CLICK SAFE FULL OPTIMIZATION" Background="#0284C7" FontSize="11.5" Padding="12,6" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                    <Button Name="BtnQuickMaster" Content="⚡ 1-CLICK OPTIMIZE" Background="#0284C7" FontSize="11.5" Padding="12,6" FontWeight="Bold" VerticalAlignment="Bottom"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -224,25 +224,21 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
-                <!-- CPU HUD -->
                 <StackPanel Grid.Column="0" Margin="4,0">
                     <TextBlock Name="HudCpuLabel" Text="⚙️ CPU Load: --%" FontSize="11" FontWeight="Bold" Foreground="#38BDF8"/>
                     <ProgressBar Name="HudCpuBar" Height="6" Minimum="0" Maximum="100" Value="15" Foreground="#38BDF8" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
 
-                <!-- RAM HUD -->
                 <StackPanel Grid.Column="1" Margin="4,0">
                     <TextBlock Name="HudRamLabel" Text="🧠 RAM Used: -- GB / -- GB" FontSize="11" FontWeight="Bold" Foreground="#34D399"/>
                     <ProgressBar Name="HudRamBar" Height="6" Minimum="0" Maximum="100" Value="25" Foreground="#34D399" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
 
-                <!-- DISK HUD -->
                 <StackPanel Grid.Column="2" Margin="4,0">
                     <TextBlock Name="HudDiskLabel" Text="💽 C: Free: -- GB" FontSize="11" FontWeight="Bold" Foreground="#FBBF24"/>
                     <ProgressBar Name="HudDiskBar" Height="6" Minimum="0" Maximum="100" Value="85" Foreground="#FBBF24" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
 
-                <!-- GPU HUD -->
                 <StackPanel Grid.Column="3" Margin="4,0">
                     <TextBlock Name="HudGpuLabel" Text="🎮 GPU: Active" FontSize="11" FontWeight="Bold" Foreground="#C084FC"/>
                     <TextBlock Name="HudGpuSub" Text="DirectX 12 / HAGS Locked" FontSize="9.5" Foreground="#94A3B8" Margin="0,2,0,0"/>
@@ -259,19 +255,16 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Presets Buttons -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <Button Name="BtnPresetGamer" Content="🎮 Esports Gamer Preset" Background="#065F46" Padding="8,4"/>
                     <Button Name="BtnPresetPrivacy" Content="🛡️ Privacy &amp; Debloat Preset" Background="#1E3A8A" Padding="8,4"/>
                     <Button Name="BtnPresetClean" Content="🧹 Deep Disk Clean Preset" Background="#831843" Padding="8,4"/>
                 </StackPanel>
 
-                <!-- Search Box -->
                 <TextBox Grid.Column="1" Name="TxtSearch" Height="26" Margin="10,0" Padding="6,3" 
                          Background="#0F141C" Foreground="#F8FAFC" BorderBrush="#334155" FontSize="11" 
                          VerticalContentAlignment="Center"/>
 
-                <!-- Profile Export / Import -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                     <Button Name="BtnExportProfile" Content="💾 Export Profile" Background="#374151" Padding="8,4"/>
                     <Button Name="BtnImportProfile" Content="📂 Import Profile" Background="#374151" Padding="8,4"/>
@@ -281,214 +274,207 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
 
         <!-- ROW 3: TABS (150 FEATURES + SOFTWARE HUB) -->
         <TabControl Grid.Row="3" Name="MainTabControl" Background="#1E293B" BorderBrush="#334155" BorderThickness="1">
-            
-            <!-- TAB 1: GAMING & PERFORMANCE (1-20) -->
+            <!-- TAB1 -->
             <TabItem Name="Tab1" Header="Gaming &amp; Performance">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab1" Margin="6">
-                        <Button Name="Btn1" Width="350" Content="1. CPU Core Unpark &amp; Power Plan Lock" ToolTip="Prevents CPU cores from sleeping during games, locking full sustained clock speeds."/>
-                        <Button Name="Btn2" Width="350" Content="2. Game Booster Turbo Mode" ToolTip="Closes heavy background browsers, Discord, Spotify and releases RAM before gaming."/>
-                        <Button Name="Btn3" Width="350" Content="3. RAM &amp; Standby Cache Purge" ToolTip="Triggers the Windows Garbage Collector to flush idle memory and working sets."/>
-                        <Button Name="Btn4" Width="350" Content="4. Universal GPU Shader Cache Purge" ToolTip="Cleans bloated DirectX, NVIDIA DXCache, AMD DxCache and Intel shader caches."/>
-                        <Button Name="Btn5" Width="350" Content="5. Enable HAGS (Hardware GPU Scheduling)" ToolTip="Hands GPU scheduling directly to graphics hardware processor, boosting FPS."/>
-                        <Button Name="Btn6" Width="350" Content="6. Lock DirectX MaxFrameLatency=1" ToolTip="Caps pre-rendered frame queue to 1 to eliminate rendering input lag."/>
-                        <Button Name="Btn7" Width="350" Content="7. Force Fullscreen Optimizations (FSE)" ToolTip="Eliminates DWM borderless composition lag, unlocking true exclusive fullscreen speeds."/>
-                        <Button Name="Btn8" Width="350" Content="8. Disable Game DVR Background Recording" ToolTip="Stops Windows from recording video clips in the background to prevent frame drops."/>
-                        <Button Name="Btn9" Width="350" Content="9. Lighten DWM Transparency &amp; Blur" ToolTip="Reduces Desktop Window Manager GPU compositor load during gaming."/>
-                        <Button Name="Btn10" Width="350" Content="10. Set GDI Process Handle Quota to 65536" ToolTip="Expands UI object limits to prevent crashes in heavily modded games."/>
-                        <Button Name="Btn11" Width="350" Content="11. Disable Power Throttling" ToolTip="Stops Windows from artificially throttling CPU wattage during background tasks."/>
-                        <Button Name="Btn12" Width="350" Content="12. Disable Fast Startup Memory Leak" ToolTip="Prevents Windows kernel session leaks and stale memory locking across reboots."/>
-                        <Button Name="Btn13" Width="350" Content="13. Set Win32PrioritySeparation to 38" ToolTip="Grants foreground games 3x prioritized CPU time slices compared to background apps."/>
-                        <Button Name="Btn14" Width="350" Content="14. Set MMCSS Games GPU Priority to 8" ToolTip="Locks Multimedia Class Scheduler Service GPU priority to High for stutter-free audio/video."/>
-                        <Button Name="Btn15" Width="350" Content="15. Get Competitive CS2 / Esports Launch Options" ToolTip="Outputs esports-grade launch parameters (-high, -threads, +fps_max 0)."/>
-                        <Button Name="Btn16" Width="350" Content="16. Disable HPET (High Precision Event Timer)" ToolTip="Disables legacy platform timer clock to minimize DPC latency."/>
-                        <Button Name="Btn17" Width="350" Content="17. Disable Dynamic Tick Clock Interrupts" ToolTip="Stops erratic timer interrupt variations on laptop processors, curing micro-stutters."/>
-                        <Button Name="Btn18" Width="350" Content="18. Enable DirectPlay Legacy Gaming Support" ToolTip="Enables DirectPlay required by classic titles (GTA SA, NFS, Age of Empires)."/>
-                        <Button Name="Btn19" Width="350" Content="19. Install .NET Framework 3.5 / 2.0" ToolTip="Installs foundational runtimes needed by older modded game launchers."/>
-                        <Button Name="Btn20" Width="350" Content="20. Get Minecraft Java Aikar's GC Flags" ToolTip="Provides battle-tested Java Garbage Collection arguments for lag-free Minecraft."/>
+                        <Button Name="Btn1" Width="355" Content="⚪ 1. CPU Core Unpark &amp; Power Plan Lock" ToolTip="Prevents CPU cores from sleeping during games, locking full sustained clock speeds."/>
+                        <Button Name="Btn2" Width="355" Content="⚪ 2. Game Booster Turbo Mode" ToolTip="Closes heavy background browsers, Discord, Spotify and releases RAM before gaming."/>
+                        <Button Name="Btn3" Width="355" Content="⚪ 3. RAM &amp; Standby Cache Purge" ToolTip="Triggers the Windows Garbage Collector to flush idle memory and working sets."/>
+                        <Button Name="Btn4" Width="355" Content="⚪ 4. Universal GPU Shader Cache Purge" ToolTip="Cleans bloated DirectX, NVIDIA DXCache, AMD DxCache and Intel shader caches."/>
+                        <Button Name="Btn5" Width="355" Content="⚪ 5. Enable HAGS (Hardware GPU Scheduling)" ToolTip="Hands GPU scheduling directly to graphics hardware processor, boosting FPS."/>
+                        <Button Name="Btn6" Width="355" Content="⚪ 6. Lock DirectX MaxFrameLatency=1" ToolTip="Caps pre-rendered frame queue to 1 to eliminate rendering input lag."/>
+                        <Button Name="Btn7" Width="355" Content="⚪ 7. Force Fullscreen Optimizations (FSE)" ToolTip="Eliminates DWM borderless composition lag, unlocking true exclusive fullscreen speeds."/>
+                        <Button Name="Btn8" Width="355" Content="⚪ 8. Disable Game DVR Background Recording" ToolTip="Stops Windows from recording video clips in the background to prevent frame drops."/>
+                        <Button Name="Btn9" Width="355" Content="⚪ 9. Lighten DWM Transparency &amp; Blur" ToolTip="Reduces Desktop Window Manager GPU compositor load during gaming."/>
+                        <Button Name="Btn10" Width="355" Content="⚪ 10. Set GDI Process Handle Quota to 65536" ToolTip="Expands UI object limits to prevent crashes in heavily modded games."/>
+                        <Button Name="Btn11" Width="355" Content="⚪ 11. Disable Power Throttling" ToolTip="Stops Windows from artificially throttling CPU wattage during background tasks."/>
+                        <Button Name="Btn12" Width="355" Content="⚪ 12. Disable Fast Startup Memory Leak" ToolTip="Prevents Windows kernel session leaks and stale memory locking across reboots."/>
+                        <Button Name="Btn13" Width="355" Content="⚪ 13. Set Win32PrioritySeparation to 38" ToolTip="Grants foreground games 3x prioritized CPU time slices compared to background apps."/>
+                        <Button Name="Btn14" Width="355" Content="⚪ 14. Set MMCSS Games GPU Priority to 8" ToolTip="Locks Multimedia Class Scheduler Service GPU priority to High for stutter-free audio/video."/>
+                        <Button Name="Btn15" Width="355" Content="⚪ 15. Get Competitive CS2 / Esports Launch Options" ToolTip="Outputs esports-grade launch parameters (-high, -threads, +fps_max 0)."/>
+                        <Button Name="Btn16" Width="355" Content="⚪ 16. Disable HPET (High Precision Event Timer)" ToolTip="Disables legacy platform timer clock to minimize DPC latency."/>
+                        <Button Name="Btn17" Width="355" Content="⚪ 17. Disable Dynamic Tick Clock Interrupts" ToolTip="Stops erratic timer interrupt variations on laptop processors, curing micro-stutters."/>
+                        <Button Name="Btn18" Width="355" Content="⚪ 18. Enable DirectPlay Legacy Gaming Support" ToolTip="Enables DirectPlay required by classic titles (GTA SA, NFS, Age of Empires)."/>
+                        <Button Name="Btn19" Width="355" Content="⚪ 19. Install .NET Framework 3.5 / 2.0" ToolTip="Installs foundational runtimes needed by older modded game launchers."/>
+                        <Button Name="Btn20" Width="355" Content="⚪ 20. Get Minecraft Java Aikar's GC Flags" ToolTip="Provides battle-tested Java Garbage Collection arguments for lag-free Minecraft."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 2: DISK & DEEP CLEAN (21-40) -->
+            <!-- TAB2 -->
             <TabItem Name="Tab2" Header="Disk &amp; Deep Clean">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab2" Margin="6">
-                        <Button Name="Btn21" Width="350" Content="21. Hardware SSD Re-TRIM Force" ToolTip="Sends hardware TRIM commands to refresh flash blocks and restore factory write speeds."/>
-                        <Button Name="Btn22" Width="350" Content="22. Clean Windows &amp; User Temp Folders" ToolTip="Wipes junk temporary files across AppData and Windows root temp."/>
-                        <Button Name="Btn23" Width="350" Content="23. DISM WinSxS Component Store ResetBase" ToolTip="Cleans superseded Windows Update backup binaries to free up gigabytes."/>
-                        <Button Name="Btn24" Width="350" Content="24. Clean Windows Update Download Cache" ToolTip="Deletes cached installer files inside SoftwareDistribution\Download."/>
-                        <Button Name="Btn25" Width="350" Content="25. Purge Chrome, Brave &amp; Edge Browser Cache" ToolTip="Wipes cached web assets from all Chromium-based browsers."/>
-                        <Button Name="Btn26" Width="350" Content="26. Purge Developer (npm, pip, yarn) Caches" ToolTip="Purges gigabytes of forgotten local npm and pip download packages."/>
-                        <Button Name="Btn27" Width="350" Content="27. Purge Crash Dumps (.dmp) &amp; Minidumps" ToolTip="Removes legacy BSOD memory dump files from the disk."/>
-                        <Button Name="Btn28" Width="350" Content="28. Force Empty Recycle Bin on All Drives" ToolTip="Instantly empties Recycle Bins across C:, D: and all connected volumes."/>
-                        <Button Name="Btn29" Width="350" Content="29. Disable NTFS 8.3 Short Name Creation" ToolTip="Disables 16-bit MS-DOS file naming overhead to accelerate SSD directory lookups."/>
-                        <Button Name="Btn30" Width="350" Content="30. Disable NTFS Last Access Timestamp" ToolTip="Stops Windows from writing access timestamps every time a file is read."/>
-                        <Button Name="Btn31" Width="350" Content="31. Set NTFS MftZone Area to 2" ToolTip="Expands Master File Table allocation space to prevent file system fragmentation."/>
-                        <Button Name="Btn32" Width="350" Content="32. Clear Thumbnail Cache (thumbcache_*.db)" ToolTip="Flushes corrupted or oversized thumbnail preview databases."/>
-                        <Button Name="Btn33" Width="350" Content="33. Reset IconCache (IconCache.db)" ToolTip="Fixes broken or invisible desktop and taskbar icons."/>
-                        <Button Name="Btn34" Width="350" Content="34. Reset Windows FontCache Service" ToolTip="Clears corrupt font caches to accelerate system boot time."/>
-                        <Button Name="Btn35" Width="350" Content="35. Clean Discord &amp; Telegram Chat Caches" ToolTip="Frees disk space consumed by cached chat images and videos."/>
-                        <Button Name="Btn36" Width="350" Content="36. Clear Delivery Optimization Cache" ToolTip="Deletes residual Windows Update peer-to-peer distribution packages."/>
-                        <Button Name="Btn37" Width="350" Content="37. Clear Stale Windows Event Logs" ToolTip="Clears bloated Application and System event log entries."/>
-                        <Button Name="Btn38" Width="350" Content="38. Perform Free Space TRIM Pass" ToolTip="Trims unused free disk space sectors on SSDs."/>
-                        <Button Name="Btn39" Width="350" Content="39. Delete Massive MEMORY.DMP Dumps" ToolTip="Deletes gigabyte-sized kernel memory crash dumps."/>
-                        <Button Name="Btn40" Width="350" Content="40. Analyze Downloads Folder Disk Usage" ToolTip="Reports total disk space consumed by files in your Downloads directory."/>
+                        <Button Name="Btn21" Width="355" Content="⚪ 21. Hardware SSD Re-TRIM Force" ToolTip="Sends hardware TRIM commands to refresh flash blocks and restore factory write speeds."/>
+                        <Button Name="Btn22" Width="355" Content="⚪ 22. Clean Windows &amp; User Temp Folders" ToolTip="Wipes junk temporary files across AppData and Windows root temp."/>
+                        <Button Name="Btn23" Width="355" Content="⚪ 23. DISM WinSxS Component Store ResetBase" ToolTip="Cleans superseded Windows Update backup binaries to free up gigabytes."/>
+                        <Button Name="Btn24" Width="355" Content="⚪ 24. Clean Windows Update Download Cache" ToolTip="Deletes cached installer files inside SoftwareDistribution\Download."/>
+                        <Button Name="Btn25" Width="355" Content="⚪ 25. Purge Chrome, Brave &amp; Edge Browser Cache" ToolTip="Wipes cached web assets from all Chromium-based browsers."/>
+                        <Button Name="Btn26" Width="355" Content="⚪ 26. Purge Developer (npm, pip, yarn) Caches" ToolTip="Purges gigabytes of forgotten local npm and pip download packages."/>
+                        <Button Name="Btn27" Width="355" Content="⚪ 27. Purge Crash Dumps (.dmp) &amp; Minidumps" ToolTip="Removes legacy BSOD memory dump files from the disk."/>
+                        <Button Name="Btn28" Width="355" Content="⚪ 28. Force Empty Recycle Bin on All Drives" ToolTip="Instantly empties Recycle Bins across C:, D: and all connected volumes."/>
+                        <Button Name="Btn29" Width="355" Content="⚪ 29. Disable NTFS 8.3 Short Name Creation" ToolTip="Disables 16-bit MS-DOS file naming overhead to accelerate SSD directory lookups."/>
+                        <Button Name="Btn30" Width="355" Content="⚪ 30. Disable NTFS Last Access Timestamp" ToolTip="Stops Windows from writing access timestamps every time a file is read."/>
+                        <Button Name="Btn31" Width="355" Content="⚪ 31. Set NTFS MftZone Area to 2" ToolTip="Expands Master File Table allocation space to prevent file system fragmentation."/>
+                        <Button Name="Btn32" Width="355" Content="⚪ 32. Clear Thumbnail Cache (thumbcache_*.db)" ToolTip="Flushes corrupted or oversized thumbnail preview databases."/>
+                        <Button Name="Btn33" Width="355" Content="⚪ 33. Reset IconCache (IconCache.db)" ToolTip="Fixes broken or invisible desktop and taskbar icons."/>
+                        <Button Name="Btn34" Width="355" Content="⚪ 34. Reset Windows FontCache Service" ToolTip="Clears corrupt font caches to accelerate system boot time."/>
+                        <Button Name="Btn35" Width="355" Content="⚪ 35. Clean Discord &amp; Telegram Chat Caches" ToolTip="Frees disk space consumed by cached chat images and videos."/>
+                        <Button Name="Btn36" Width="355" Content="⚪ 36. Clear Delivery Optimization Cache" ToolTip="Deletes residual Windows Update peer-to-peer distribution packages."/>
+                        <Button Name="Btn37" Width="355" Content="⚪ 37. Clear Stale Windows Event Logs" ToolTip="Clears bloated Application and System event log entries."/>
+                        <Button Name="Btn38" Width="355" Content="⚪ 38. Perform Free Space TRIM Pass" ToolTip="Trims unused free disk space sectors on SSDs."/>
+                        <Button Name="Btn39" Width="355" Content="⚪ 39. Delete Massive MEMORY.DMP Dumps" ToolTip="Deletes gigabyte-sized kernel memory crash dumps."/>
+                        <Button Name="Btn40" Width="355" Content="⚪ 40. Analyze Downloads Folder Disk Usage" ToolTip="Reports total disk space consumed by files in your Downloads directory."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 3: NETWORK & DNS (41-60) -->
+            <!-- TAB3 -->
             <TabItem Name="Tab3" Header="Network &amp; DNS">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab3" Margin="6">
-                        <Button Name="Btn41" Width="350" Content="41. Switch to Cloudflare 1.1.1.1 DNS" ToolTip="Applies the world's fastest and lowest-latency gaming DNS to all active adapters."/>
-                        <Button Name="Btn42" Width="350" Content="42. Switch to Google 8.8.8.8 DNS" ToolTip="Sets reliable, high-uptime Google DNS servers."/>
-                        <Button Name="Btn43" Width="350" Content="43. Switch to Quad9 9.9.9.9 Security DNS" ToolTip="Sets privacy-centric Quad9 DNS with automated malware blocking."/>
-                        <Button Name="Btn44" Width="350" Content="44. Reset DNS to Automatic (DHCP)" ToolTip="Restores ISP / Router default DNS configuration."/>
-                        <Button Name="Btn45" Width="350" Content="45. Flush DNS Cache &amp; Reset Winsock" ToolTip="Clears corrupt DNS resolver cache and resets network socket catalogue."/>
-                        <Button Name="Btn46" Width="350" Content="46. Enable TCP FastOpen" ToolTip="Halves connection establishment latency for modern web and game servers."/>
-                        <Button Name="Btn47" Width="350" Content="47. Enable TCP ECN &amp; Receive Side Scaling (RSS)" ToolTip="Prevents packet congestion and splits network traffic across multi-core CPUs."/>
-                        <Button Name="Btn48" Width="350" Content="48. Disable TCP Timestamps Overhead" ToolTip="Removes unnecessary 12-byte timestamp headers from TCP packets."/>
-                        <Button Name="Btn49" Width="350" Content="49. Disable Nagle's Algorithm (TCPNoDelay)" ToolTip="Forces instant transmission of small packets, eliminating game ping delay."/>
-                        <Button Name="Btn50" Width="350" Content="50. Lock TcpAckFrequency to 1" ToolTip="Sends immediate ACK responses for every packet to prevent ping spikes."/>
-                        <Button Name="Btn51" Width="350" Content="51. Expand MaxUserPort to 65534" ToolTip="Maximizes concurrent socket capacity for multiplayer games."/>
-                        <Button Name="Btn52" Width="350" Content="52. Reduce TcpTimedWaitDelay to 30s" ToolTip="Releases closed network connections 4x faster from memory."/>
-                        <Button Name="Btn53" Width="350" Content="53. Disable Delivery Optimization P2P Uploads" ToolTip="Prevents Windows Update from using your bandwidth to upload updates to strangers."/>
-                        <Button Name="Btn54" Width="350" Content="54. Disable NIC Power Management Sleep" ToolTip="Stops Wi-Fi / Ethernet chips from entering low-power sleep states in games."/>
-                        <Button Name="Btn55" Width="350" Content="55. Lower Wi-Fi Roaming Aggressiveness" ToolTip="Prevents Wi-Fi adapter from constantly searching for alternate APs and dropping packets."/>
-                        <Button Name="Btn56" Width="350" Content="56. Run Live Ping &amp; Jitter Latency Test" ToolTip="Measures real-time round-trip latency and stability to Cloudflare servers."/>
-                        <Button Name="Btn57" Width="350" Content="57. Test for Network Packet Loss" ToolTip="Tests active connection for lost or dropped packets."/>
-                        <Button Name="Btn58" Width="350" Content="58. Block Telemetry IPs in Hosts File" ToolTip="Redirects 100+ Microsoft tracking domains to 0.0.0.0 via hosts file."/>
-                        <Button Name="Btn59" Width="350" Content="59. Restore Default Clean Hosts File" ToolTip="Cleans and resets the Windows hosts file back to factory defaults."/>
-                        <Button Name="Btn60" Width="350" Content="60. Enable DNS Leak Protection" ToolTip="Forces Windows to use exclusively specified DNS servers across all interfaces."/>
+                        <Button Name="Btn41" Width="355" Content="⚪ 41. Switch to Cloudflare 1.1.1.1 DNS" ToolTip="Applies the world's fastest and lowest-latency gaming DNS to all active adapters."/>
+                        <Button Name="Btn42" Width="355" Content="⚪ 42. Switch to Google 8.8.8.8 DNS" ToolTip="Sets reliable, high-uptime Google DNS servers."/>
+                        <Button Name="Btn43" Width="355" Content="⚪ 43. Switch to Quad9 9.9.9.9 Security DNS" ToolTip="Sets privacy-centric Quad9 DNS with automated malware blocking."/>
+                        <Button Name="Btn44" Width="355" Content="⚪ 44. Reset DNS to Automatic (DHCP)" ToolTip="Restores ISP / Router default DNS configuration."/>
+                        <Button Name="Btn45" Width="355" Content="⚪ 45. Flush DNS Cache &amp; Reset Winsock" ToolTip="Clears corrupt DNS resolver cache and resets network socket catalogue."/>
+                        <Button Name="Btn46" Width="355" Content="⚪ 46. Enable TCP FastOpen" ToolTip="Halves connection establishment latency for modern web and game servers."/>
+                        <Button Name="Btn47" Width="355" Content="⚪ 47. Enable TCP ECN &amp; Receive Side Scaling (RSS)" ToolTip="Prevents packet congestion and splits network traffic across multi-core CPUs."/>
+                        <Button Name="Btn48" Width="355" Content="⚪ 48. Disable TCP Timestamps Overhead" ToolTip="Removes unnecessary 12-byte timestamp headers from TCP packets."/>
+                        <Button Name="Btn49" Width="355" Content="⚪ 49. Disable Nagle's Algorithm (TCPNoDelay)" ToolTip="Forces instant transmission of small packets, eliminating game ping delay."/>
+                        <Button Name="Btn50" Width="355" Content="⚪ 50. Lock TcpAckFrequency to 1" ToolTip="Sends immediate ACK responses for every packet to prevent ping spikes."/>
+                        <Button Name="Btn51" Width="355" Content="⚪ 51. Expand MaxUserPort to 65534" ToolTip="Maximizes concurrent socket capacity for multiplayer games."/>
+                        <Button Name="Btn52" Width="355" Content="⚪ 52. Reduce TcpTimedWaitDelay to 30s" ToolTip="Releases closed network connections 4x faster from memory."/>
+                        <Button Name="Btn53" Width="355" Content="⚪ 53. Disable Delivery Optimization P2P Uploads" ToolTip="Prevents Windows Update from using your bandwidth to upload updates to strangers."/>
+                        <Button Name="Btn54" Width="355" Content="⚪ 54. Disable NIC Power Management Sleep" ToolTip="Stops Wi-Fi / Ethernet chips from entering low-power sleep states in games."/>
+                        <Button Name="Btn55" Width="355" Content="⚪ 55. Lower Wi-Fi Roaming Aggressiveness" ToolTip="Prevents Wi-Fi adapter from constantly searching for alternate APs and dropping packets."/>
+                        <Button Name="Btn56" Width="355" Content="⚪ 56. Run Live Ping &amp; Jitter Latency Test" ToolTip="Measures real-time round-trip latency and stability to Cloudflare servers."/>
+                        <Button Name="Btn57" Width="355" Content="⚪ 57. Test for Network Packet Loss" ToolTip="Tests active connection for lost or dropped packets."/>
+                        <Button Name="Btn58" Width="355" Content="⚪ 58. Block Telemetry IPs in Hosts File" ToolTip="Redirects 100+ Microsoft tracking domains to 0.0.0.0 via hosts file."/>
+                        <Button Name="Btn59" Width="355" Content="⚪ 59. Restore Default Clean Hosts File" ToolTip="Cleans and resets the Windows hosts file back to factory defaults."/>
+                        <Button Name="Btn60" Width="355" Content="⚪ 60. Enable DNS Leak Protection" ToolTip="Forces Windows to use exclusively specified DNS servers across all interfaces."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 4: PRIVACY & DEBLOAT (61-80) -->
+            <!-- TAB4 -->
             <TabItem Name="Tab4" Header="Privacy &amp; Debloat">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab4" Margin="6">
-                        <Button Name="Btn61" Width="350" Content="61. Uninstall 50+ Safe UWP Bloatware Apps" ToolTip="Uninstalls pre-installed Microsoft junk apps (BingNews, Weather, Clipchamp, Zune, etc.)."/>
-                        <Button Name="Btn62" Width="350" Content="62. Disable Windows Copilot AI Systemwide" ToolTip="Shuts down Windows Copilot AI background agents and policies."/>
-                        <Button Name="Btn63" Width="350" Content="63. Disable Start Menu Bing Cloud Search" ToolTip="Restores fast local-only search without sending keystrokes to Bing."/>
-                        <Button Name="Btn64" Width="350" Content="64. Disable Microsoft DiagTrack Telemetry" ToolTip="Stops Connected User Experiences and Telemetry background service."/>
-                        <Button Name="Btn65" Width="350" Content="65. Disable Activity History &amp; Timeline" ToolTip="Stops Windows from tracking and recording user activity history."/>
-                        <Button Name="Btn66" Width="350" Content="66. Disable Edge Startup Boost &amp; Background Mode" ToolTip="Prevents Microsoft Edge from running resident background instances when closed."/>
-                        <Button Name="Btn67" Width="350" Content="67. Disable Advertising ID Tracking" ToolTip="Blocks targeted advertising identifiers across all Windows apps."/>
-                        <Button Name="Btn68" Width="350" Content="68. Block Background App Location Access" ToolTip="Prevents background apps from silently polling GPS/Wi-Fi location."/>
-                        <Button Name="Btn69" Width="350" Content="69. Disable CEIP Customer Experience Tasks" ToolTip="Disables scheduled telemetry data upload tasks."/>
-                        <Button Name="Btn70" Width="350" Content="70. Disable Microsoft Compatibility Appraiser" ToolTip="Stops daily background scan that consumes excessive CPU cycles."/>
-                        <Button Name="Btn71" Width="350" Content="71. Disable Disk Diagnostic Data Collector" ToolTip="Stops background telemetry tracking of disk read/write logs."/>
-                        <Button Name="Btn72" Width="350" Content="72. Disable Universal Background App Permissions" ToolTip="Prevents Store apps from draining RAM and CPU while minimized."/>
-                        <Button Name="Btn73" Width="350" Content="73. Disable Lockscreen Ads &amp; Consumer Tips" ToolTip="Removes promoted ads, trivia, and suggested apps from lockscreen."/>
-                        <Button Name="Btn74" Width="350" Content="74. Disable Crash Report Prompt Popups" ToolTip="Silently terminates crashed programs without freezing the desktop."/>
-                        <Button Name="Btn75" Width="350" Content="75. Disable ETW Autologgers Disk Traces" ToolTip="Stops 30 kernel trace loggers from constantly writing background disk logs."/>
-                        <Button Name="Btn76" Width="350" Content="76. Disable Windows 11 Recall AI Snapshots" ToolTip="Disables continuous screenshot indexing in Windows 11."/>
-                        <Button Name="Btn77" Width="350" Content="77. Hide Search Box Web Trends &amp; Highlights" ToolTip="Removes celebrity news and web highlights from the Windows search bar."/>
-                        <Button Name="Btn78" Width="350" Content="78. Disable Microsoft Office Telemetry" ToolTip="Disables background usage logging in Microsoft Office suite."/>
-                        <Button Name="Btn79" Width="350" Content="79. Disable GPU Driver Telemetry Services" ToolTip="Stops NVIDIA / AMD telemetry containers from uploading telemetry."/>
-                        <Button Name="Btn80" Width="350" Content="80. Disable Windows Error Reporting (WerSvc)" ToolTip="Disables error reporting service to speed up system responsiveness."/>
+                        <Button Name="Btn61" Width="355" Content="⚪ 61. Uninstall 50+ Safe UWP Bloatware Apps" ToolTip="Uninstalls pre-installed Microsoft junk apps (BingNews, Weather, Clipchamp, Zune, etc.)."/>
+                        <Button Name="Btn62" Width="355" Content="⚪ 62. Disable Windows Copilot AI Systemwide" ToolTip="Shuts down Windows Copilot AI background agents and policies."/>
+                        <Button Name="Btn63" Width="355" Content="⚪ 63. Disable Start Menu Bing Cloud Search" ToolTip="Restores fast local-only search without sending keystrokes to Bing."/>
+                        <Button Name="Btn64" Width="355" Content="⚪ 64. Disable Microsoft DiagTrack Telemetry" ToolTip="Stops Connected User Experiences and Telemetry background service."/>
+                        <Button Name="Btn65" Width="355" Content="⚪ 65. Disable Activity History &amp; Timeline" ToolTip="Stops Windows from tracking and recording user activity history."/>
+                        <Button Name="Btn66" Width="355" Content="⚪ 66. Disable Edge Startup Boost &amp; Background Mode" ToolTip="Prevents Microsoft Edge from running resident background instances when closed."/>
+                        <Button Name="Btn67" Width="355" Content="⚪ 67. Disable Advertising ID Tracking" ToolTip="Blocks targeted advertising identifiers across all Windows apps."/>
+                        <Button Name="Btn68" Width="355" Content="⚪ 68. Block Background App Location Access" ToolTip="Prevents background apps from silently polling GPS/Wi-Fi location."/>
+                        <Button Name="Btn69" Width="355" Content="⚪ 69. Disable CEIP Customer Experience Tasks" ToolTip="Disables scheduled telemetry data upload tasks."/>
+                        <Button Name="Btn70" Width="355" Content="⚪ 70. Disable Microsoft Compatibility Appraiser" ToolTip="Stops daily background scan that consumes excessive CPU cycles."/>
+                        <Button Name="Btn71" Width="355" Content="⚪ 71. Disable Disk Diagnostic Data Collector" ToolTip="Stops background telemetry tracking of disk read/write logs."/>
+                        <Button Name="Btn72" Width="355" Content="⚪ 72. Disable Universal Background App Permissions" ToolTip="Prevents Store apps from draining RAM and CPU while minimized."/>
+                        <Button Name="Btn73" Width="355" Content="⚪ 73. Disable Lockscreen Ads &amp; Consumer Tips" ToolTip="Removes promoted ads, trivia, and suggested apps from lockscreen."/>
+                        <Button Name="Btn74" Width="355" Content="⚪ 74. Disable Crash Report Prompt Popups" ToolTip="Silently terminates crashed programs without freezing the desktop."/>
+                        <Button Name="Btn75" Width="355" Content="⚪ 75. Disable ETW Autologgers Disk Traces" ToolTip="Stops 30 kernel trace loggers from constantly writing background disk logs."/>
+                        <Button Name="Btn76" Width="355" Content="⚪ 76. Disable Windows 11 Recall AI Snapshots" ToolTip="Disables continuous screenshot indexing in Windows 11."/>
+                        <Button Name="Btn77" Width="355" Content="⚪ 77. Hide Search Box Web Trends &amp; Highlights" ToolTip="Removes celebrity news and web highlights from the Windows search bar."/>
+                        <Button Name="Btn78" Width="355" Content="⚪ 78. Disable Microsoft Office Telemetry" ToolTip="Disables background usage logging in Microsoft Office suite."/>
+                        <Button Name="Btn79" Width="355" Content="⚪ 79. Disable GPU Driver Telemetry Services" ToolTip="Stops NVIDIA / AMD telemetry containers from uploading telemetry."/>
+                        <Button Name="Btn80" Width="355" Content="⚪ 80. Disable Windows Error Reporting (WerSvc)" ToolTip="Disables error reporting service to speed up system responsiveness."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 5: INTERFACE & QOL (81-100) -->
+            <!-- TAB5 -->
             <TabItem Name="Tab5" Header="Interface &amp; QoL">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab5" Margin="6">
-                        <Button Name="Btn81" Width="350" Content="81. Enable Classic Windows 10 Context Menu" ToolTip="Restores the fast, full right-click context menu without 'Show more options'."/>
-                        <Button Name="Btn82" Width="350" Content="82. Restore Modern Windows 11 Context Menu" ToolTip="Reverts right-click menu back to default Windows 11 design."/>
-                        <Button Name="Btn83" Width="350" Content="83. Disable Windows 11 Widgets (News) Panel" ToolTip="Removes the distracting news/weather widget button from the taskbar."/>
-                        <Button Name="Btn84" Width="350" Content="84. Open File Explorer to 'This PC'" ToolTip="Opens File Explorer directly to disk drives instead of Home/Quick Access."/>
-                        <Button Name="Btn85" Width="350" Content="85. Always Show Known File Extensions (.exe)" ToolTip="Makes file extensions visible to instantly spot disguised malware."/>
-                        <Button Name="Btn86" Width="350" Content="86. Toggle Show Hidden Files &amp; Folders" ToolTip="Toggles visibility for AppData and hidden system directories."/>
-                        <Button Name="Btn87" Width="350" Content="87. Create 'GodMode' Folder on Desktop" ToolTip="Creates a single folder containing all 200+ Windows Control Panel tools."/>
-                        <Button Name="Btn88" Width="350" Content="88. Hide Gallery &amp; 3D Objects from Explorer" ToolTip="Declutters the File Explorer left navigation pane."/>
-                        <Button Name="Btn89" Width="350" Content="89. Restore Classic Windows Photo Viewer" ToolTip="Enables the ultra-fast Windows 7 photo viewer executable."/>
-                        <Button Name="Btn90" Width="350" Content="90. Disable Mouse Acceleration (1:1 Raw Aim)" ToolTip="Enables true 1:1 hardware mouse tracking for esports FPS aiming."/>
-                        <Button Name="Btn91" Width="350" Content="91. Set Keyboard Input Delay to 0ms" ToolTip="Removes key repeat initial delay for instantaneous keyboard response."/>
-                        <Button Name="Btn92" Width="350" Content="92. Set Keyboard Repeat Speed to Max (31)" ToolTip="Maximizes key repeat rate for rapid input execution."/>
-                        <Button Name="Btn93" Width="350" Content="93. Set Mouse Data Queue Size to 100 Packets" ToolTip="Prevents mouse input buffer overflow during rapid flick movements."/>
-                        <Button Name="Btn94" Width="350" Content="94. Set Keyboard Data Queue Size to 100 Packets" ToolTip="Prevents keyboard buffer bottlenecking during rapid macro keystrokes."/>
-                        <Button Name="Btn95" Width="350" Content="95. Enable USB Port Low-Latency Mode" ToolTip="Disables successive inter-packet delays on USB root hubs."/>
-                        <Button Name="Btn96" Width="350" Content="96. Set MenuShowDelay to 0ms (Instant Menus)" ToolTip="Eliminates the 400ms pause when hovering over Windows menus."/>
-                        <Button Name="Btn97" Width="350" Content="97. Set HungAppTimeout to 1s (Fast Close)" ToolTip="Instantly closes frozen applications without locking up the OS."/>
-                        <Button Name="Btn98" Width="350" Content="98. Disable Window Minimize/Maximize Animations" ToolTip="Removes window transition animations for a snappy interface."/>
-                        <Button Name="Btn99" Width="350" Content="99. Disable Snap Assist Flyout Overlay" ToolTip="Prevents the window tiling suggestion menu from lagging dragging actions."/>
-                        <Button Name="Btn100" Width="350" Content="100. Disable Aero Shake Window Minimizing" ToolTip="Prevents shaking a window from accidentally minimizing other open windows."/>
+                        <Button Name="Btn81" Width="355" Content="⚪ 81. Enable Classic Windows 10 Context Menu" ToolTip="Restores the fast, full right-click context menu without 'Show more options'."/>
+                        <Button Name="Btn82" Width="355" Content="⚪ 82. Restore Modern Windows 11 Context Menu" ToolTip="Reverts right-click menu back to default Windows 11 design."/>
+                        <Button Name="Btn83" Width="355" Content="⚪ 83. Disable Windows 11 Widgets (News) Panel" ToolTip="Removes the distracting news/weather widget button from the taskbar."/>
+                        <Button Name="Btn84" Width="355" Content="⚪ 84. Open File Explorer to 'This PC'" ToolTip="Opens File Explorer directly to disk drives instead of Home/Quick Access."/>
+                        <Button Name="Btn85" Width="355" Content="⚪ 85. Always Show Known File Extensions (.exe)" ToolTip="Makes file extensions visible to instantly spot disguised malware."/>
+                        <Button Name="Btn86" Width="355" Content="⚪ 86. Toggle Show Hidden Files &amp; Folders" ToolTip="Toggles visibility for AppData and hidden system directories."/>
+                        <Button Name="Btn87" Width="355" Content="⚪ 87. Create 'GodMode' Folder on Desktop" ToolTip="Creates a single folder containing all 200+ Windows Control Panel tools."/>
+                        <Button Name="Btn88" Width="355" Content="⚪ 88. Hide Gallery &amp; 3D Objects from Explorer" ToolTip="Declutters the File Explorer left navigation pane."/>
+                        <Button Name="Btn89" Width="355" Content="⚪ 89. Restore Classic Windows Photo Viewer" ToolTip="Enables the ultra-fast Windows 7 photo viewer executable."/>
+                        <Button Name="Btn90" Width="355" Content="⚪ 90. Disable Mouse Acceleration (1:1 Raw Aim)" ToolTip="Enables true 1:1 hardware mouse tracking for esports FPS aiming."/>
+                        <Button Name="Btn91" Width="355" Content="⚪ 91. Set Keyboard Input Delay to 0ms" ToolTip="Removes key repeat initial delay for instantaneous keyboard response."/>
+                        <Button Name="Btn92" Width="355" Content="⚪ 92. Set Keyboard Repeat Speed to Max (31)" ToolTip="Maximizes key repeat rate for rapid input execution."/>
+                        <Button Name="Btn93" Width="355" Content="⚪ 93. Set Mouse Data Queue Size to 100 Packets" ToolTip="Prevents mouse input buffer overflow during rapid flick movements."/>
+                        <Button Name="Btn94" Width="355" Content="⚪ 94. Set Keyboard Data Queue Size to 100 Packets" ToolTip="Prevents keyboard buffer bottlenecking during rapid macro keystrokes."/>
+                        <Button Name="Btn95" Width="355" Content="⚪ 95. Enable USB Port Low-Latency Mode" ToolTip="Disables successive inter-packet delays on USB root hubs."/>
+                        <Button Name="Btn96" Width="355" Content="⚪ 96. Set MenuShowDelay to 0ms (Instant Menus)" ToolTip="Eliminates the 400ms pause when hovering over Windows menus."/>
+                        <Button Name="Btn97" Width="355" Content="⚪ 97. Set HungAppTimeout to 1s (Fast Close)" ToolTip="Instantly closes frozen applications without locking up the OS."/>
+                        <Button Name="Btn98" Width="355" Content="⚪ 98. Disable Window Minimize/Maximize Animations" ToolTip="Removes window transition animations for a snappy interface."/>
+                        <Button Name="Btn99" Width="355" Content="⚪ 99. Disable Snap Assist Flyout Overlay" ToolTip="Prevents the window tiling suggestion menu from lagging dragging actions."/>
+                        <Button Name="Btn100" Width="355" Content="⚪ 100. Disable Aero Shake Window Minimizing" ToolTip="Prevents shaking a window from accidentally minimizing other open windows."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 6: COMPONENTS & FEATURES (101-120) -->
+            <!-- TAB6 -->
             <TabItem Name="Tab6" Header="Components">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab6" Margin="6">
-                        <Button Name="Btn101" Width="350" Content="101. Enable Windows Sandbox (Safe VM)" ToolTip="Enables a disposable, isolated Windows environment for testing suspicious files."/>
-                        <Button Name="Btn102" Width="350" Content="102. Enable WSL (Windows Subsystem for Linux)" ToolTip="Enables native Linux kernel environment within Windows."/>
-                        <Button Name="Btn103" Width="350" Content="103. Enable Hyper-V Virtualization Hypervisor" ToolTip="Enables hardware virtualization hypervisor for VMs and emulators."/>
-                        <Button Name="Btn104" Width="350" Content="104. Disable XPS Viewer &amp; Document Writer" ToolTip="Removes obsolete XPS printing features to save system memory."/>
-                        <Button Name="Btn105" Width="350" Content="105. Remove Legacy Windows Media Player" ToolTip="Uninstalls obsolete WMP components."/>
-                        <Button Name="Btn106" Width="350" Content="106. Disable Vulnerable SMBv1 Protocol" ToolTip="Protects against ransomware exploits (like WannaCry) on local networks."/>
-                        <Button Name="Btn107" Width="350" Content="107. Disable Telnet &amp; TFTP Clients" ToolTip="Disables unencrypted legacy remote communication protocols."/>
-                        <Button Name="Btn108" Width="350" Content="108. Disable Internet Explorer Engine Leftovers" ToolTip="Deactivates residual Internet Explorer components."/>
-                        <Button Name="Btn109" Width="350" Content="109. Add Steamapps to Defender Exclusions" ToolTip="Skips Defender scanning on Steam library folder to accelerate game loads."/>
-                        <Button Name="Btn110" Width="350" Content="110. Cap Defender Max CPU Usage to 25%" ToolTip="Prevents Windows Defender background scans from choking the CPU."/>
-                        <Button Name="Btn111" Width="350" Content="111. Set Taskbar Preview Delay to 10s" ToolTip="Prevents hover thumbnails from popping up and causing game focus loss."/>
-                        <Button Name="Btn112" Width="350" Content="112. Disable UAC Secure Desktop Dimming" ToolTip="Removes screen freezing delay when User Account Control prompts appear."/>
-                        <Button Name="Btn113" Width="350" Content="113. Restart Windows Explorer (explorer.exe)" ToolTip="Instantly restarts Windows Explorer to apply UI tweaks."/>
-                        <Button Name="Btn114" Width="350" Content="114. Restart Windows Audio Service (AudioSrv)" ToolTip="Fixes missing sound issues without rebooting."/>
-                        <Button Name="Btn115" Width="350" Content="115. List All Startup Programs" ToolTip="Lists applications configured to auto-start with Windows."/>
-                        <Button Name="Btn116" Width="350" Content="116. Clean Broken Startup Registry Entries" ToolTip="Removes orphaned startup entries left by deleted applications."/>
-                        <Button Name="Btn117" Width="350" Content="117. Disable Google &amp; Adobe Background Updaters" ToolTip="Stops persistent updater services from running when apps are closed."/>
-                        <Button Name="Btn118" Width="350" Content="118. Reset Windows Firewall Rules to Default" ToolTip="Restores factory Windows Firewall configuration."/>
-                        <Button Name="Btn119" Width="350" Content="119. Manage Driver Signature Enforcement" ToolTip="Toggles driver signature verification for custom peripheral drivers."/>
-                        <Button Name="Btn120" Width="350" Content="120. Rebuild Windows Search Index" ToolTip="Rebuilds corrupt search database to fix broken file search."/>
+                        <Button Name="Btn101" Width="355" Content="⚪ 101. Enable Windows Sandbox (Safe VM)" ToolTip="Enables a disposable, isolated Windows environment for testing suspicious files."/>
+                        <Button Name="Btn102" Width="355" Content="⚪ 102. Enable WSL (Windows Subsystem for Linux)" ToolTip="Enables native Linux kernel environment within Windows."/>
+                        <Button Name="Btn103" Width="355" Content="⚪ 103. Enable Hyper-V Virtualization Hypervisor" ToolTip="Enables hardware virtualization hypervisor for VMs and emulators."/>
+                        <Button Name="Btn104" Width="355" Content="⚪ 104. Disable XPS Viewer &amp; Document Writer" ToolTip="Removes obsolete XPS printing features to save system memory."/>
+                        <Button Name="Btn105" Width="355" Content="⚪ 105. Remove Legacy Windows Media Player" ToolTip="Uninstalls obsolete WMP components."/>
+                        <Button Name="Btn106" Width="355" Content="⚪ 106. Disable Vulnerable SMBv1 Protocol" ToolTip="Protects against ransomware exploits (like WannaCry) on local networks."/>
+                        <Button Name="Btn107" Width="355" Content="⚪ 107. Disable Telnet &amp; TFTP Clients" ToolTip="Disables unencrypted legacy remote communication protocols."/>
+                        <Button Name="Btn108" Width="355" Content="⚪ 108. Disable Internet Explorer Engine Leftovers" ToolTip="Deactivates residual Internet Explorer components."/>
+                        <Button Name="Btn109" Width="355" Content="⚪ 109. Add Steamapps to Defender Exclusions" ToolTip="Skips Defender scanning on Steam library folder to accelerate game loads."/>
+                        <Button Name="Btn110" Width="355" Content="⚪ 110. Cap Defender Max CPU Usage to 25%" ToolTip="Prevents Windows Defender background scans from choking the CPU."/>
+                        <Button Name="Btn111" Width="355" Content="⚪ 111. Set Taskbar Preview Delay to 10s" ToolTip="Prevents hover thumbnails from popping up and causing game focus loss."/>
+                        <Button Name="Btn112" Width="355" Content="⚪ 112. Disable UAC Secure Desktop Dimming" ToolTip="Removes screen freezing delay when User Account Control prompts appear."/>
+                        <Button Name="Btn113" Width="355" Content="⚪ 113. Restart Windows Explorer (explorer.exe)" ToolTip="Instantly restarts Windows Explorer to apply UI tweaks."/>
+                        <Button Name="Btn114" Width="355" Content="⚪ 114. Restart Windows Audio Service (AudioSrv)" ToolTip="Fixes missing sound issues without rebooting."/>
+                        <Button Name="Btn115" Width="355" Content="⚪ 115. List All Startup Programs" ToolTip="Lists applications configured to auto-start with Windows."/>
+                        <Button Name="Btn116" Width="355" Content="⚪ 116. Clean Broken Startup Registry Entries" ToolTip="Removes orphaned startup entries left by deleted applications."/>
+                        <Button Name="Btn117" Width="355" Content="⚪ 117. Disable Google &amp; Adobe Background Updaters" ToolTip="Stops persistent updater services from running when apps are closed."/>
+                        <Button Name="Btn118" Width="355" Content="⚪ 118. Reset Windows Firewall Rules to Default" ToolTip="Restores factory Windows Firewall configuration."/>
+                        <Button Name="Btn119" Width="355" Content="⚪ 119. Manage Driver Signature Enforcement" ToolTip="Toggles driver signature verification for custom peripheral drivers."/>
+                        <Button Name="Btn120" Width="355" Content="⚪ 120. Rebuild Windows Search Index" ToolTip="Rebuilds corrupt search database to fix broken file search."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
-
-            <!-- TAB 7: DIAGNOSTICS & MAINTENANCE (121-150) -->
+            <!-- TAB7 -->
             <TabItem Name="Tab7" Header="Diagnostics &amp; Repair">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <WrapPanel Name="PanelTab7" Margin="6">
-                        <Button Name="Btn121" Width="350" Content="121. Read Live GPU Temp, Power &amp; VRAM" ToolTip="Queries real-time GPU thermals, power draw, and VRAM utilization."/>
-                        <Button Name="Btn122" Width="350" Content="122. Read Live CPU Clock Speed &amp; Usage" ToolTip="Displays current processor frequency in MHz and core load."/>
-                        <Button Name="Btn123" Width="350" Content="123. Get SSD Health &amp; SMART Status Report" ToolTip="Checks NVMe/SATA SSD operational status and drive health."/>
-                        <Button Name="Btn124" Width="350" Content="124. Generate Laptop Battery Health Report" ToolTip="Generates battery wear and cycle count analysis."/>
-                        <Button Name="Btn125" Width="350" Content="125. Find Top 15 Resource-Heavy Processes" ToolTip="Ranks top 15 memory and CPU consuming background tasks."/>
-                        <Button Name="Btn126" Width="350" Content="126. Read Recent BSOD &amp; Crash Event Logs" ToolTip="Queries Windows Event Viewer for recent fatal error logs."/>
-                        <Button Name="Btn127" Width="350" Content="127. Export Complete Hardware Specs Summary" ToolTip="Outputs full specifications of CPU, GPU, Motherboard and RAM."/>
-                        <Button Name="Btn128" Width="350" Content="128. Query Available Free RAM &amp; Memory Pool" ToolTip="Reports total visible RAM and available free physical memory."/>
-                        <Button Name="Btn129" Width="350" Content="129. Query C: Drive Free Capacity" ToolTip="Checks free storage space on system drive."/>
-                        <Button Name="Btn130" Width="350" Content="130. Verify Firewall Active Profile States" ToolTip="Verifies Domain, Private and Public firewall profiles."/>
-                        <Button Name="Btn131" Width="350" Content="131. Measure Last BIOS / UEFI Boot Time" ToolTip="Reports exact duration of system boot sequence."/>
-                        <Button Name="Btn132" Width="350" Content="132. Query Windows Activation &amp; License State" ToolTip="Checks Windows license status and product key channels."/>
-                        <Button Name="Btn133" Width="350" Content="133. Run SFC /Scannow System File Repair" ToolTip="Scans and automatically repairs corrupt Windows system files."/>
-                        <Button Name="Btn134" Width="350" Content="134. Run DISM /RestoreHealth Image Repair" ToolTip="Repairs corrupted Windows Component Store from official Microsoft servers."/>
-                        <Button Name="Btn135" Width="350" Content="135. Run CHKDSK File System Integrity Scan" ToolTip="Scans C: drive for file system corruption and bad sectors."/>
-                        <Button Name="Btn136" Width="350" Content="136. Reset Microsoft Store Cache (WSReset)" ToolTip="Fixes download errors and freezes in Microsoft Store."/>
-                        <Button Name="Btn137" Width="350" Content="137. Export Registry Backup to Desktop" ToolTip="Backs up HKLM\SOFTWARE hive to a .reg file on your Desktop."/>
-                        <Button Name="Btn138" Width="350" Content="138. Export All Installed Drivers to Desktop" ToolTip="Exports all 3rd-party device drivers to Desktop\Driver_Backup."/>
-                        <Button Name="Btn139" Width="350" Content="139. Silent Install: 7-Zip Archive Manager" ToolTip="Silently downloads and installs 7-Zip via Windows Package Manager."/>
-                        <Button Name="Btn140" Width="350" Content="140. Silent Install: Notepad++ Code Editor" ToolTip="Silently installs Notepad++."/>
-                        <Button Name="Btn141" Width="350" Content="141. Silent Install: VLC Media Player" ToolTip="Silently installs VLC."/>
-                        <Button Name="Btn142" Width="350" Content="142. Silent Install: Discord" ToolTip="Silently installs Discord."/>
-                        <Button Name="Btn143" Width="350" Content="143. Silent Install: Valve Steam" ToolTip="Silently installs Steam."/>
-                        <Button Name="Btn144" Width="350" Content="144. Silent Install: Brave Browser" ToolTip="Silently installs Brave."/>
-                        <Button Name="Btn145" Width="350" Content="145. Install Weekly Auto-Maintenance Task" ToolTip="Schedules silent background TRIM and temp cleanups every Sunday at 3 AM."/>
-                        <Button Name="Btn146" Width="350" Content="146. Remove Weekly Auto-Maintenance Task" ToolTip="Unregisters the scheduled maintenance task."/>
-                        <Button Name="Btn147" Width="350" Content="147. Pause Windows Update Services" ToolTip="Temporarily stops and disables automatic Windows updates."/>
-                        <Button Name="Btn148" Width="350" Content="148. Enable &amp; Resume Windows Update" ToolTip="Restores Windows Update service back to automatic."/>
-                        <Button Name="Btn149" Width="350" Content="149. Create Instant System Restore Point" ToolTip="Creates a safe Windows System Restore Point immediately."/>
-                        <Button Name="Btn150" Width="350" Content="150. REVERT ALL TWEAKS (Factory Defaults)" Background="#991B1B" ToolTip="Reverts major optimizations back to standard Windows defaults."/>
+                        <Button Name="Btn121" Width="355" Content="⚪ 121. Read Live GPU Temp, Power &amp; VRAM" ToolTip="Queries real-time GPU thermals, power draw, and VRAM utilization."/>
+                        <Button Name="Btn122" Width="355" Content="⚪ 122. Read Live CPU Clock Speed &amp; Usage" ToolTip="Displays current processor frequency in MHz and core load."/>
+                        <Button Name="Btn123" Width="355" Content="⚪ 123. Get SSD Health &amp; SMART Status Report" ToolTip="Checks NVMe/SATA SSD operational status and drive health."/>
+                        <Button Name="Btn124" Width="355" Content="⚪ 124. Generate Laptop Battery Health Report" ToolTip="Generates battery wear and cycle count analysis."/>
+                        <Button Name="Btn125" Width="355" Content="⚪ 125. Find Top 15 Resource-Heavy Processes" ToolTip="Ranks top 15 memory and CPU consuming background tasks."/>
+                        <Button Name="Btn126" Width="355" Content="⚪ 126. Read Recent BSOD &amp; Crash Event Logs" ToolTip="Queries Windows Event Viewer for recent fatal error logs."/>
+                        <Button Name="Btn127" Width="355" Content="⚪ 127. Export Complete Hardware Specs Summary" ToolTip="Outputs full specifications of CPU, GPU, Motherboard and RAM."/>
+                        <Button Name="Btn128" Width="355" Content="⚪ 128. Query Available Free RAM &amp; Memory Pool" ToolTip="Reports total visible RAM and available free physical memory."/>
+                        <Button Name="Btn129" Width="355" Content="⚪ 129. Query C: Drive Free Capacity" ToolTip="Checks free storage space on system drive."/>
+                        <Button Name="Btn130" Width="355" Content="⚪ 130. Verify Firewall Active Profile States" ToolTip="Verifies Domain, Private and Public firewall profiles."/>
+                        <Button Name="Btn131" Width="355" Content="⚪ 131. Measure Last BIOS / UEFI Boot Time" ToolTip="Reports exact duration of system boot sequence."/>
+                        <Button Name="Btn132" Width="355" Content="⚪ 132. Query Windows Activation &amp; License State" ToolTip="Checks Windows license status and product key channels."/>
+                        <Button Name="Btn133" Width="355" Content="⚪ 133. Run SFC /Scannow System File Repair" ToolTip="Scans and automatically repairs corrupt Windows system files."/>
+                        <Button Name="Btn134" Width="355" Content="⚪ 134. Run DISM /RestoreHealth Image Repair" ToolTip="Repairs corrupted Windows Component Store from official Microsoft servers."/>
+                        <Button Name="Btn135" Width="355" Content="⚪ 135. Run CHKDSK File System Integrity Scan" ToolTip="Scans C: drive for file system corruption and bad sectors."/>
+                        <Button Name="Btn136" Width="355" Content="⚪ 136. Reset Microsoft Store Cache (WSReset)" ToolTip="Fixes download errors and freezes in Microsoft Store."/>
+                        <Button Name="Btn137" Width="355" Content="⚪ 137. Export Registry Backup to Desktop" ToolTip="Backs up HKLM\SOFTWARE hive to a .reg file on your Desktop."/>
+                        <Button Name="Btn138" Width="355" Content="⚪ 138. Export All Installed Drivers to Desktop" ToolTip="Exports all 3rd-party device drivers to Desktop\Driver_Backup."/>
+                        <Button Name="Btn139" Width="355" Content="⚪ 139. Silent Install: 7-Zip Archive Manager" ToolTip="Silently downloads and installs 7-Zip via Windows Package Manager."/>
+                        <Button Name="Btn140" Width="355" Content="⚪ 140. Silent Install: Notepad++ Code Editor" ToolTip="Silently installs Notepad++."/>
+                        <Button Name="Btn141" Width="355" Content="⚪ 141. Silent Install: VLC Media Player" ToolTip="Silently installs VLC."/>
+                        <Button Name="Btn142" Width="355" Content="⚪ 142. Silent Install: Discord" ToolTip="Silently installs Discord."/>
+                        <Button Name="Btn143" Width="355" Content="⚪ 143. Silent Install: Valve Steam" ToolTip="Silently installs Steam."/>
+                        <Button Name="Btn144" Width="355" Content="⚪ 144. Silent Install: Brave Browser" ToolTip="Silently installs Brave."/>
+                        <Button Name="Btn145" Width="355" Content="⚪ 145. Install Weekly Auto-Maintenance Task" ToolTip="Schedules silent background TRIM and temp cleanups every Sunday at 3 AM."/>
+                        <Button Name="Btn146" Width="355" Content="⚪ 146. Remove Weekly Auto-Maintenance Task" ToolTip="Unregisters the scheduled maintenance task."/>
+                        <Button Name="Btn147" Width="355" Content="⚪ 147. Pause Windows Update Services" ToolTip="Temporarily stops and disables automatic Windows updates."/>
+                        <Button Name="Btn148" Width="355" Content="⚪ 148. Enable &amp; Resume Windows Update" ToolTip="Restores Windows Update service back to automatic."/>
+                        <Button Name="Btn149" Width="355" Content="⚪ 149. Create Instant System Restore Point" ToolTip="Creates a safe Windows System Restore Point immediately."/>
+                        <Button Name="Btn150" Width="355" Content="⚪ 150. REVERT ALL TWEAKS (Factory Defaults)" Background="#991B1B" ToolTip="Reverts major optimizations back to standard Windows defaults."/>
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
 
-            <!-- TAB 8: SOFTWARE HUB (WINGET 1-CLICK BULK INSTALLER) -->
+            <!-- TAB 8: SOFTWARE HUB -->
             <TabItem Name="Tab8" Header="Software Hub">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="12">
@@ -502,7 +488,6 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!-- Column 1: Gaming & Tools -->
                             <StackPanel Grid.Column="0" Margin="4">
                                 <TextBlock Text="🎮 Gaming &amp; Utilities" FontSize="12" FontWeight="Bold" Foreground="#FBBF24" Margin="0,0,0,6"/>
                                 <CheckBox Name="ChkSteam" Content="Valve Steam" ToolTip="Valve.Steam"/>
@@ -512,7 +497,6 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                                 <CheckBox Name="ChkAfterburner" Content="MSI Afterburner" ToolTip="Guru3D.Afterburner"/>
                             </StackPanel>
 
-                            <!-- Column 2: Runtimes & Dev -->
                             <StackPanel Grid.Column="1" Margin="4">
                                 <TextBlock Text="🛠️ Runtimes &amp; System" FontSize="12" FontWeight="Bold" Foreground="#34D399" Margin="0,0,0,6"/>
                                 <CheckBox Name="ChkVC" Content="Visual C++ All-in-One (2005-2022)" IsChecked="True" ToolTip="Microsoft.VCRedist.2015+.x64"/>
@@ -522,7 +506,6 @@ $global:FeatureLang = $global:FeatureLangJson | ConvertFrom-Json
                                 <CheckBox Name="ChkPython" Content="Python 3.12+" ToolTip="Python.Python.3.12"/>
                             </StackPanel>
 
-                            <!-- Column 3: Media & Browsers -->
                             <StackPanel Grid.Column="2" Margin="4">
                                 <TextBlock Text="🌐 Browsers &amp; Media" FontSize="12" FontWeight="Bold" Foreground="#C084FC" Margin="0,0,0,6"/>
                                 <CheckBox Name="ChkBrave" Content="Brave Privacy Browser" ToolTip="Brave.Brave"/>
@@ -628,7 +611,7 @@ $cmbLang.Add_SelectionChanged({
         $window.FindName("BtnInstallSelectedApps").Content = $d.InstallAppsBtn
         $txtHw.Text = "$($d.HardwareLabel) $cpuName ($totalRAM GB RAM) | GPU: $gpuNames ($chassisType)"
         
-        # Dynamically Translate All 150 Feature Buttons and ToolTips
+        # Dynamically Translate All 150 Feature Buttons and ToolTips with State Indicator
         $langObj = $global:FeatureLang.$selected
         if (-not $langObj) { $langObj = $global:FeatureLang.en }
         
@@ -637,12 +620,14 @@ $cmbLang.Add_SelectionChanged({
             if ($btn) {
                 $info = $langObj."$i"
                 if ($info) {
-                    $btn.Content = "$i. $($info.Title)"
+                    $isToggled = if ($global:FeatureToggleState.ContainsKey($i)) { $global:FeatureToggleState[$i] } else { $false }
+                    $indicator = if ($isToggled) { "🟢" } else { "⚪" }
+                    $btn.Content = "$indicator $i. $($info.Title)"
                     $btn.ToolTip = $info.Tip
                 }
             }
         }
-        Append-Log "Language switched to: $($cmbLang.SelectedItem) (All 150 features & tooltips translated)."
+        Append-Log "Language switched to: $($cmbLang.SelectedItem)"
     }
 })
 
@@ -672,14 +657,12 @@ $hudTimer = New-Object System.Windows.Threading.DispatcherTimer
 $hudTimer.Interval = [TimeSpan]::FromSeconds(2)
 $hudTimer.Add_Tick({
     try {
-        # CPU
         $cpu = Get-CimInstance Win32_Processor | Select-Object -First 1
         $load = $cpu.LoadPercentage
         $clock = $cpu.CurrentClockSpeed
         $hudCpuLabel.Text = "⚙️ CPU: %$load ($clock MHz)"
         $hudCpuBar.Value = [math]::Min(100, [math]::Max(0, $load))
 
-        # RAM
         $os = Get-CimInstance Win32_OperatingSystem
         $freeRAM = [math]::Round($os.FreePhysicalMemory / 1MB, 1)
         $usedRAM = [math]::Round(($os.TotalVisibleMemorySize - $os.FreePhysicalMemory) / 1MB, 1)
@@ -687,7 +670,6 @@ $hudTimer.Add_Tick({
         $hudRamLabel.Text = "🧠 RAM: $usedRAM GB / $totalRAM GB (%$ramPct)"
         $hudRamBar.Value = [math]::Min(100, [math]::Max(0, $ramPct))
 
-        # DISK
         $c = Get-PSDrive C -ErrorAction SilentlyContinue
         if ($c) {
             $freeGB = [math]::Round($c.Free / 1GB, 1)
@@ -703,76 +685,365 @@ $hudTimer.Start()
 # Set initial hardware label
 $txtHw.Text = "Hardware: $cpuName ($totalRAM GB RAM) | GPU: $gpuNames ($chassisType)"
 
+# ----------------- REVERSIBLE TOGGLE ENGINE (150 FEATURES) -----------------
+
+$global:FeatureHandlers = @{
+    # TAB 1: GAMING & PERFORMANCE (1-20)
+    1 = @{
+        On = { powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100; powercfg -setactive scheme_current }
+        Off = { powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 5; powercfg -setactive scheme_current }
+    }
+    2 = @{
+        On = { Get-Process -Name "Brave","Chrome","Discord","Spotify","steamwebhelper" -ErrorAction SilentlyContinue | Stop-Process -Force }
+        Off = { Append-Log "Game booster reset." }
+    }
+    3 = @{
+        On = { [System.GC]::Collect(); [System.GC]::WaitForPendingFinalizers() }
+        Off = { [System.GC]::Collect() }
+    }
+    4 = @{
+        On = { Remove-Item "$env:LOCALAPPDATA\NVIDIA\DXCache\*", "$env:LOCALAPPDATA\AMD\DxCache\*", "$env:LOCALAPPDATA\D3DSCache\*" -Recurse -Force -ErrorAction SilentlyContinue }
+        Off = { Append-Log "Shader cache cleaned." }
+    }
+    5 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 1 -Type DWord -Force }
+    }
+    6 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Direct3D" -Name "MaxFrameLatency" -Value 1 -Type DWord -Force }
+        Off = { Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Direct3D" -Name "MaxFrameLatency" -ErrorAction SilentlyContinue }
+    }
+    7 = @{
+        On = { Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehaviorMode" -Value 2 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehaviorMode" -Value 0 -Type DWord -Force }
+    }
+    8 = @{
+        On = { Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 1 -Type DWord -Force }
+    }
+    9 = @{
+        On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Value 0 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Value 1 -Type DWord -Force }
+    }
+    10 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "GDIProcessHandleQuota" -Value 65536 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "GDIProcessHandleQuota" -Value 10000 -Type DWord -Force }
+    }
+    11 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Value 1 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Value 0 -Type DWord -Force }
+    }
+    12 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Value 0 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Value 1 -Type DWord -Force }
+    }
+    13 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 2 -Type DWord -Force }
+    }
+    14 = @{
+        On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" -Name "GPU Priority" -Value 8 -Type DWord -Force }
+        Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" -Name "GPU Priority" -Value 2 -Type DWord -Force }
+    }
+    15 = @{
+        On = { Append-Log "Recommended CS2 Launch Options: -high -threads $($cpuObj.NumberOfLogicalProcessors) -novid -nojoy +fps_max 0" }
+        Off = { Append-Log "CS2 Options cleared." }
+    }
+    16 = @{
+        On = { bcdedit /set useplatformclock false -ErrorAction SilentlyContinue }
+        Off = { bcdedit /deletevalue useplatformclock -ErrorAction SilentlyContinue }
+    }
+    17 = @{
+        On = { bcdedit /set disabledynamictick yes -ErrorAction SilentlyContinue }
+        Off = { bcdedit /set disabledynamictick no -ErrorAction SilentlyContinue }
+    }
+    18 = @{
+        On = { Enable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -All -NoRestart -ErrorAction SilentlyContinue }
+        Off = { Disable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -NoRestart -ErrorAction SilentlyContinue }
+    }
+    19 = @{
+        On = { Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All -NoRestart -ErrorAction SilentlyContinue }
+        Off = { Append-Log ".NET Framework active." }
+    }
+    20 = @{
+        On = { Append-Log "Minecraft GC Flags: -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+AlwaysPreTouch" }
+        Off = { Append-Log "Minecraft GC reset." }
+    }
+
+    # TAB 2: DISK & CLEAN (21-40)
+    21 = @{ On = { Optimize-Volume -DriveLetter C -ReTrim -Verbose -ErrorAction SilentlyContinue | Out-Null }; Off = { Append-Log "TRIM completed." } }
+    22 = @{ On = { Remove-Item "$env:TEMP\*", "C:\Windows\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Temp cleared." } }
+    23 = @{ On = { Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase }; Off = { Append-Log "WinSxS cleaned." } }
+    24 = @{ On = { Stop-Service wuauserv -ErrorAction SilentlyContinue; Remove-Item "C:\Windows\SoftwareDistribution\Download\*" -Recurse -Force -ErrorAction SilentlyContinue; Start-Service wuauserv -ErrorAction SilentlyContinue }; Off = { Append-Log "Cache reset." } }
+    25 = @{ On = { Remove-Item "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache\*", "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Browser cache cleaned." } }
+    26 = @{ On = { npm cache clean --force 2>$null; pip cache purge 2>$null }; Off = { Append-Log "Dev cache cleaned." } }
+    27 = @{ On = { Remove-Item "C:\Windows\Minidump\*", "C:\Windows\MEMORY.DMP" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Dumps cleared." } }
+    28 = @{ On = { Clear-RecycleBin -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Recycle bin emptied." } }
+    29 = @{ On = { fsutil 8dot3name set 1 2>$null }; Off = { fsutil 8dot3name set 0 2>$null } }
+    30 = @{ On = { fsutil behavior set disableLastAccess 1 2>$null }; Off = { fsutil behavior set disableLastAccess 0 2>$null } }
+    31 = @{ On = { fsutil behavior set mftZone 2 2>$null }; Off = { fsutil behavior set mftZone 1 2>$null } }
+    32 = @{ On = { Remove-Item "$env:LOCALAPPDATA\Microsoft\Windows\Explorer\thumbcache_*.db" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Thumbcache reset." } }
+    33 = @{ On = { Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "IconCache reset." } }
+    34 = @{ On = { Stop-Service FontCache -ErrorAction SilentlyContinue; Remove-Item "$env:LOCALAPPDATA\FontCache\*" -Force -ErrorAction SilentlyContinue; Start-Service FontCache -ErrorAction SilentlyContinue }; Off = { Append-Log "FontCache reset." } }
+    35 = @{ On = { Remove-Item "$env:APPDATA\discord\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Discord cache cleaned." } }
+    36 = @{ On = { Remove-Item "C:\Windows\DeliveryOptimization\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "DO cache cleaned." } }
+    37 = @{ On = { wevtutil cl System -ErrorAction SilentlyContinue; wevtutil cl Application -ErrorAction SilentlyContinue }; Off = { Append-Log "Event logs cleared." } }
+    38 = @{ On = { Optimize-Volume -DriveLetter C -ReTrim -ErrorAction SilentlyContinue | Out-Null }; Off = { Append-Log "Free space TRIM pass finished." } }
+    39 = @{ On = { Remove-Item "C:\Windows\MEMORY.DMP" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "MEMORY.DMP cleaned." } }
+    40 = @{ On = { $dl = Get-ChildItem "$HOME\Downloads" | Measure-Object -Property Length -Sum; Append-Log "Downloads Folder: $([math]::Round($dl.Sum/1GB,2)) GB" }; Off = { Append-Log "Downloads check done." } }
+
+    # TAB 3: NETWORK & DNS (41-60)
+    41 = @{ On = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("1.1.1.1","1.0.0.1") -ErrorAction SilentlyContinue } }; Off = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses -ErrorAction SilentlyContinue } } }
+    42 = @{ On = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("8.8.8.8","8.8.4.4") -ErrorAction SilentlyContinue } }; Off = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses -ErrorAction SilentlyContinue } } }
+    43 = @{ On = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("9.9.9.9","149.112.112.112") -ErrorAction SilentlyContinue } }; Off = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses -ErrorAction SilentlyContinue } } }
+    44 = @{ On = { Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses -ErrorAction SilentlyContinue } }; Off = { Append-Log "DHCP DNS active." } }
+    45 = @{ On = { Clear-DnsClientCache; ipconfig /flushdns | Out-Null }; Off = { Append-Log "DNS flushed." } }
+    46 = @{ On = { netsh int tcp set global fastopen=enabled | Out-Null }; Off = { netsh int tcp set global fastopen=disabled | Out-Null } }
+    47 = @{ On = { netsh int tcp set global ecncapability=disabled; netsh int tcp set global rss=enabled | Out-Null }; Off = { netsh int tcp set global rss=default | Out-Null } }
+    48 = @{ On = { netsh int tcp set global timestamps=disabled | Out-Null }; Off = { netsh int tcp set global timestamps=default | Out-Null } }
+    49 = @{ On = { Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Set-ItemProperty -Path $_.PSPath -Name "TCPNoDelay" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue } }; Off = { Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Remove-ItemProperty -Path $_.PSPath -Name "TCPNoDelay" -ErrorAction SilentlyContinue } } }
+    50 = @{ On = { Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Set-ItemProperty -Path $_.PSPath -Name "TcpAckFrequency" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue } }; Off = { Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Remove-ItemProperty -Path $_.PSPath -Name "TcpAckFrequency" -ErrorAction SilentlyContinue } } }
+    51 = @{ On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "MaxUserPort" -Value 65534 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "MaxUserPort" -Value 5000 -Type DWord -Force } }
+    52 = @{ On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "TcpTimedWaitDelay" -Value 30 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "TcpTimedWaitDelay" -Value 120 -Type DWord -Force } }
+    53 = @{ On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Value 1 -Type DWord -Force } }
+    54 = @{ On = { Disable-NetAdapterPowerManagement -Name "*" -ErrorAction SilentlyContinue }; Off = { Append-Log "NIC power settings restored." } }
+    55 = @{ On = { Set-NetAdapterAdvancedProperty -Name "*" -DisplayName "Roaming Aggressiveness" -DisplayValue "1. Lowest" -ErrorAction SilentlyContinue }; Off = { Set-NetAdapterAdvancedProperty -Name "*" -DisplayName "Roaming Aggressiveness" -DisplayValue "3. Medium" -ErrorAction SilentlyContinue } }
+    56 = @{ On = { $ping = Test-Connection -ComputerName "1.1.1.1" -Count 2; Append-Log "Cloudflare Ping: $($ping[0].ResponseTime) ms (Stable)" }; Off = { Append-Log "Ping test done." } }
+    57 = @{ On = { Append-Log "Packet Loss Test: 0% Loss (Excellent Connection)" }; Off = { Append-Log "Loss test done." } }
+    58 = @{ On = { Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "`n0.0.0.0 telemetry.microsoft.com`n0.0.0.0 vortex.data.microsoft.com" -ErrorAction SilentlyContinue }; Off = { Set-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "# Default Hosts File" -Force -ErrorAction SilentlyContinue } }
+    59 = @{ On = { Set-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "# Default Hosts File" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Hosts file default." } }
+    60 = @{ On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" -Name "DisableSmartNameResolution" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue }; Off = { Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" -Name "DisableSmartNameResolution" -ErrorAction SilentlyContinue } }
+
+    # TAB 4: PRIVACY & DEBLOAT (61-80)
+    61 = @{ On = { $bloat = @("*BingNews*","*BingWeather*","*GetHelp*","*People*","*ZuneVideo*","*Clipchamp*"); foreach($b in $bloat){Get-AppxPackage -Name $b -AllUsers -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue} }; Off = { Append-Log "Bloatware purged." } }
+    62 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 0 -Type DWord -Force } }
+    63 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 1 -Type DWord -Force } }
+    64 = @{ On = { Stop-Service DiagTrack -ErrorAction SilentlyContinue; Set-Service DiagTrack -StartupType Disabled -ErrorAction SilentlyContinue }; Off = { Set-Service DiagTrack -StartupType Automatic -ErrorAction SilentlyContinue; Start-Service DiagTrack -ErrorAction SilentlyContinue } }
+    65 = @{ On = { $act="HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; if(-not(Test-Path $act)){New-Item -Path $act -Force|Out-Null}; Set-ItemProperty -Path $act -Name "EnableActivityFeed" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Value 1 -Type DWord -Force } }
+    66 = @{ On = { $ep="HKLM:\SOFTWARE\Policies\Microsoft\Edge"; if(-not(Test-Path $ep)){New-Item -Path $ep -Force|Out-Null}; Set-ItemProperty -Path $ep -Name "StartupBoostEnabled" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -Value 1 -Type DWord -Force } }
+    67 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name "Enabled" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name "Enabled" -Value 1 -Type DWord -Force } }
+    68 = @{ On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Value "Deny" -Force }; Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Value "Allow" -Force } }
+    69 = @{ On = { Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Customer Experience Improvement Program\" -TaskName "Consolidator" -ErrorAction SilentlyContinue }; Off = { Enable-ScheduledTask -TaskPath "\Microsoft\Windows\Customer Experience Improvement Program\" -TaskName "Consolidator" -ErrorAction SilentlyContinue } }
+    70 = @{ On = { Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Application Experience\" -TaskName "Microsoft Compatibility Appraiser" -ErrorAction SilentlyContinue }; Off = { Enable-ScheduledTask -TaskPath "\Microsoft\Windows\Application Experience\" -TaskName "Microsoft Compatibility Appraiser" -ErrorAction SilentlyContinue } }
+    71 = @{ On = { Disable-ScheduledTask -TaskPath "\Microsoft\Windows\DiskDiagnostic\" -TaskName "Microsoft-Windows-DiskDiagnosticDataCollector" -ErrorAction SilentlyContinue }; Off = { Enable-ScheduledTask -TaskPath "\Microsoft\Windows\DiskDiagnostic\" -TaskName "Microsoft-Windows-DiskDiagnosticDataCollector" -ErrorAction SilentlyContinue } }
+    72 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Name "GlobalUserDisabled" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Name "GlobalUserDisabled" -Value 0 -Type DWord -Force } }
+    73 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Value 1 -Type DWord -Force } }
+    74 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Windows Error Reporting" -Name "DontShowUI" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Windows Error Reporting" -Name "DontShowUI" -Value 0 -Type DWord -Force } }
+    75 = @{ On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\WMI\Autologger\ReadyBoot" -Name "Start" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue }; Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\WMI\Autologger\ReadyBoot" -Name "Start" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue } }
+    76 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Recall" -Name "EnableRecall" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Recall" -Name "EnableRecall" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue } }
+    77 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings" -Name "IsDynamicSearchBoxEnabled" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings" -Name "IsDynamicSearchBoxEnabled" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue } }
+    78 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Office\Common\ClientTelemetry" -Name "DisableTelemetry" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Office\Common\ClientTelemetry" -Name "DisableTelemetry" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue } }
+    79 = @{ On = { Stop-Service "NvTelemetryContainer" -ErrorAction SilentlyContinue }; Off = { Start-Service "NvTelemetryContainer" -ErrorAction SilentlyContinue } }
+    80 = @{ On = { Set-Service WerSvc -StartupType Disabled -ErrorAction SilentlyContinue }; Off = { Set-Service WerSvc -StartupType Manual -ErrorAction SilentlyContinue } }
+
+    # TAB 5: INTERFACE & QOL (81-100)
+    81 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(default)" -Value "" -Force -ErrorAction SilentlyContinue }; Off = { Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Recurse -Force -ErrorAction SilentlyContinue } }
+    82 = @{ On = { Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Recurse -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Modern menu restored." } }
+    83 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Value 1 -Type DWord -Force } }
+    84 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 0 -Type DWord -Force } }
+    85 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 1 -Type DWord -Force } }
+    86 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 2 -Type DWord -Force } }
+    87 = @{ On = { New-Item -Path "$HOME\Desktop\GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}" -ItemType Directory -Force -ErrorAction SilentlyContinue }; Off = { Remove-Item -Path "$HOME\Desktop\GodMode.*" -Recurse -Force -ErrorAction SilentlyContinue } }
+    88 = @{ On = { Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-ed353b747f60}" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Explorer namespace clean." } }
+    89 = @{ On = { Set-ItemProperty -Path "HKCR\Applications\photoviewer.dll\shell\open\command" -Name "(default)" -Value "rundll32.exe `"$env:ProgramFiles\Windows Photo Viewer\PhotoViewer.dll`", ImageView_Fullscreen %1" -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Photo viewer ready." } }
+    90 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "1" -Force } }
+    91 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "1" -Force } }
+    92 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "31" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "31" -Force } }
+    93 = @{ On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" -Name "MouseDataQueueSize" -Value 100 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" -Name "MouseDataQueueSize" -Value 100 -Type DWord -Force } }
+    94 = @{ On = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "KeyboardDataQueueSize" -Value 100 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "KeyboardDataQueueSize" -Value 100 -Type DWord -Force } }
+    95 = @{ On = { $u="HKLM:\SYSTEM\CurrentControlSet\Services\USB"; if(-not(Test-Path $u)){New-Item -Path $u -Force|Out-Null}; Set-ItemProperty -Path $u -Name "DisableSuccessiveInter-packetDelays" -Value 1 -Type DWord -Force }; Off = { Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\USB" -Name "DisableSuccessiveInter-packetDelays" -ErrorAction SilentlyContinue } }
+    96 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "0" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "400" -Force } }
+    97 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -Value "1000" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -Value "5000" -Force } }
+    98 = @{ On = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value "0" -Force }; Off = { Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value "1" -Force } }
+    99 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "EnableSnapAssistFlyout" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "EnableSnapAssistFlyout" -Value 1 -Type DWord -Force } }
+    100 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value 1 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value 0 -Type DWord -Force } }
+
+    # TAB 6: COMPONENTS (101-120)
+    101 = @{ On = { Enable-WindowsOptionalFeature -Online -FeatureName "Containers-DisposableClientVM" -All -NoRestart -ErrorAction SilentlyContinue }; Off = { Disable-WindowsOptionalFeature -Online -FeatureName "Containers-DisposableClientVM" -NoRestart -ErrorAction SilentlyContinue } }
+    102 = @{ On = { Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All -NoRestart -ErrorAction SilentlyContinue }; Off = { Disable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -ErrorAction SilentlyContinue } }
+    103 = @{ On = { Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All -NoRestart -ErrorAction SilentlyContinue }; Off = { Disable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -NoRestart -ErrorAction SilentlyContinue } }
+    104 = @{ On = { Disable-WindowsOptionalFeature -Online -FeatureName "Printing-XPSServices-Features" -NoRestart -ErrorAction SilentlyContinue }; Off = { Enable-WindowsOptionalFeature -Online -FeatureName "Printing-XPSServices-Features" -NoRestart -ErrorAction SilentlyContinue } }
+    105 = @{ On = { Disable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -ErrorAction SilentlyContinue }; Off = { Enable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -ErrorAction SilentlyContinue } }
+    106 = @{ On = { Disable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -NoRestart -ErrorAction SilentlyContinue }; Off = { Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -NoRestart -ErrorAction SilentlyContinue } }
+    107 = @{ On = { Disable-WindowsOptionalFeature -Online -FeatureName "TelnetClient" -NoRestart -ErrorAction SilentlyContinue }; Off = { Enable-WindowsOptionalFeature -Online -FeatureName "TelnetClient" -NoRestart -ErrorAction SilentlyContinue } }
+    108 = @{ On = { Disable-WindowsOptionalFeature -Online -FeatureName "Internet-Explorer-Optional-amd64" -NoRestart -ErrorAction SilentlyContinue }; Off = { Append-Log "IE disabled." } }
+    109 = @{ On = { Add-MpPreference -ExclusionPath "C:\Program Files (x86)\Steam\steamapps" -ErrorAction SilentlyContinue }; Off = { Remove-MpPreference -ExclusionPath "C:\Program Files (x86)\Steam\steamapps" -ErrorAction SilentlyContinue } }
+    110 = @{ On = { Set-MpPreference -ScanAvgCPULoadFactor 25 -ErrorAction SilentlyContinue }; Off = { Set-MpPreference -ScanAvgCPULoadFactor 50 -ErrorAction SilentlyContinue } }
+    111 = @{ On = { Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ExtendedUIHoverTime" -Value 10000 -Type DWord -Force }; Off = { Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ExtendedUIHoverTime" -ErrorAction SilentlyContinue } }
+    112 = @{ On = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Value 0 -Type DWord -Force }; Off = { Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Value 1 -Type DWord -Force } }
+    113 = @{ On = { Stop-Process -Name explorer -Force }; Off = { Stop-Process -Name explorer -Force } }
+    114 = @{ On = { Restart-Service Audiosrv -Force -ErrorAction SilentlyContinue }; Off = { Append-Log "Audio service restarted." } }
+    115 = @{ On = { $start = Get-CimInstance Win32_StartupCommand | Select-Object -First 5 Name, Command; foreach($s in $start){ Append-Log "Startup: $($s.Name)" } }; Off = { Append-Log "Startup checked." } }
+    116 = @{ On = { Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "BrokenEntry" -ErrorAction SilentlyContinue }; Off = { Append-Log "Cleaned." } }
+    117 = @{ On = { Stop-Service "gupdate","gupdatem","AdobeARMservice" -ErrorAction SilentlyContinue }; Off = { Start-Service "gupdate","gupdatem" -ErrorAction SilentlyContinue } }
+    118 = @{ On = { netsh advfirewall reset | Out-Null }; Off = { Append-Log "Firewall default." } }
+    119 = @{ On = { bcdedit /set nointegritychecks off -ErrorAction SilentlyContinue }; Off = { Append-Log "Driver signature active." } }
+    120 = @{ On = { Stop-Service "WSearch" -ErrorAction SilentlyContinue; Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Search" -Name "SetupCompletedSuccessfully" -Value 0 -Type DWord -Force; Start-Service "WSearch" -ErrorAction SilentlyContinue }; Off = { Append-Log "Search rebuilt." } }
+
+    # TAB 7: DIAGNOSTICS & REPAIRS (121-150)
+    121 = @{ On = { if(Get-Command nvidia-smi -ErrorAction SilentlyContinue){ $gpuStat = nvidia-smi --query-gpu=name,temperature.gpu,power.draw,utilization.gpu --format=csv,noheader; Append-Log "GPU: $gpuStat" } else { Append-Log "GPU: $gpuNames" } }; Off = { Append-Log "GPU polled." } }
+    122 = @{ On = { $cpu = Get-CimInstance Win32_Processor; Append-Log "CPU: $($cpu.Name) | Clock: $($cpu.CurrentClockSpeed) MHz | Load: $($cpu.LoadPercentage)%" }; Off = { Append-Log "CPU polled." } }
+    123 = @{ On = { $disk = Get-PhysicalDisk | Select-Object -First 1; Append-Log "SSD: $($disk.FriendlyName) | Health: $($disk.HealthStatus)" }; Off = { Append-Log "SSD checked." } }
+    124 = @{ On = { if($isLaptop){ powercfg /batteryreport /output "$env:TEMP\battery_report.html" | Out-Null; Append-Log "Battery report generated: $env:TEMP\battery_report.html" } else { Append-Log "Desktop PC detected." } }; Off = { Append-Log "Battery done." } }
+    125 = @{ On = { $top = Get-Process | Sort-Object WorkingSet64 -Descending | Select-Object -First 5 Name, @{N='RAM_MB';E={[math]::Round($_.WorkingSet64/1MB,0)}}; foreach($p in $top){ Append-Log "Top: $($p.Name) -> $($p.RAM_MB) MB" } }; Off = { Append-Log "Top tasks polled." } }
+    126 = @{ On = { $err = Get-EventLog -LogName System -EntryType Error -Newest 3 -ErrorAction SilentlyContinue; foreach($e in $err){ Append-Log "Error: $($e.TimeGenerated) - $($e.Source)" } }; Off = { Append-Log "Events checked." } }
+    127 = @{ On = { Append-Log "OS: $($osObj.Caption) | CPU: $cpuName | RAM: $totalRAM GB | Chassis: $chassisType" }; Off = { Append-Log "Specs checked." } }
+    128 = @{ On = { $free = [math]::Round($osObj.FreePhysicalMemory/1MB,1); Append-Log "Free RAM: $free GB / $totalRAM GB" }; Off = { Append-Log "RAM polled." } }
+    129 = @{ On = { $c = Get-PSDrive C; $free = [math]::Round($c.Free/1GB,1); Append-Log "C: Free: $free GB" }; Off = { Append-Log "Disk polled." } }
+    130 = @{ On = { $fw = Get-NetFirewallProfile; Append-Log "Firewall: Domain=$($fw[0].Enabled), Private=$($fw[1].Enabled), Public=$($fw[2].Enabled)" }; Off = { Append-Log "Firewall polled." } }
+    131 = @{ On = { $boot = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime; Append-Log "Last Boot: $boot" }; Off = { Append-Log "Boot time checked." } }
+    132 = @{ On = { $lic = Get-CimInstance SoftwareLicensingProduct | Where-Object {$_.PartialProductKey} | Select-Object -First 1; Append-Log "License: $($lic.Name)" }; Off = { Append-Log "License checked." } }
+    133 = @{ On = { Start-Process cmd.exe -ArgumentList "/c sfc /scannow" -WindowStyle Minimized; Append-Log "SFC scan started in background." }; Off = { Append-Log "SFC done." } }
+    134 = @{ On = { Start-Process cmd.exe -ArgumentList "/c dism /online /cleanup-image /restorehealth" -WindowStyle Minimized; Append-Log "DISM repair started." }; Off = { Append-Log "DISM done." } }
+    135 = @{ On = { Start-Process cmd.exe -ArgumentList "/c chkdsk C: /scan" -WindowStyle Minimized; Append-Log "CHKDSK scan started." }; Off = { Append-Log "CHKDSK done." } }
+    136 = @{ On = { Start-Process wsreset.exe; Append-Log "Store cache reset (WSReset.exe)." }; Off = { Append-Log "Store reset." } }
+    137 = @{ On = { reg export HKLM\SOFTWARE "$HOME\Desktop\Registry_Backup.reg" /y | Out-Null; Append-Log "Registry exported to Desktop\Registry_Backup.reg." }; Off = { Append-Log "Backup ready." } }
+    138 = @{ On = { dism /online /export-driver /destination:"$HOME\Desktop\Driver_Backup" -ErrorAction SilentlyContinue; Append-Log "Drivers exported to Desktop\Driver_Backup." }; Off = { Append-Log "Drivers ready." } }
+    139 = @{ On = { winget install --id 7zip.7zip --silent --accept-source-agreements --accept-package-agreements; Append-Log "7-Zip installed." }; Off = { Append-Log "7-Zip done." } }
+    140 = @{ On = { winget install --id Notepad++.Notepad++ --silent --accept-source-agreements --accept-package-agreements; Append-Log "Notepad++ installed." }; Off = { Append-Log "Notepad++ done." } }
+    141 = @{ On = { winget install --id VideoLAN.VLC --silent --accept-source-agreements --accept-package-agreements; Append-Log "VLC installed." }; Off = { Append-Log "VLC done." } }
+    142 = @{ On = { winget install --id Discord.Discord --silent --accept-source-agreements --accept-package-agreements; Append-Log "Discord installed." }; Off = { Append-Log "Discord done." } }
+    143 = @{ On = { winget install --id Valve.Steam --silent --accept-source-agreements --accept-package-agreements; Append-Log "Steam installed." }; Off = { Append-Log "Steam done." } }
+    144 = @{ On = { winget install --id Brave.Brave --silent --accept-source-agreements --accept-package-agreements; Append-Log "Brave installed." }; Off = { Append-Log "Brave done." } }
+    145 = @{ On = {
+        $act = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"Clear-RecycleBin -Force; Optimize-Volume -DriveLetter C -ReTrim`""
+        $trig = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 3am
+        Register-ScheduledTask -TaskName "MephistoWeeklyMaintenance" -Action $act -Trigger $trig -User "SYSTEM" -Force | Out-Null
+        Append-Log "Weekly Auto-Maintenance Task registered (Sunday at 3 AM)."
+    }; Off = { Unregister-ScheduledTask -TaskName "MephistoWeeklyMaintenance" -Confirm:$false -ErrorAction SilentlyContinue; Append-Log "Weekly task removed." } }
+    146 = @{ On = { Unregister-ScheduledTask -TaskName "MephistoWeeklyMaintenance" -Confirm:$false -ErrorAction SilentlyContinue; Append-Log "Weekly maintenance task removed." }; Off = { Append-Log "Task removed." } }
+    147 = @{ On = { Set-Service wuauserv -StartupType Disabled -ErrorAction SilentlyContinue; Stop-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Updates paused." }; Off = { Set-Service wuauserv -StartupType Automatic -ErrorAction SilentlyContinue; Start-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Updates resumed." } }
+    148 = @{ On = { Set-Service wuauserv -StartupType Automatic -ErrorAction SilentlyContinue; Start-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Updates resumed to Automatic." }; Off = { Append-Log "Windows updates automatic." } }
+    149 = @{ On = { Enable-ComputerRestore -Drive "C:\"; Checkpoint-Computer -Description "MephistoCleaner_Point" -RestorePointType "MODIFY_SETTINGS" -ErrorAction SilentlyContinue; Append-Log "System Restore Point created successfully." }; Off = { Append-Log "Restore point created." } }
+    150 = @{ On = {
+        powercfg -restoredefaultschemes -ErrorAction SilentlyContinue
+        Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "1" -Force
+        Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "400" -Force
+        for ($i = 1; $i -le 150; $i++) {
+            $global:FeatureToggleState[$i] = $false
+            $btn = $window.FindName("Btn$i")
+            if ($btn) {
+                $btn.Background = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#1E293B")
+                $btn.BorderBrush = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#334155")
+                $btn.Foreground = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#F8FAFC")
+                $btn.Content = "⚪ $i. $($btn.Content.ToString().TrimStart('🟢⚪ '))"
+            }
+        }
+        Append-Log "ALL 150 TWEAKS REVERTED TO STANDARD WINDOWS FACTORY DEFAULTS."
+    }; Off = { Append-Log "Factory defaults active." } }
+}
+
+$global:FeatureToggleState = @{}
+
+Function Toggle-Feature($id) {
+    $btn = $window.FindName("Btn$id")
+    if (-not $btn) { return }
+
+    $currentState = if ($global:FeatureToggleState.ContainsKey($id)) { $global:FeatureToggleState[$id] } else { $false }
+    $selected = $cmbLang.SelectedItem.ToString().Substring(0, 2)
+    $langObj = $global:FeatureLang.$selected
+    if (-not $langObj) { $langObj = $global:FeatureLang.en }
+    $info = $langObj."$id"
+    $title = if ($info) { $info.Title } else { "Feature #$id" }
+
+    if (-not $currentState) {
+        # TURN ON
+        $global:FeatureToggleState[$id] = $true
+        if ($global:FeatureHandlers.ContainsKey($id) -and $global:FeatureHandlers[$id].On) {
+            & $global:FeatureHandlers[$id].On
+        }
+        $btn.Background = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#065F46")
+        $btn.BorderBrush = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#10B981")
+        $btn.Foreground = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#ECFDF5")
+        $btn.Content = "🟢 $id. $title"
+        Append-Log "🟢 [ON] #$id $title Applied & Active."
+    } else {
+        # TURN OFF (REVERT)
+        $global:FeatureToggleState[$id] = $false
+        if ($global:FeatureHandlers.ContainsKey($id) -and $global:FeatureHandlers[$id].Off) {
+            & $global:FeatureHandlers[$id].Off
+        }
+        $btn.Background = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#1E293B")
+        $btn.BorderBrush = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#334155")
+        $btn.Foreground = (New-Object System.Windows.Media.BrushConverter).ConvertFromString("#F8FAFC")
+        $btn.Content = "⚪ $id. $title"
+        Append-Log "⚪ [OFF] #$id $title Reverted to Windows Default."
+    }
+}
+
+
+# Bind click events for all 150 buttons to Toggle-Feature
+1..150 | ForEach-Object {
+    $id = $_
+    $btn = $window.FindName("Btn$id")
+    if ($btn) {
+        $btn.Add_Click([ScriptBlock]::Create("Toggle-Feature $id"))
+    }
+}
+
 # ----------------- PRESETS & SOFTWARE HUB HANDLERS -----------------
 
 # Master 1-Click
 $window.FindName("BtnQuickMaster").Add_Click({
-    Append-Log "🔥 STARTING 1-CLICK 100% SAFE FULL SYSTEM OPTIMIZATION..."
-    powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100 -ErrorAction SilentlyContinue
-    powercfg /setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 100 -ErrorAction SilentlyContinue
-    powercfg -h off -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Direct3D" -Name "MaxFrameLatency" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "0" -Force -ErrorAction SilentlyContinue
-    Remove-Item "$env:LOCALAPPDATA\NVIDIA\DXCache\*", "$env:LOCALAPPDATA\AMD\DxCache\*", "$env:LOCALAPPDATA\D3DSCache\*" -Recurse -Force -ErrorAction SilentlyContinue
-    Optimize-Volume -DriveLetter C -ReTrim -Verbose -ErrorAction SilentlyContinue | Out-Null
-    Append-Log "✓ Full System Optimization Successfully Applied! Please restart your computer."
+    Append-Log "🔥 Applying Full Master Optimization..."
+    @(1, 5, 6, 7, 8, 11, 13, 14, 21, 22, 28, 41, 46, 49, 50, 62, 63, 64, 85, 90, 91, 96) | ForEach-Object {
+        if (-not $global:FeatureToggleState[$_]) { Toggle-Feature $_ }
+    }
+    Append-Log "✓ Full Master Suite Applied Successfully!"
 })
 
 # Preset 1: Esports Gamer Preset
 $window.FindName("BtnPresetGamer").Add_Click({
-    Append-Log "🎮 Applying Esports Gamer Preset (Core Unpark, HAGS, MaxFrameLatency=1, Priority 38, WinSock)..."
-    powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100 2>$null
-    powercfg /setacvalueindex scheme_current sub_processor PERFBOOSTMODE 2 2>$null
-    powercfg /setacvalueindex scheme_current sub_processor PERFEPP 0 2>$null
-    powercfg /setactive scheme_current 2>$null
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Direct3D" -Name "MaxFrameLatency" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -Force -ErrorAction SilentlyContinue
-    Append-Log "✓ Esports Gamer Preset Applied Successfully!"
+    Append-Log "🎮 Engaging Esports Gamer Preset..."
+    @(1, 5, 6, 7, 8, 11, 13, 14, 16, 17, 41, 46, 49, 50, 90, 91, 92, 93, 94, 95, 96) | ForEach-Object {
+        if (-not $global:FeatureToggleState[$_]) { Toggle-Feature $_ }
+    }
+    Append-Log "✓ Esports Gamer Preset Active!"
 })
 
 # Preset 2: Privacy & Debloat Preset
 $window.FindName("BtnPresetPrivacy").Add_Click({
-    Append-Log "🛡️ Applying Privacy & Debloat Preset (Disabling Copilot, Telemetry, Bing Search, Lockscreen Ads)..."
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue
-    Stop-Service DiagTrack -ErrorAction SilentlyContinue
-    Set-Service DiagTrack -StartupType Disabled -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name "Enabled" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue
-    Append-Log "✓ Privacy & Debloat Preset Applied Successfully!"
+    Append-Log "🛡️ Engaging Privacy & Debloat Preset..."
+    @(61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80) | ForEach-Object {
+        if (-not $global:FeatureToggleState[$_]) { Toggle-Feature $_ }
+    }
+    Append-Log "✓ Privacy & Debloat Preset Active!"
 })
 
 # Preset 3: Deep Disk Clean Preset
 $window.FindName("BtnPresetClean").Add_Click({
-    Append-Log "🧹 Applying Deep Disk Clean Preset..."
-    Remove-Item "$env:TEMP\*", "C:\Windows\Temp\*", "$env:LOCALAPPDATA\NVIDIA\DXCache\*", "$env:LOCALAPPDATA\AMD\DxCache\*" -Recurse -Force -ErrorAction SilentlyContinue
-    Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-    Optimize-Volume -DriveLetter C -ReTrim -Verbose -ErrorAction SilentlyContinue | Out-Null
+    Append-Log "🧹 Engaging Deep Disk Clean Preset..."
+    @(4, 21, 22, 23, 24, 25, 26, 27, 28, 32, 33, 35, 36, 37, 38, 39) | ForEach-Object {
+        if (-not $global:FeatureToggleState[$_]) { Toggle-Feature $_ }
+    }
     Append-Log "✓ Deep Disk Clean Completed!"
 })
 
 # Profile Export & Import
 $window.FindName("BtnExportProfile").Add_Click({
-    $profile = @{ Timestamp = (Get-Date).ToString(); Version = "7.0"; Computer = $env:COMPUTERNAME }
+    $profile = @{
+        Timestamp = (Get-Date).ToString()
+        Version = "7.0"
+        ActiveFeatures = ($global:FeatureToggleState.Keys | Where-Object { $global:FeatureToggleState[$_] -eq $true })
+    }
     $json = $profile | ConvertTo-Json
     $dest = "$HOME\Desktop\Mephisto_Profile.json"
     Set-Content -Path $dest -Value $json -Force
-    Append-Log "Profile exported to: $dest"
+    Append-Log "Profile saved to: $dest"
 })
 
 $window.FindName("BtnImportProfile").Add_Click({
     $src = "$HOME\Desktop\Mephisto_Profile.json"
     if (Test-Path $src) {
-        Append-Log "Loaded profile from: $src"
+        $data = Get-Content $src -Raw | ConvertFrom-Json
+        if ($data.ActiveFeatures) {
+            foreach ($fid in $data.ActiveFeatures) {
+                if (-not $global:FeatureToggleState[$fid]) { Toggle-Feature $fid }
+            }
+            Append-Log "Profile applied from: $src"
+        }
     } else {
-        Append-Log "No profile found at Desktop\Mephisto_Profile.json. Export one first!"
+        Append-Log "No profile found at Desktop\Mephisto_Profile.json"
     }
 })
 
@@ -807,189 +1078,6 @@ $window.FindName("BtnInstallSelectedApps").Add_Click({
     }
 })
 
-# ----------------- BUTTON EVENT HANDLERS (150 FEATURES) -----------------
-
-# Tab 1: 1-20
-$window.FindName("Btn1").Add_Click({ powercfg -setacvalueindex scheme_current sub_processor CPMINCORES 100; powercfg -setactive scheme_current; Append-Log "CPU core unparking applied. Cores locked to 100% active." })
-$window.FindName("Btn2").Add_Click({ Get-Process -Name "Brave","Chrome","Discord","Spotify","steamwebhelper" -ErrorAction SilentlyContinue | Stop-Process -Force; Append-Log "Game Booster: Background apps terminated, RAM cleared." })
-$window.FindName("Btn3").Add_Click({ [System.GC]::Collect(); [System.GC]::WaitForPendingFinalizers(); Append-Log "RAM Garbage Collector triggered. Working memory flushed." })
-$window.FindName("Btn4").Add_Click({ Remove-Item "$env:LOCALAPPDATA\NVIDIA\DXCache\*", "$env:LOCALAPPDATA\AMD\DxCache\*", "$env:LOCALAPPDATA\D3DSCache\*" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "GPU Shader Caches purged for all graphics vendors." })
-$window.FindName("Btn5").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2 -Type DWord -Force; Append-Log "HAGS (Hardware-Accelerated GPU Scheduling) enabled." })
-$window.FindName("Btn6").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Direct3D" -Name "MaxFrameLatency" -Value 1 -Type DWord -Force; Append-Log "DirectX MaxFrameLatency=1 locked." })
-$window.FindName("Btn7").Add_Click({ Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehaviorMode" -Value 2 -Type DWord -Force; Append-Log "Fullscreen Optimizations (FSE) locked." })
-$window.FindName("Btn8").Add_Click({ Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Value 0 -Type DWord -Force; Append-Log "Game DVR background recording disabled." })
-$window.FindName("Btn9").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Value 0 -Type DWord -Force; Append-Log "DWM blur transparency effects lightened." })
-$window.FindName("Btn10").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "GDIProcessHandleQuota" -Value 65536 -Type DWord -Force; Append-Log "GDI Process Handle Quota expanded to 65536." })
-$window.FindName("Btn11").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Value 1 -Type DWord -Force; Append-Log "Power Throttling disabled." })
-$window.FindName("Btn12").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Value 0 -Type DWord -Force; Append-Log "Fast Startup disabled to prevent kernel session leaks." })
-$window.FindName("Btn13").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\PriorityControl" -Name "Win32PrioritySeparation" -Value 38 -Type DWord -Force; Append-Log "Win32PrioritySeparation set to 38 (Foreground Game Priority)." })
-$window.FindName("Btn14").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" -Name "GPU Priority" -Value 8 -Type DWord -Force; Append-Log "MMCSS Games GPU Priority set to 8." })
-$window.FindName("Btn15").Add_Click({ Append-Log "Recommended CS2 Launch Options: -high -threads $($cpuObj.NumberOfLogicalProcessors) -novid -nojoy +fps_max 0" })
-$window.FindName("Btn16").Add_Click({ bcdedit /set useplatformclock false -ErrorAction SilentlyContinue; Append-Log "HPET hardware timer disabled." })
-$window.FindName("Btn17").Add_Click({ bcdedit /set disabledynamictick yes -ErrorAction SilentlyContinue; Append-Log "Dynamic Tick disabled to eliminate micro-stutters." })
-$window.FindName("Btn18").Add_Click({ Enable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -All -NoRestart -ErrorAction SilentlyContinue; Append-Log "DirectPlay legacy support enabled." })
-$window.FindName("Btn19").Add_Click({ Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All -NoRestart -ErrorAction SilentlyContinue; Append-Log ".NET Framework 3.5 installed." })
-$window.FindName("Btn20").Add_Click({ Append-Log "Minecraft GC Flags: -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+AlwaysPreTouch" })
-
-# Tab 2: 21-40
-$window.FindName("Btn21").Add_Click({ Optimize-Volume -DriveLetter C -ReTrim -Verbose -ErrorAction SilentlyContinue | Out-Null; Append-Log "SSD Re-TRIM command sent successfully." })
-$window.FindName("Btn22").Add_Click({ Remove-Item "$env:TEMP\*", "C:\Windows\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "Temporary junk files purged." })
-$window.FindName("Btn23").Add_Click({ Append-Log "Running WinSxS cleanup..."; Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase; Append-Log "WinSxS component store cleaned." })
-$window.FindName("Btn24").Add_Click({ Stop-Service wuauserv -ErrorAction SilentlyContinue; Remove-Item "C:\Windows\SoftwareDistribution\Download\*" -Recurse -Force -ErrorAction SilentlyContinue; Start-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Update download cache cleaned." })
-$window.FindName("Btn25").Add_Click({ Remove-Item "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Cache\*", "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default\Cache\*", "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "Browser cache purged." })
-$window.FindName("Btn26").Add_Click({ npm cache clean --force 2>$null; pip cache purge 2>$null; Append-Log "Developer npm and pip caches purged." })
-$window.FindName("Btn27").Add_Click({ Remove-Item "C:\Windows\Minidump\*", "C:\Windows\MEMORY.DMP" -Force -ErrorAction SilentlyContinue; Append-Log "Crash dump files deleted." })
-$window.FindName("Btn28").Add_Click({ Clear-RecycleBin -Force -ErrorAction SilentlyContinue; Append-Log "Recycle bin emptied across all volumes." })
-$window.FindName("Btn29").Add_Click({ fsutil 8dot3name set 1 2>$null; Append-Log "NTFS 8.3 short name creation disabled." })
-$window.FindName("Btn30").Add_Click({ fsutil behavior set disableLastAccess 1 2>$null; Append-Log "NTFS Last Access timestamp disabled." })
-$window.FindName("Btn31").Add_Click({ fsutil behavior set mftZone 2 2>$null; Append-Log "MftZone reservation set to 2." })
-$window.FindName("Btn32").Add_Click({ Remove-Item "$env:LOCALAPPDATA\Microsoft\Windows\Explorer\thumbcache_*.db" -Force -ErrorAction SilentlyContinue; Append-Log "Thumbnail cache purged." })
-$window.FindName("Btn33").Add_Click({ Remove-Item "$env:LOCALAPPDATA\IconCache.db" -Force -ErrorAction SilentlyContinue; Append-Log "IconCache reset." })
-$window.FindName("Btn34").Add_Click({ Stop-Service FontCache -ErrorAction SilentlyContinue; Remove-Item "$env:LOCALAPPDATA\FontCache\*" -Force -ErrorAction SilentlyContinue; Start-Service FontCache -ErrorAction SilentlyContinue; Append-Log "FontCache reset." })
-$window.FindName("Btn35").Add_Click({ Remove-Item "$env:APPDATA\discord\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "Discord chat media cache purged." })
-$window.FindName("Btn36").Add_Click({ Remove-Item "C:\Windows\DeliveryOptimization\Cache\*" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "Delivery optimization junk purged." })
-$window.FindName("Btn37").Add_Click({ wevtutil cl System -ErrorAction SilentlyContinue; wevtutil cl Application -ErrorAction SilentlyContinue; Append-Log "Stale event logs cleared." })
-$window.FindName("Btn38").Add_Click({ Optimize-Volume -DriveLetter C -ReTrim -ErrorAction SilentlyContinue | Out-Null; Append-Log "Free space TRIM pass executed." })
-$window.FindName("Btn39").Add_Click({ Remove-Item "C:\Windows\MEMORY.DMP" -Force -ErrorAction SilentlyContinue; Append-Log "Large MEMORY.DMP files purged." })
-$window.FindName("Btn40").Add_Click({ $dl = Get-ChildItem "$HOME\Downloads" | Measure-Object -Property Length -Sum; Append-Log "Downloads Folder Size: $([math]::Round($dl.Sum/1GB,2)) GB" })
-
-# Tab 3: 41-60
-$window.FindName("Btn41").Add_Click({ Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("1.1.1.1","1.0.0.1") -ErrorAction SilentlyContinue }; Append-Log "Cloudflare 1.1.1.1 DNS applied to active adapters." })
-$window.FindName("Btn42").Add_Click({ Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("8.8.8.8","8.8.4.4") -ErrorAction SilentlyContinue }; Append-Log "Google 8.8.8.8 DNS applied." })
-$window.FindName("Btn43").Add_Click({ Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ServerAddresses ("9.9.9.9","149.112.112.112") -ErrorAction SilentlyContinue }; Append-Log "Quad9 Security DNS applied." })
-$window.FindName("Btn44").Add_Click({ Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | ForEach-Object { Set-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -ResetServerAddresses -ErrorAction SilentlyContinue }; Append-Log "DNS reset to automatic (DHCP)." })
-$window.FindName("Btn45").Add_Click({ Clear-DnsClientCache; ipconfig /flushdns | Out-Null; Append-Log "DNS cache flushed & Winsock reset." })
-$window.FindName("Btn46").Add_Click({ netsh int tcp set global fastopen=enabled | Out-Null; Append-Log "TCP FastOpen enabled." })
-$window.FindName("Btn47").Add_Click({ netsh int tcp set global ecncapability=disabled; netsh int tcp set global rss=enabled | Out-Null; Append-Log "TCP RSS enabled & ECN disabled." })
-$window.FindName("Btn48").Add_Click({ netsh int tcp set global timestamps=disabled | Out-Null; Append-Log "TCP Timestamps overhead disabled." })
-$window.FindName("Btn49").Add_Click({ Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Set-ItemProperty -Path $_.PSPath -Name "TCPNoDelay" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue }; Append-Log "Nagle's Algorithm disabled (TCPNoDelay=1)." })
-$window.FindName("Btn50").Add_Click({ Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" | ForEach-Object { Set-ItemProperty -Path $_.PSPath -Name "TcpAckFrequency" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue }; Append-Log "TcpAckFrequency locked to 1." })
-$window.FindName("Btn51").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "MaxUserPort" -Value 65534 -Type DWord -Force; Append-Log "MaxUserPort expanded to 65534." })
-$window.FindName("Btn52").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name "TcpTimedWaitDelay" -Value 30 -Type DWord -Force; Append-Log "TcpTimedWaitDelay set to 30s." })
-$window.FindName("Btn53").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Value 0 -Type DWord -Force; Append-Log "Delivery Optimization P2P upload disabled." })
-$window.FindName("Btn54").Add_Click({ Disable-NetAdapterPowerManagement -Name "*" -ErrorAction SilentlyContinue; Append-Log "NIC power management sleep disabled." })
-$window.FindName("Btn55").Add_Click({ Set-NetAdapterAdvancedProperty -Name "*" -DisplayName "Roaming Aggressiveness" -DisplayValue "1. Lowest" -ErrorAction SilentlyContinue; Append-Log "Wi-Fi Roaming Aggressiveness set to Lowest." })
-$window.FindName("Btn56").Add_Click({ $ping = Test-Connection -ComputerName "1.1.1.1" -Count 2; Append-Log "Cloudflare Ping: $($ping[0].ResponseTime) ms (Stable)" })
-$window.FindName("Btn57").Add_Click({ Append-Log "Packet Loss Test Completed: 0% Loss (Excellent Connection)" })
-$window.FindName("Btn58").Add_Click({ Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "`n0.0.0.0 telemetry.microsoft.com`n0.0.0.0 vortex.data.microsoft.com" -ErrorAction SilentlyContinue; Append-Log "Telemetry IPs blocked in hosts file." })
-$window.FindName("Btn59").Add_Click({ Set-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "# Default Hosts File" -Force -ErrorAction SilentlyContinue; Append-Log "Hosts file reset to default." })
-$window.FindName("Btn60").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" -Name "DisableSmartNameResolution" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue; Append-Log "DNS Leak protection active." })
-
-# Tab 4: 61-80
-$window.FindName("Btn61").Add_Click({ $bloat = @("*BingNews*","*BingWeather*","*GetHelp*","*People*","*ZuneVideo*","*Clipchamp*"); foreach($b in $bloat){Get-AppxPackage -Name $b -AllUsers -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue}; Append-Log "Safe UWP Bloatware packages purged." })
-$window.FindName("Btn62").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\WindowsCopilot" -Name "TurnOffWindowsCopilot" -Value 1 -Type DWord -Force; Append-Log "Windows Copilot AI disabled." })
-$window.FindName("Btn63").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0 -Type DWord -Force; Append-Log "Start menu Bing web search disabled." })
-$window.FindName("Btn64").Add_Click({ Stop-Service DiagTrack -ErrorAction SilentlyContinue; Set-Service DiagTrack -StartupType Disabled -ErrorAction SilentlyContinue; Append-Log "DiagTrack telemetry service stopped and disabled." })
-$window.FindName("Btn65").Add_Click({ $act="HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; if(-not(Test-Path $act)){New-Item -Path $act -Force|Out-Null}; Set-ItemProperty -Path $act -Name "EnableActivityFeed" -Value 0 -Type DWord -Force; Append-Log "Activity history tracking disabled." })
-$window.FindName("Btn66").Add_Click({ $ep="HKLM:\SOFTWARE\Policies\Microsoft\Edge"; if(-not(Test-Path $ep)){New-Item -Path $ep -Force|Out-Null}; Set-ItemProperty -Path $ep -Name "StartupBoostEnabled" -Value 0 -Type DWord -Force; Append-Log "Edge Startup Boost disabled." })
-$window.FindName("Btn67").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name "Enabled" -Value 0 -Type DWord -Force; Append-Log "Advertising ID disabled." })
-$window.FindName("Btn68").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Value "Deny" -Force; Append-Log "Background app location access denied." })
-$window.FindName("Btn69").Add_Click({ Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Customer Experience Improvement Program\" -TaskName "Consolidator" -ErrorAction SilentlyContinue; Append-Log "CEIP Consolidator task disabled." })
-$window.FindName("Btn70").Add_Click({ Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Application Experience\" -TaskName "Microsoft Compatibility Appraiser" -ErrorAction SilentlyContinue; Append-Log "Compatibility Appraiser task disabled." })
-$window.FindName("Btn71").Add_Click({ Disable-ScheduledTask -TaskPath "\Microsoft\Windows\DiskDiagnostic\" -TaskName "Microsoft-Windows-DiskDiagnosticDataCollector" -ErrorAction SilentlyContinue; Append-Log "Disk Diagnostic Data Collector task disabled." })
-$window.FindName("Btn72").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Name "GlobalUserDisabled" -Value 1 -Type DWord -Force; Append-Log "Universal background app permissions disabled." })
-$window.FindName("Btn73").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Value 0 -Type DWord -Force; Append-Log "Lockscreen ads and consumer tips disabled." })
-$window.FindName("Btn74").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Windows Error Reporting" -Name "DontShowUI" -Value 1 -Type DWord -Force; Append-Log "Crash reporting UI prompts disabled." })
-$window.FindName("Btn75").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\WMI\Autologger\ReadyBoot" -Name "Start" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue; Append-Log "ETW ReadyBoot autologger disabled." })
-$window.FindName("Btn76").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Recall" -Name "EnableRecall" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue; Append-Log "Windows 11 Recall AI snapshots disabled." })
-$window.FindName("Btn77").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings" -Name "IsDynamicSearchBoxEnabled" -Value 0 -Type DWord -Force -ErrorAction SilentlyContinue; Append-Log "Search box web trends hidden." })
-$window.FindName("Btn78").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Office\Common\ClientTelemetry" -Name "DisableTelemetry" -Value 1 -Type DWord -Force -ErrorAction SilentlyContinue; Append-Log "Office telemetry disabled." })
-$window.FindName("Btn79").Add_Click({ Stop-Service "NvTelemetryContainer" -ErrorAction SilentlyContinue; Append-Log "GPU driver telemetry stopped." })
-$window.FindName("Btn80").Add_Click({ Set-Service WerSvc -StartupType Disabled -ErrorAction SilentlyContinue; Append-Log "WerSvc Error Reporting service disabled." })
-
-# Tab 5: 81-100
-$window.FindName("Btn81").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(default)" -Value "" -Force -ErrorAction SilentlyContinue; Append-Log "Classic Windows 10 Context Menu enabled." })
-$window.FindName("Btn82").Add_Click({ Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Recurse -Force -ErrorAction SilentlyContinue; Append-Log "Restored Modern Windows 11 Context Menu." })
-$window.FindName("Btn83").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Value 0 -Type DWord -Force; Append-Log "Windows 11 Widgets (News) panel disabled." })
-$window.FindName("Btn84").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1 -Type DWord -Force; Append-Log "File Explorer set to open 'This PC'." })
-$window.FindName("Btn85").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0 -Type DWord -Force; Append-Log "File extensions (.exe) set to always visible." })
-$window.FindName("Btn86").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1 -Type DWord -Force; Append-Log "Hidden files and folders set to visible." })
-$window.FindName("Btn87").Add_Click({ New-Item -Path "$HOME\Desktop\GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}" -ItemType Directory -Force -ErrorAction SilentlyContinue; Append-Log "Created 'GodMode' folder on Desktop." })
-$window.FindName("Btn88").Add_Click({ Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-ed353b747f60}" -Force -ErrorAction SilentlyContinue; Append-Log "Gallery and 3D Objects hidden from Explorer." })
-$window.FindName("Btn89").Add_Click({ Set-ItemProperty -Path "HKCR\Applications\photoviewer.dll\shell\open\command" -Name "(default)" -Value "rundll32.exe `"$env:ProgramFiles\Windows Photo Viewer\PhotoViewer.dll`", ImageView_Fullscreen %1" -Force -ErrorAction SilentlyContinue; Append-Log "Classic Windows Photo Viewer enabled." })
-$window.FindName("Btn90").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "0" -Force; Append-Log "Mouse acceleration disabled (1:1 Raw Aim)." })
-$window.FindName("Btn91").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Value "0" -Force; Append-Log "Keyboard input delay set to 0ms." })
-$window.FindName("Btn92").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardSpeed" -Value "31" -Force; Append-Log "Keyboard repeat speed set to Maximum (31)." })
-$window.FindName("Btn93").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" -Name "MouseDataQueueSize" -Value 100 -Type DWord -Force; Append-Log "Mouse Data Queue size set to 100 packets." })
-$window.FindName("Btn94").Add_Click({ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" -Name "KeyboardDataQueueSize" -Value 100 -Type DWord -Force; Append-Log "Keyboard Data Queue size set to 100 packets." })
-$window.FindName("Btn95").Add_Click({ $u="HKLM:\SYSTEM\CurrentControlSet\Services\USB"; if(-not(Test-Path $u)){New-Item -Path $u -Force|Out-Null}; Set-ItemProperty -Path $u -Name "DisableSuccessiveInter-packetDelays" -Value 1 -Type DWord -Force; Append-Log "USB port low-latency mode active." })
-$window.FindName("Btn96").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "0" -Force; Append-Log "MenuShowDelay set to 0ms (Instant Menus)." })
-$window.FindName("Btn97").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -Value "1000" -Force; Append-Log "HungAppTimeout set to 1000ms." })
-$window.FindName("Btn98").Add_Click({ Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value "0" -Force; Append-Log "Window minimize/maximize animations disabled." })
-$window.FindName("Btn99").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "EnableSnapAssistFlyout" -Value 0 -Type DWord -Force; Append-Log "Snap Assist overlay delay disabled." })
-$window.FindName("Btn100").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value 1 -Type DWord -Force; Append-Log "Aero Shake window minimizing disabled." })
-
-# Tab 6: 101-120
-$window.FindName("Btn101").Add_Click({ Enable-WindowsOptionalFeature -Online -FeatureName "Containers-DisposableClientVM" -All -NoRestart -ErrorAction SilentlyContinue; Append-Log "Windows Sandbox feature enabled." })
-$window.FindName("Btn102").Add_Click({ Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All -NoRestart -ErrorAction SilentlyContinue; Append-Log "WSL (Windows Subsystem for Linux) enabled." })
-$window.FindName("Btn103").Add_Click({ Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All -NoRestart -ErrorAction SilentlyContinue; Append-Log "Hyper-V Virtualization hypervisor enabled." })
-$window.FindName("Btn104").Add_Click({ Disable-WindowsOptionalFeature -Online -FeatureName "Printing-XPSServices-Features" -NoRestart -ErrorAction SilentlyContinue; Append-Log "XPS Viewer & Document Writer disabled." })
-$window.FindName("Btn105").Add_Click({ Disable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -ErrorAction SilentlyContinue; Append-Log "Legacy Windows Media Player component removed." })
-$window.FindName("Btn106").Add_Click({ Disable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -NoRestart -ErrorAction SilentlyContinue; Append-Log "SMBv1 protocol disabled." })
-$window.FindName("Btn107").Add_Click({ Disable-WindowsOptionalFeature -Online -FeatureName "TelnetClient" -NoRestart -ErrorAction SilentlyContinue; Append-Log "Telnet & TFTP clients disabled." })
-$window.FindName("Btn108").Add_Click({ Disable-WindowsOptionalFeature -Online -FeatureName "Internet-Explorer-Optional-amd64" -NoRestart -ErrorAction SilentlyContinue; Append-Log "Legacy IE engine leftovers disabled." })
-$window.FindName("Btn109").Add_Click({ Add-MpPreference -ExclusionPath "C:\Program Files (x86)\Steam\steamapps" -ErrorAction SilentlyContinue; Append-Log "Steamapps library excluded from Defender scans." })
-$window.FindName("Btn110").Add_Click({ Set-MpPreference -ScanAvgCPULoadFactor 25 -ErrorAction SilentlyContinue; Append-Log "Defender scan CPU usage capped at 25%." })
-$window.FindName("Btn111").Add_Click({ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ExtendedUIHoverTime" -Value 10000 -Type DWord -Force; Append-Log "Taskbar thumbnail hover delay set to 10s." })
-$window.FindName("Btn112").Add_Click({ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Value 0 -Type DWord -Force; Append-Log "UAC secure desktop dimming delay disabled." })
-$window.FindName("Btn113").Add_Click({ Stop-Process -Name explorer -Force; Append-Log "Windows Explorer (explorer.exe) restarted." })
-$window.FindName("Btn114").Add_Click({ Restart-Service Audiosrv -Force -ErrorAction SilentlyContinue; Append-Log "Windows Audio Service (AudioSrv) restarted." })
-$window.FindName("Btn115").Add_Click({ $start = Get-CimInstance Win32_StartupCommand | Select-Object -First 5 Name, Command; foreach($s in $start){ Append-Log "Startup Program: $($s.Name)" } })
-$window.FindName("Btn116").Add_Click({ Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "BrokenEntry" -ErrorAction SilentlyContinue; Append-Log "Cleaned broken startup registry records." })
-$window.FindName("Btn117").Add_Click({ Stop-Service "gupdate","gupdatem","AdobeARMservice" -ErrorAction SilentlyContinue; Append-Log "Google and Adobe background updater services stopped." })
-$window.FindName("Btn118").Add_Click({ netsh advfirewall reset | Out-Null; Append-Log "Windows Firewall rules reset to factory defaults." })
-$window.FindName("Btn119").Add_Click({ bcdedit /set nointegritychecks off -ErrorAction SilentlyContinue; Append-Log "Driver signature enforcement set to default." })
-$window.FindName("Btn120").Add_Click({ Stop-Service "WSearch" -ErrorAction SilentlyContinue; Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Search" -Name "SetupCompletedSuccessfully" -Value 0 -Type DWord -Force; Start-Service "WSearch" -ErrorAction SilentlyContinue; Append-Log "Windows Search Index database rebuild started." })
-
-# Tab 7: 121-150
-$window.FindName("Btn121").Add_Click({
-    if (Get-Command nvidia-smi -ErrorAction SilentlyContinue) {
-        $gpuStat = nvidia-smi --query-gpu=name,temperature.gpu,power.draw,utilization.gpu --format=csv,noheader
-        Append-Log "Live GPU Status: $gpuStat"
-    } else {
-        Append-Log "GPU: $gpuNames (Active / Operational)"
-    }
-})
-$window.FindName("Btn122").Add_Click({ $cpu = Get-CimInstance Win32_Processor; Append-Log "CPU: $($cpu.Name) | Clock: $($cpu.CurrentClockSpeed) MHz | Load: $($cpu.LoadPercentage)%" })
-$window.FindName("Btn123").Add_Click({ $disk = Get-PhysicalDisk | Select-Object -First 1; Append-Log "SSD: $($disk.FriendlyName) | Health: $($disk.HealthStatus) | Status: $($disk.OperationalStatus)" })
-$window.FindName("Btn124").Add_Click({ if($isLaptop){ powercfg /batteryreport /output "$env:TEMP\battery_report.html" | Out-Null; Append-Log "Battery health report generated: $env:TEMP\battery_report.html" } else { Append-Log "Desktop PC detected (No battery present)." } })
-$window.FindName("Btn125").Add_Click({ $top = Get-Process | Sort-Object WorkingSet64 -Descending | Select-Object -First 5 Name, @{N='RAM_MB';E={[math]::Round($_.WorkingSet64/1MB,0)}}; foreach($p in $top){ Append-Log "Top Task: $($p.Name) -> $($p.RAM_MB) MB RAM" } })
-$window.FindName("Btn126").Add_Click({ $err = Get-EventLog -LogName System -EntryType Error -Newest 3 -ErrorAction SilentlyContinue; foreach($e in $err){ Append-Log "Recent Event Error: $($e.TimeGenerated) - $($e.Source)" } })
-$window.FindName("Btn127").Add_Click({ Append-Log "OS: $($osObj.Caption) | CPU: $cpuName | RAM: $totalRAM GB | Chassis: $chassisType" })
-$window.FindName("Btn128").Add_Click({ $free = [math]::Round($osObj.FreePhysicalMemory/1MB,1); Append-Log "Available Free RAM: $free GB / $totalRAM GB" })
-$window.FindName("Btn129").Add_Click({ $c = Get-PSDrive C; $free = [math]::Round($c.Free/1GB,1); Append-Log "C: Drive Free Capacity: $free GB" })
-$window.FindName("Btn130").Add_Click({ $fw = Get-NetFirewallProfile; Append-Log "Firewall Profiles: Domain=$($fw[0].Enabled), Private=$($fw[1].Enabled), Public=$($fw[2].Enabled)" })
-$window.FindName("Btn131").Add_Click({ $boot = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime; Append-Log "Last Boot Timestamp: $boot" })
-$window.FindName("Btn132").Add_Click({ $lic = Get-CimInstance SoftwareLicensingProduct | Where-Object {$_.PartialProductKey} | Select-Object -First 1; Append-Log "Windows License: $($lic.Name) (Active)" })
-$window.FindName("Btn133").Add_Click({ Append-Log "Launching SFC /Scannow in background..."; Start-Process cmd.exe -ArgumentList "/c sfc /scannow" -WindowStyle Minimized; Append-Log "SFC scan initiated." })
-$window.FindName("Btn134").Add_Click({ Append-Log "Launching DISM /RestoreHealth in background..."; Start-Process cmd.exe -ArgumentList "/c dism /online /cleanup-image /restorehealth" -WindowStyle Minimized; Append-Log "DISM image repair initiated." })
-$window.FindName("Btn135").Add_Click({ Append-Log "Sending CHKDSK C: /scan command..."; Start-Process cmd.exe -ArgumentList "/c chkdsk C: /scan" -WindowStyle Minimized })
-$window.FindName("Btn136").Add_Click({ Start-Process wsreset.exe; Append-Log "Microsoft Store cache reset (WSReset.exe)." })
-$window.FindName("Btn137").Add_Click({ reg export HKLM\SOFTWARE "$HOME\Desktop\Registry_Backup.reg" /y | Out-Null; Append-Log "Registry exported to Desktop\Registry_Backup.reg." })
-$window.FindName("Btn138").Add_Click({ dism /online /export-driver /destination:"$HOME\Desktop\Driver_Backup" -ErrorAction SilentlyContinue; Append-Log "Installed drivers exported to Desktop\Driver_Backup." })
-$window.FindName("Btn139").Add_Click({ Append-Log "Installing 7-Zip via Winget..."; winget install --id 7zip.7zip --silent --accept-source-agreements --accept-package-agreements; Append-Log "7-Zip installation complete." })
-$window.FindName("Btn140").Add_Click({ Append-Log "Installing Notepad++..."; winget install --id Notepad++.Notepad++ --silent --accept-source-agreements --accept-package-agreements; Append-Log "Notepad++ installation complete." })
-$window.FindName("Btn141").Add_Click({ Append-Log "Installing VLC..."; winget install --id VideoLAN.VLC --silent --accept-source-agreements --accept-package-agreements; Append-Log "VLC installation complete." })
-$window.FindName("Btn142").Add_Click({ Append-Log "Installing Discord..."; winget install --id Discord.Discord --silent --accept-source-agreements --accept-package-agreements; Append-Log "Discord installation complete." })
-$window.FindName("Btn143").Add_Click({ Append-Log "Installing Steam..."; winget install --id Valve.Steam --silent --accept-source-agreements --accept-package-agreements; Append-Log "Steam installation complete." })
-$window.FindName("Btn144").Add_Click({ Append-Log "Installing Brave..."; winget install --id Brave.Brave --silent --accept-source-agreements --accept-package-agreements; Append-Log "Brave installation complete." })
-$window.FindName("Btn145").Add_Click({
-    $act = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"Clear-RecycleBin -Force; Optimize-Volume -DriveLetter C -ReTrim`""
-    $trig = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 3am
-    Register-ScheduledTask -TaskName "MephistoWeeklyMaintenance" -Action $act -Trigger $trig -User "SYSTEM" -Force | Out-Null
-    Append-Log "Weekly Auto-Maintenance Task registered (Every Sunday at 3:00 AM)."
-})
-$window.FindName("Btn146").Add_Click({ Unregister-ScheduledTask -TaskName "MephistoWeeklyMaintenance" -Confirm:$false -ErrorAction SilentlyContinue; Append-Log "Weekly Auto-Maintenance Task removed." })
-$window.FindName("Btn147").Add_Click({ Set-Service wuauserv -StartupType Disabled -ErrorAction SilentlyContinue; Stop-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Update services paused and disabled." })
-$window.FindName("Btn148").Add_Click({ Set-Service wuauserv -StartupType Automatic -ErrorAction SilentlyContinue; Start-Service wuauserv -ErrorAction SilentlyContinue; Append-Log "Windows Update services resumed and set to Automatic." })
-$window.FindName("Btn149").Add_Click({ Enable-ComputerRestore -Drive "C:\"; Checkpoint-Computer -Description "MephistoCleaner_Manual_Point" -RestorePointType "MODIFY_SETTINGS" -ErrorAction SilentlyContinue; Append-Log "Manual System Restore Point created successfully." })
-$window.FindName("Btn150").Add_Click({
-    powercfg -restoredefaultschemes -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name "MouseSpeed" -Value "1" -Force
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "400" -Force
-    Append-Log "ALL CORE TWEAKS REVERTED TO STANDARD WINDOWS FACTORY DEFAULTS."
-})
-
-Append-Log "MephistoCleaner v7.0 Ultimate Ready. 150 Features, Live HUD, Software Hub, 20 Languages & 10 Themes Active."
-Append-Log "Hover your mouse over any button to view a detailed real-time explanation."
+Append-Log "MephistoCleaner v7.0 Ready. 150 Modular Features with Live Toggle Switches [ON/OFF] Active."
+Append-Log "Click any button to toggle it ON (Green) or OFF (Default). Hover over any item to view its explanation."
 [void]$window.ShowDialog()

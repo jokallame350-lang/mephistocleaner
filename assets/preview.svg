@@ -1,139 +1,171 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820">
   <defs>
-    <linearGradient id="windowBg" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0F141C"/>
       <stop offset="100%" stop-color="#090D12"/>
     </linearGradient>
+    <linearGradient id="hudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#131B28"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
   </defs>
 
-  <!-- Window Container -->
-  <rect width="1000" height="600" rx="10" fill="url(#windowBg)" stroke="#334155" stroke-width="2"/>
+  <!-- Background Window -->
+  <rect x="0" y="0" width="1200" height="820" rx="12" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Top Header Bar -->
+  <rect x="20" y="20" width="1160" height="65" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="55" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#38BDF8">⚡ MEPHISTOCLEANER v7.0 ULTIMATE</text>
+  <rect x="420" y="38" width="170" height="24" rx="4" fill="#059669"/>
+  <text x="430" y="54" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">ADMIN PRIVILEGES ACTIVE</text>
+  <text x="40" y="75" font-family="Segoe UI, sans-serif" font-size="11.5" fill="#94A3B8">Hardware: AMD Ryzen 7 8845HS (32.0 GB DDR5) | GPU: RTX 4060 Laptop (Active)</text>
+
+  <!-- Search Box & Selectors -->
+  <rect x="740" y="35" width="220" height="32" rx="6" fill="#0F141C" stroke="#334155" stroke-width="1"/>
+  <text x="752" y="56" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">🔍 Search 150+ features...</text>
+  <rect x="975" y="35" width="190" height="32" rx="6" fill="url(#blueGlow)"/>
+  <text x="990" y="56" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">⚡ 1-CLICK OPTIMIZE</text>
+
+  <!-- Live Hardware HUD -->
+  <rect x="20" y="95" width="1160" height="68" rx="8" fill="url(#hudGrad)" stroke="#334155" stroke-width="1"/>
   
-  <!-- Window Header Bar -->
-  <rect width="1000" height="38" rx="10" fill="#1E293B"/>
-  <circle cx="20" cy="19" r="6" fill="#EF4444"/>
-  <circle cx="38" cy="19" r="6" fill="#F59E0B"/>
-  <circle cx="56" cy="19" r="6" fill="#10B981"/>
-  <text x="500" y="24" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">
-    MephistoCleaner v6.0 - The Ultimate Windows Optimization Suite [Administrator]
-  </text>
+  <!-- CPU HUD -->
+  <text x="40" y="122" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#38BDF8">⚙️ CPU Load: 12% (5100 MHz)</text>
+  <rect x="40" y="132" width="250" height="10" rx="5" fill="#0F141C"/>
+  <rect x="40" y="132" width="40" height="10" rx="5" fill="#38BDF8"/>
 
-  <!-- Top Info Card -->
-  <g transform="translate(20, 50)">
-    <rect width="960" height="75" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-    <text x="20" y="32" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#38BDF8">⚡ MEPHISTOCLEANER v6.0</text>
-    
-    <!-- Admin Badge -->
-    <rect x="250" y="16" width="180" height="22" rx="4" fill="#059669"/>
-    <text x="340" y="31" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">ADMIN PRIVILEGES ACTIVE</text>
-    
-    <text x="20" y="58" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Hardware: Intel Core / AMD Ryzen (32.0 GB RAM) | GPU: NVIDIA RTX / AMD Radeon [Auto-Detected]</text>
+  <!-- RAM HUD -->
+  <text x="330" y="122" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#34D399">🧠 RAM Used: 2.8 GB / 32.0 GB (9%)</text>
+  <rect x="330" y="132" width="250" height="10" rx="5" fill="#0F141C"/>
+  <rect x="330" y="132" width="30" height="10" rx="5" fill="#34D399"/>
 
-    <!-- Language & Theme Dropdowns Mockup -->
-    <rect x="580" y="20" width="100" height="32" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="590" y="41" font-family="Segoe UI, sans-serif" font-size="11" fill="#E2E8F0">🌐 English ▾</text>
+  <!-- Disk HUD -->
+  <text x="620" y="122" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#FBBF24">💽 C: Drive Free: 142.8 GB</text>
+  <rect x="620" y="132" width="250" height="10" rx="5" fill="#0F141C"/>
+  <rect x="620" y="132" width="210" height="10" rx="5" fill="#FBBF24"/>
 
-    <rect x="690" y="20" width="120" height="32" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="700" y="41" font-family="Segoe UI, sans-serif" font-size="11" fill="#E2E8F0">🎨 Cyber Slate ▾</text>
+  <!-- GPU HUD -->
+  <text x="910" y="122" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#C084FC">🎮 GPU: RTX 4060 (48°C)</text>
+  <text x="910" y="142" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">DirectX 12 / HAGS Active</text>
 
-    <!-- Master Button -->
-    <rect x="820" y="16" width="125" height="40" rx="6" fill="#0284C7"/>
-    <text x="882" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">1-CLICK OPTIMIZE</text>
-  </g>
+  <!-- Presets Quick Bar -->
+  <rect x="20" y="172" width="1160" height="46" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <rect x="30" y="179" width="180" height="32" rx="4" fill="#065F46"/>
+  <text x="45" y="200" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#A7F3D0">🎮 Esports Gamer Preset</text>
 
-  <!-- Safety Banner -->
-  <g transform="translate(20, 133)">
-    <rect width="960" height="30" rx="4" fill="#2B1F0E" stroke="#D97706" stroke-width="1"/>
-    <text x="15" y="20" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="600" fill="#FCD34D">
-      🛡️ RECOMMENDED: Create a System Restore Point (Feature #149) before applying major system tweaks.
-    </text>
-  </g>
+  <rect x="220" y="179" width="190" height="32" rx="4" fill="#1E3A8A"/>
+  <text x="235" y="200" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#BFDBFE">🛡️ Privacy &amp; Debloat Preset</text>
 
-  <!-- Tabs Navigation -->
-  <g transform="translate(20, 172)">
-    <rect x="0" y="0" width="135" height="32" rx="4" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
-    <text x="67" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#38BDF8">⚡ Gaming &amp; Perf</text>
+  <rect x="420" y="179" width="180" height="32" rx="4" fill="#831843"/>
+  <text x="435" y="200" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#FBCFE8">🧹 Deep Disk Clean Preset</text>
 
-    <rect x="140" y="0" width="130" height="32" rx="4" fill="#0F141C"/>
-    <text x="205" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">💽 Disk &amp; Clean</text>
+  <rect x="1010" y="179" width="155" height="32" rx="4" fill="#374151"/>
+  <text x="1030" y="200" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#E5E7EB">💾 Export Profile (.json)</text>
 
-    <rect x="275" y="0" width="125" height="32" rx="4" fill="#0F141C"/>
-    <text x="337" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">🌐 Network &amp; DNS</text>
+  <!-- Tabs Navigation Header -->
+  <rect x="20" y="226" width="1160" height="35" rx="4" fill="#0F141C"/>
+  <text x="35" y="249" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#38BDF8">Gaming &amp; Performance</text>
+  <text x="195" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Disk &amp; Clean</text>
+  <text x="290" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Network &amp; DNS</text>
+  <text x="400" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Privacy &amp; Debloat</text>
+  <text x="525" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Interface &amp; QoL</text>
+  <text x="640" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Components</text>
+  <text x="745" y="249" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Diagnostics</text>
+  <text x="845" y="249" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#34D399">Software Hub</text>
 
-    <rect x="405" y="0" width="135" height="32" rx="4" fill="#0F141C"/>
-    <text x="472" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">🛡️ Privacy &amp; Debloat</text>
+  <!-- Feature Grid with Toggle Switches (ON / OFF) -->
+  <g transform="translate(20, 268)">
+    <!-- Feature 1 (ON) -->
+    <rect x="0" y="0" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <circle cx="22" cy="26" r="7" fill="#10B981"/>
+    <text x="38" y="23" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">1. CPU Core Unpark &amp; Power Plan</text>
+    <text x="38" y="40" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] Locked to 100% active cores</text>
+    <rect x="315" y="14" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="343" cy="26" r="9" fill="#FFFFFF"/>
 
-    <rect x="545" y="0" width="135" height="32" rx="4" fill="#0F141C"/>
-    <text x="612" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">🎨 Interface &amp; QoL</text>
+    <!-- Feature 2 (ON) -->
+    <rect x="390" y="0" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <circle cx="412" cy="26" r="7" fill="#10B981"/>
+    <text x="428" y="23" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">5. Enable HAGS GPU Scheduling</text>
+    <text x="428" y="40" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] Hardware scheduler enabled</text>
+    <rect x="705" y="14" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="733" cy="26" r="9" fill="#FFFFFF"/>
 
-    <rect x="685" y="0" width="120" height="32" rx="4" fill="#0F141C"/>
-    <text x="745" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">🧩 Components</text>
-
-    <rect x="810" y="0" width="150" height="32" rx="4" fill="#0F141C"/>
-    <text x="885" y="21" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">📊 Diagnostics &amp; Repair</text>
-  </g>
-
-  <!-- Button Grid Sample (Tab 1 Active) -->
-  <g transform="translate(20, 212)">
-    <rect width="960" height="260" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-
-    <!-- Row 1 -->
-    <rect x="15" y="15" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="25" y="36" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">1. CPU Core Unpark &amp; Power Lock</text>
-
-    <rect x="330" y="15" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="340" y="36" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">2. Game Booster Turbo Mode</text>
-
-    <rect x="645" y="15" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="655" y="36" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">3. RAM &amp; Standby Cache Purge</text>
+    <!-- Feature 3 (ON) -->
+    <rect x="780" y="0" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <circle cx="802" cy="26" r="7" fill="#10B981"/>
+    <text x="818" y="23" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">6. Lock DirectX MaxFrameLatency=1</text>
+    <text x="818" y="40" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] 0ms render queue delay</text>
+    <rect x="1095" y="14" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="1123" cy="26" r="9" fill="#FFFFFF"/>
 
     <!-- Row 2 -->
-    <rect x="15" y="60" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="25" y="81" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">4. Universal GPU Shader Cache Purge</text>
+    <!-- Feature 4 (ON) -->
+    <rect x="0" y="62" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="22" cy="88" r="7" fill="#10B981"/>
+    <text x="38" y="85" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">13. Set Win32PrioritySeparation to 38</text>
+    <text x="38" y="102" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] 3x foreground game time slice</text>
+    <rect x="315" y="76" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="343" cy="88" r="9" fill="#FFFFFF"/>
 
-    <rect x="330" y="60" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="340" y="81" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">5. Enable HAGS (Hardware Scheduling)</text>
+    <!-- Feature 5 (ON) -->
+    <rect x="390" y="62" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="412" cy="88" r="7" fill="#10B981"/>
+    <text x="428" y="85" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">49. Disable Nagle's Algorithm (0ms Ping)</text>
+    <text x="428" y="102" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] Immediate packet transmit</text>
+    <rect x="705" y="76" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="733" cy="88" r="9" fill="#FFFFFF"/>
 
-    <rect x="645" y="60" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="655" y="81" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">6. Lock DirectX MaxFrameLatency=1</text>
+    <!-- Feature 6 (OFF / Default) -->
+    <rect x="780" y="62" width="370" height="52" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <circle cx="802" cy="88" r="7" fill="#64748B"/>
+    <text x="818" y="85" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#94A3B8">18. Enable DirectPlay Legacy Gaming</text>
+    <text x="818" y="102" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#64748B">Status: [OFF] Optional classic game API</text>
+    <rect x="1095" y="76" width="42" height="24" rx="12" fill="#334155"/>
+    <circle cx="1107" cy="88" r="9" fill="#94A3B8"/>
 
     <!-- Row 3 -->
-    <rect x="15" y="105" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="25" y="126" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">7. Force Fullscreen Optimizations (FSE)</text>
+    <rect x="0" y="124" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="22" cy="150" r="7" fill="#10B981"/>
+    <text x="38" y="147" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">62. Disable Windows Copilot AI</text>
+    <text x="38" y="164" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] AI background agents disabled</text>
+    <rect x="315" y="138" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="343" cy="150" r="9" fill="#FFFFFF"/>
 
-    <rect x="330" y="105" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="340" y="126" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">8. Disable Game DVR Video Recording</text>
+    <rect x="390" y="124" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="412" cy="150" r="7" fill="#10B981"/>
+    <text x="428" y="147" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">90. Disable Mouse Acceleration (1:1 Raw Aim)</text>
+    <text x="428" y="164" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] Pure 1:1 hardware aim active</text>
+    <rect x="705" y="138" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="733" cy="150" r="9" fill="#FFFFFF"/>
 
-    <rect x="645" y="105" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="655" y="126" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">9. Lighten DWM Transparency &amp; Blur</text>
-
-    <!-- Row 4 -->
-    <rect x="15" y="150" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="25" y="171" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">10. Set GDI Handle Quota to 65536</text>
-
-    <rect x="330" y="150" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="340" y="171" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">11. Disable Power Throttling</text>
-
-    <rect x="645" y="150" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="655" y="171" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">12. Disable Fast Startup Session Leaks</text>
-
-    <!-- Row 5 (Partial) -->
-    <rect x="15" y="195" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="25" y="216" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">13. Set Win32PrioritySeparation to 38</text>
-
-    <rect x="330" y="195" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="340" y="216" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">14. Set MMCSS GPU Priority to 8 (High)</text>
-
-    <rect x="645" y="195" width="295" height="34" rx="4" fill="#0F141C" stroke="#334155"/>
-    <text x="655" y="216" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">15. Get Competitive CS2 Launch Options</text>
+    <rect x="780" y="124" width="370" height="52" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="802" cy="150" r="7" fill="#10B981"/>
+    <text x="818" y="147" font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="bold" fill="#ECFDF5">91. Set Keyboard Input Delay to 0ms</text>
+    <text x="818" y="164" font-family="Segoe UI, sans-serif" font-size="9.5" fill="#6EE7B7">Status: [ON] Instant keystroke response</text>
+    <rect x="1095" y="138" width="42" height="24" rx="12" fill="#059669"/>
+    <circle cx="1123" cy="150" r="9" fill="#FFFFFF"/>
   </g>
 
-  <!-- Live Console Viewer -->
-  <g transform="translate(20, 482)">
-    <rect width="960" height="98" rx="6" fill="#0A0E14" stroke="#1E293B" stroke-width="1"/>
-    <text x="15" y="22" font-family="Consolas, monospace" font-size="11" fill="#10B981">[21:30:00] MephistoCleaner v6.0 Ready. 150 Modular Features, 20 Languages &amp; 10 Themes Active.</text>
-    <text x="15" y="42" font-family="Consolas, monospace" font-size="11" fill="#10B981">[21:30:01] Hardware detected: AMD Ryzen 7 / Intel Core (32.0 GB RAM) | Dedicated GPU Active.</text>
-    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#38BDF8">[21:30:05] Hover your mouse over any button to view a detailed real-time explanation.</text>
-    <text x="15" y="82" font-family="Consolas, monospace" font-size="11" fill="#10B981">[21:30:10] Ready for 1-Click Master Optimization or granular custom selection.</text>
-  </g>
+  <!-- Live Console Log Viewer -->
+  <rect x="20" y="475" width="1160" height="325" rx="8" fill="#0A0E14" stroke="#1E293B" stroke-width="1"/>
+  <text x="35" y="500" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#38BDF8">[SYSTEM LOG] MephistoCleaner v7.0 Ultimate Engine Active | Real-Time Latency: 38 µs</text>
+  <text x="35" y="525" font-family="Consolas, monospace" font-size="11" fill="#10B981">[17:02:10] [ON] CPU Core Unparking engaged. All 16 threads locked to 5.1 GHz sustained boost.</text>
+  <text x="35" y="545" font-family="Consolas, monospace" font-size="11" fill="#10B981">[17:02:11] [ON] DirectX MaxFrameLatency=1 locked. Pre-rendered queue latency dropped to 0ms.</text>
+  <text x="35" y="565" font-family="Consolas, monospace" font-size="11" fill="#10B981">[17:02:12] [ON] Nagle's Algorithm disabled (TCPNoDelay=1). Network packet queuing eliminated.</text>
+  <text x="35" y="585" font-family="Consolas, monospace" font-size="11" fill="#10B981">[17:02:13] [ON] Mouse Acceleration set to 0 (1:1 Raw Aim). DWM composition lag bypassed.</text>
+  <text x="35" y="605" font-family="Consolas, monospace" font-size="11" fill="#38BDF8">[17:02:14] 💽 Shader Cache Purge: Cleared 14.2 GB of corrupted NVIDIA &amp; DirectX cache blocks.</text>
+  <text x="35" y="625" font-family="Consolas, monospace" font-size="11" fill="#FBBF24">[17:02:15] 📊 Live Hardware HUD: CPU: 12% | RAM: 2.8 GB / 32.0 GB | C: 142.8 GB Free | DPC: 38 µs (Flawless)</text>
+  <text x="35" y="645" font-family="Consolas, monospace" font-size="11" fill="#94A3B8">[17:02:16] Ready. Click any feature toggle to apply or revert individual tweaks in real time.</text>
 </svg>

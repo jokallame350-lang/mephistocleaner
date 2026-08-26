@@ -1,0 +1,2 @@
+C:\Users\pc\mephistocleaner\MephistoNative\bin\PublishSelfContained\MephistoCleaner.pdb
+C:\Users\pc\mephistocleaner\MephistoNative\bin\PublishSelfContained\MephistoCleaner.exe

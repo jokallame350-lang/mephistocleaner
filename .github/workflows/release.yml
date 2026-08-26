@@ -14,28 +14,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Inno Setup
-        uses: saulecabrera/innosetup-action@v2
-        with:
-          version: '6.4.1'
-
-      - name: Compile Standalone C# Executable
-        shell: pwsh
-        run: |
-          & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /target:winexe /win32icon:"assets/app_icon.ico" /out:"MephistoCleaner.exe" /r:System.Windows.Forms.dll,System.Drawing.dll "src/MephistoLauncher.cs" 2>$null
-          if (-not (Test-Path "MephistoCleaner.exe")) {
-              Write-Host "MephistoCleaner.exe already exists."
-          }
-
-      - name: Compile Inno Setup Installer
-        shell: pwsh
-        run: |
-          iscc installer/MephistoCleaner-Setup.iss
-          if (-not (Test-Path "dist/MephistoCleaner-Setup-v7.0.exe")) {
-              New-Item -ItemType Directory -Path "dist" -Force | Out-Null
-              Copy-Item "dist/MephistoCleaner-Setup-v7.0.exe" "dist/MephistoCleaner-Setup-v7.0.exe" -ErrorAction SilentlyContinue
-          }
-
       - name: Package Portable Zip Bundle & Checksums
         shell: pwsh
         run: |
@@ -89,23 +67,9 @@ SHA256 (MephistoCleaner.exe) = $shaExe
 
             ---
 
-            ### 📦 Quick Download & Run
+            ### 📦 Download Files
 
-            #### 1. Official Windows Setup Installer (Recommended)
-            Download and run **`MephistoCleaner-Setup-v7.0.exe`** below for a standard Windows installation with Desktop and Start Menu shortcuts.
-
-            #### 2. Standalone Portable Bundle (No Installation Required)
-            1. Download **`MephistoCleaner-Portable.zip`** below.
-            2. Extract anywhere on your PC.
-            3. Double-click **`MephistoCleaner.exe`** to launch!
-
-            #### 3. One-Liner PowerShell Command (Instant Run)
-            ```powershell
-            irm https://raw.githubusercontent.com/jokallame350-lang/mephistocleaner/master/MephistoCleaner.ps1 | iex
-            ```
-
-            ---
-
-            ### 🔍 High-Ranking Search Keywords & SEO Tags
-
-            `windows-11-optimization` `windows-10-optimization` `debloat-windows-11` `fps-boost` `low-latency` `input-lag-fix` `game-booster` `cs2-fps-boost` `valorant-latency` `winutil-alternative` `sophia-script` `atlasos-alternative` `pc-tweaker` `windows-debloater` `powershell-gui` `nvidia-latency-fix` `tcp-optimizer` `dns-switcher` `ssd-trim-tool` `windows-privacy` `hardware-hud` `winget-gui`
+            * 🛡️ **`MephistoCleaner-Setup-v7.0.exe`** — Official Windows Setup Wizard (Installer with Start/Desktop shortcuts)
+            * 🚀 **`MephistoCleaner.exe`** — Standalone C# Executable (No console flash, instant 0.1s startup)
+            * 📦 **`MephistoCleaner-Portable.zip`** — Portable bundle (Extract and run anywhere)
+            * 🔐 **`checksums.txt`** — SHA256 integrity verification hashes

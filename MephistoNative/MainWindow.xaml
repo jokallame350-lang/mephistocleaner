@@ -1,0 +1,221 @@
+<Window x:Class="MephistoCleaner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MephistoCleaner v7.0" 
+        Height="870" Width="1180" 
+        WindowStartupLocation="CenterScreen" 
+        Background="#0F141C" 
+        Foreground="#E0E6ED"
+        FontFamily="Segoe UI">
+    <Window.Resources>
+        <Style TargetType="ToolTip">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="#38BDF8"/>
+            <Setter Property="BorderBrush" Value="#0EA5E9"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="8,5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="FontSize" Value="11.5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="Padding" Value="9,5"/>
+            <Setter Property="Background" Value="#0F141C"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="11.5"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <!-- ROW 0: HEADER -->
+        <Border Grid.Row="0" Name="HeaderBorder" Background="#1E293B" CornerRadius="8" Padding="10,8" Margin="0,0,0,6" BorderBrush="#334155" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="TxtMainTitle" Text="⚡ MEPHISTOCLEANER v7.0" FontSize="17" FontWeight="Bold" Foreground="#38BDF8" VerticalAlignment="Center"/>
+                        <Border Background="#059669" CornerRadius="4" Padding="6,2" Margin="10,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Name="TxtAdminBadge" Text="ADMIN PRIVILEGES ACTIVE" FontSize="10" FontWeight="Bold" Foreground="#FFFFFF"/>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Name="TxtHwInfo" Text="Hardware: Loading..." FontSize="11" Foreground="#94A3B8" Margin="0,3,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel Margin="0,0,8,0">
+                        <TextBlock Name="LblLang" Text="Language:" FontSize="10" Foreground="#94A3B8" Margin="0,0,0,1"/>
+                        <ComboBox Name="CmbLanguage" Width="110" Height="24" FontSize="11" SelectedIndex="0" Background="#0F141C" Foreground="#FFFFFF" SelectionChanged="CmbLanguage_SelectionChanged"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,10,0">
+                        <TextBlock Name="LblTheme" Text="Theme:" FontSize="10" Foreground="#94A3B8" Margin="0,0,0,1"/>
+                        <ComboBox Name="CmbTheme" Width="135" Height="24" FontSize="11" SelectedIndex="0" Background="#0F141C" Foreground="#FFFFFF" SelectionChanged="CmbTheme_SelectionChanged"/>
+                    </StackPanel>
+                    <Button Name="BtnQuickMaster" Content="⚡ 1-CLICK OPTIMIZE" Background="#0284C7" FontSize="11.5" Padding="12,6" FontWeight="Bold" VerticalAlignment="Bottom" Click="BtnQuickMaster_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ROW 1: LIVE HUD -->
+        <Border Grid.Row="1" Name="HudBorder" Background="#131B28" CornerRadius="6" Padding="10,6" Margin="0,0,0,6" BorderBrush="#334155" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="4,0">
+                    <TextBlock Name="HudCpuLabel" Text="⚙️ CPU Load: 12%" FontSize="11" FontWeight="Bold" Foreground="#38BDF8"/>
+                    <ProgressBar Name="HudCpuBar" Height="6" Minimum="0" Maximum="100" Value="12" Foreground="#38BDF8" Background="#1E293B" Margin="0,3,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="4,0">
+                    <TextBlock Name="HudRamLabel" Text="🧠 RAM Used: 2.8 GB / 32.0 GB" FontSize="11" FontWeight="Bold" Foreground="#34D399"/>
+                    <ProgressBar Name="HudRamBar" Height="6" Minimum="0" Maximum="100" Value="25" Foreground="#34D399" Background="#1E293B" Margin="0,3,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Margin="4,0">
+                    <TextBlock Name="HudDiskLabel" Text="💽 C: Free: 142.8 GB" FontSize="11" FontWeight="Bold" Foreground="#FBBF24"/>
+                    <ProgressBar Name="HudDiskBar" Height="6" Minimum="0" Maximum="100" Value="85" Foreground="#FBBF24" Background="#1E293B" Margin="0,3,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Margin="4,0">
+                    <TextBlock Name="HudGpuLabel" Text="🎮 GPU: Active (48°C)" FontSize="11" FontWeight="Bold" Foreground="#C084FC"/>
+                    <TextBlock Name="HudGpuSub" Text="DirectX 12 / HAGS Locked" FontSize="9.5" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ROW 2: PRESETS & SEARCH -->
+        <Border Grid.Row="2" Background="#1E293B" CornerRadius="6" Padding="8,5" Margin="0,0,0,6" BorderBrush="#334155" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button Name="BtnPresetGamer" Content="🎮 Esports Gamer Preset" Background="#065F46" Padding="8,4" Click="BtnPresetGamer_Click"/>
+                    <Button Name="BtnPresetPrivacy" Content="🛡️ Privacy &amp; Debloat Preset" Background="#1E3A8A" Padding="8,4" Click="BtnPresetPrivacy_Click"/>
+                    <Button Name="BtnPresetClean" Content="🧹 Deep Disk Clean Preset" Background="#831843" Padding="8,4" Click="BtnPresetClean_Click"/>
+                </StackPanel>
+                <TextBox Grid.Column="1" Name="TxtSearch" Height="26" Margin="10,0" Padding="6,3" 
+                         Background="#0F141C" Foreground="#F8FAFC" BorderBrush="#334155" FontSize="11" 
+                         VerticalContentAlignment="Center" TextChanged="TxtSearch_TextChanged"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Name="BtnExportProfile" Content="💾 Export Profile" Background="#374151" Padding="8,4" Click="BtnExportProfile_Click"/>
+                    <Button Name="BtnImportProfile" Content="📂 Import Profile" Background="#374151" Padding="8,4" Click="BtnImportProfile_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ROW 3: TABS -->
+        <TabControl Grid.Row="3" Name="MainTabControl" Background="#1E293B" BorderBrush="#334155" BorderThickness="1">
+            <TabItem Name="Tab1" Header="Gaming &amp; Performance">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab1" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab2" Header="Disk &amp; Deep Clean">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab2" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab3" Header="Network &amp; DNS">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab3" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab4" Header="Privacy &amp; Debloat">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab4" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab5" Header="Interface &amp; QoL">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab5" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab6" Header="Components">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab6" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab7" Header="Diagnostics &amp; Repair">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Name="PanelTab7" Margin="6"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="Tab8" Header="Software Hub">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="12">
+                        <TextBlock Text="Essential Software Packages (1-Click Winget Bulk Installer)" FontSize="14" FontWeight="Bold" Foreground="#38BDF8" Margin="0,0,0,8"/>
+                        <TextBlock Text="Check the applications you want and click 'Install Selected Software' for silent background installation." FontSize="11" Foreground="#94A3B8" Margin="0,0,0,12"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="4">
+                                <TextBlock Text="Gaming &amp; Tools" FontSize="12" FontWeight="Bold" Foreground="#FBBF24" Margin="0,0,0,6"/>
+                                <CheckBox Name="ChkSteam" Content="Valve Steam" ToolTip="Valve.Steam"/>
+                                <CheckBox Name="ChkDiscord" Content="Discord" ToolTip="Discord.Discord"/>
+                                <CheckBox Name="ChkEpic" Content="Epic Games Launcher" ToolTip="EpicGames.EpicGamesLauncher"/>
+                                <CheckBox Name="ChkOBS" Content="OBS Studio" ToolTip="OBSProject.OBSStudio"/>
+                                <CheckBox Name="ChkAfterburner" Content="MSI Afterburner" ToolTip="Guru3D.Afterburner"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="4">
+                                <TextBlock Text="Runtimes &amp; Dev" FontSize="12" FontWeight="Bold" Foreground="#34D399" Margin="0,0,0,6"/>
+                                <CheckBox Name="ChkVC" Content="Visual C++ All-in-One (2005-2022)" IsChecked="True" ToolTip="Microsoft.VCRedist.2015+.x64"/>
+                                <CheckBox Name="Chk7Zip" Content="7-Zip Archive Manager" IsChecked="True" ToolTip="7zip.7zip"/>
+                                <CheckBox Name="ChkNotepad" Content="Notepad++ Code Editor" ToolTip="Notepad++.Notepad++"/>
+                                <CheckBox Name="ChkGit" Content="Git for Windows" ToolTip="Git.Git"/>
+                                <CheckBox Name="ChkPython" Content="Python 3.12+" ToolTip="Python.Python.3.12"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="4">
+                                <TextBlock Text="Browsers &amp; Media" FontSize="12" FontWeight="Bold" Foreground="#C084FC" Margin="0,0,0,6"/>
+                                <CheckBox Name="ChkBrave" Content="Brave Browser" ToolTip="Brave.Brave"/>
+                                <CheckBox Name="ChkChrome" Content="Google Chrome" ToolTip="Google.Chrome"/>
+                                <CheckBox Name="ChkVLC" Content="VLC Media Player" ToolTip="VideoLAN.VLC"/>
+                                <CheckBox Name="ChkSpotify" Content="Spotify Music" ToolTip="Spotify.Spotify"/>
+                            </StackPanel>
+                        </Grid>
+                        <Button Name="BtnInstallSelectedApps" Content="Install Selected Software" Background="#059669" FontSize="12" Padding="16,8" Margin="0,16,0,0" HorizontalAlignment="Left" Click="BtnInstallSelectedApps_Click"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- ROW 4: LOG -->
+        <Border Grid.Row="4" Name="ConsoleBorder" Background="#0A0E14" CornerRadius="6" Padding="8" Margin="0,6,0,0" BorderBrush="#1E293B" BorderThickness="1">
+            <ScrollViewer Name="LogScroller" VerticalScrollBarVisibility="Auto">
+                <TextBox Name="TxtLog" Background="Transparent" Foreground="#10B981" BorderThickness="0" 
+                         FontFamily="Consolas" FontSize="11" IsReadOnly="True" TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

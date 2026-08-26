@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "zNnpUZBA4psXYsCx4sQfKySoOwyOb7EzCnuzX3YwGBYSXPkfJmPiZ/DbhFVoE0I61lht+FCt926qdovNQP478A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pc\\mephistocleaner\\MephistoNative\\MephistoCleaner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pc\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\system.serviceprocess.servicecontroller\\7.0.1\\system.serviceprocess.servicecontroller.7.0.1.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.20\\microsoft.netcore.app.host.win-x64.7.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

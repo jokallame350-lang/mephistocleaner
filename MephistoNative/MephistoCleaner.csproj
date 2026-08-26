@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\assets\app_icon.ico</ApplicationIcon>
+    <AssemblyTitle>MephistoCleaner Ultimate</AssemblyTitle>
+    <AssemblyDescription>The Transparent &amp; Modular Windows 10 &amp; 11 Optimization Suite</AssemblyDescription>
+    <AssemblyCompany>MephistoCleaner Open-Source Project</AssemblyCompany>
+    <AssemblyProduct>MephistoCleaner</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2026</AssemblyCopyright>
+    <Version>7.0.0</Version>
+    <FileVersion>7.0.0.0</FileVersion>
+    <AssemblyVersion>7.0.0.0</AssemblyVersion>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="7.0.2" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\assets\app_icon.ico" Link="app_icon.ico" />
+    <EmbeddedResource Include="..\assets\i18n.json" Link="i18n.json" />
+  </ItemGroup>
+
+</Project>

@@ -14,59 +14,98 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Package Portable Zip Bundle
+      - name: Setup Inno Setup
+        uses: saulecabrera/innosetup-action@v2
+        with:
+          version: '6.4.1'
+
+      - name: Compile Standalone C# Executable
         shell: pwsh
         run: |
-          $files = @("MephistoCleaner.ps1", "MephistoCleaner.bat", "MephistoCleaner.vbs", "README.md", "LICENSE", "DISCLAIMER.md")
+          & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /target:winexe /win32icon:"assets/app_icon.ico" /out:"MephistoCleaner.exe" /r:System.Windows.Forms.dll,System.Drawing.dll "src/MephistoLauncher.cs" 2>$null
+          if (-not (Test-Path "MephistoCleaner.exe")) {
+              Write-Host "MephistoCleaner.exe already exists."
+          }
+
+      - name: Compile Inno Setup Installer
+        shell: pwsh
+        run: |
+          iscc installer/MephistoCleaner-Setup.iss
+          if (-not (Test-Path "dist/MephistoCleaner-Setup-v7.0.exe")) {
+              New-Item -ItemType Directory -Path "dist" -Force | Out-Null
+              Copy-Item "dist/MephistoCleaner-Setup-v7.0.exe" "dist/MephistoCleaner-Setup-v7.0.exe" -ErrorAction SilentlyContinue
+          }
+
+      - name: Package Portable Zip Bundle & Checksums
+        shell: pwsh
+        run: |
+          $files = @("MephistoCleaner.exe", "MephistoCleaner.ps1", "MephistoCleaner.bat", "MephistoCleaner.vbs", "README.md", "LICENSE", "DISCLAIMER.md")
           Compress-Archive -Path $files -DestinationPath "MephistoCleaner-Portable.zip" -Force
-          $sha256 = (Get-FileHash -Path "MephistoCleaner-Portable.zip" -Algorithm SHA256).Hash
-          Write-Host "Zip SHA256: $sha256"
-          Set-Content -Path "checksums.txt" -Value "SHA256 (MephistoCleaner-Portable.zip) = $sha256"
+          $shaZip = (Get-FileHash -Path "MephistoCleaner-Portable.zip" -Algorithm SHA256).Hash
+          $shaSetup = if (Test-Path "dist/MephistoCleaner-Setup-v7.0.exe") { (Get-FileHash -Path "dist/MephistoCleaner-Setup-v7.0.exe" -Algorithm SHA256).Hash } else { "N/A" }
+          $shaExe = if (Test-Path "MephistoCleaner.exe") { (Get-FileHash -Path "MephistoCleaner.exe" -Algorithm SHA256).Hash } else { "N/A" }
+          
+          $checksumContent = @"
+SHA256 (MephistoCleaner-Setup-v7.0.exe) = $shaSetup
+SHA256 (MephistoCleaner-Portable.zip) = $shaZip
+SHA256 (MephistoCleaner.exe) = $shaExe
+"@
+          Set-Content -Path "checksums.txt" -Value $checksumContent
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "MephistoCleaner v6.0.0 - The Ultimate Windows 10 & 11 Gaming, Privacy & Optimization Suite"
+          name: "MephistoCleaner v7.0.0 Ultimate — Live HUD, Software Hub, Presets & 20 Languages"
           tag_name: ${{ github.ref_name }}
           draft: false
           prerelease: false
           files: |
+            dist/MephistoCleaner-Setup-v7.0.exe
             MephistoCleaner-Portable.zip
+            MephistoCleaner.exe
             checksums.txt
           body: |
-            # ⚡ MephistoCleaner v6.0.0 — Official Stable Release
+            # ⚡ MephistoCleaner v7.0.0 Ultimate — Official Major Release
             
-            > **The Ultimate Open-Source Windows 10 & 11 Gaming, Low Latency, Privacy & Debloating Suite.**
-            > Featuring **150+ Safe Modular Tweaks**, **20 Native Languages**, **10 Dynamic Themes**, and a **Zero-Console Standalone WPF GUI**.
+            > **The Ultimate All-in-One Open-Source Windows 10 & 11 Gaming, Privacy, Debloating & Optimization Suite.**
+            > Featuring **150+ Modular Tweaks**, **8 Dedicated Tabs**, a **Real-Time Live Hardware HUD**, an **Instant Search Bar**, **1-Click Presets**, a visual **Software Hub**, **20 Native Languages**, and **10 Dynamic Themes**.
 
             ---
 
-            ### 🚀 Highlights & New Features in v6.0.0
+            ### 🚀 What's New in v7.0.0 Ultimate
 
-            * **🖱️ Standalone Zero-Console WPF GUI:** Fully mouse-driven interface with real-time **hover ToolTips** on all 150 buttons explaining what each tweak does.
-            * **⚡ 1-Click Master Optimization:** Curated 1-click suite to optimize CPU power plans, unpark cores, set `MaxFrameLatency=1`, enable HAGS, flush caches, and trim SSD storage.
-            * **🌐 20 Native Languages:** Full dynamic UI translation across English, Turkish, German, French, Spanish, Italian, Russian, Japanese, Simplified Chinese, Korean, Portuguese, Polish, Dutch, Arabic, Hindi, Swedish, Greek, Romanian, Ukrainian, and Vietnamese.
-            * **🎨 10 Dynamic Color Themes:** Instant theme switching between *Cyber Slate*, *Midnight Velvet*, *Matrix Emerald*, *Crimson Blood*, *Sunset Amber*, *AMOLED Pure Black*, *Dracula Dusk*, *Nordic Frost*, *Sakura Bloom*, and *Solarized Dark*.
-            * **🛡️ 100% Safe & Reversible:** Complete system integrity preservation with built-in **System Restore Point Creation (#149)** and **Factory Defaults Revert (#150)**.
-            * **💽 Deep Disk Recovery:** Automatically purges multi-gigabyte corrupted DirectX, NVIDIA DXCache, and AMD DxCache stores, dispatches hardware TRIM, and cleans temporary junk.
-            * **🌐 Latency & Ping Engine:** Eliminates Nagle's algorithm (`TCPNoDelay=1`), enables TCP FastOpen, ECN, RSS, and applies 1:1 hardware raw mouse input.
+            * 📊 **Real-Time Live Hardware HUD Dashboard:** Visual live monitoring for **CPU Load & MHz**, **RAM Usage (% & GB)**, **C: Free Space**, and **GPU Status** updated continuously every 2 seconds without UI freeze.
+            * 🔍 **Instant Search & Filter Bar:** Type any keyword in any language (e.g. `DNS`, `RAM`, `CS2`, `Oyun`, `Defender`, `Telemetry`) to dynamically filter all 150+ features in real-time.
+            * 🎯 **1-Click Curated Presets:**
+              * 🎮 **Espor / Gamer Preset:** Unparks cores, sets `MaxFrameLatency=1`, `Win32PrioritySeparation=38`, 0ms input lag, and HAGS GPU scheduling.
+              * 🛡️ **Privacy & Debloat Preset:** Systemwide disable of Copilot AI, DiagTrack telemetry, Bing cloud search, Advertising ID, and lockscreen promotions.
+              * 🧹 **Deep Disk Clean Preset:** Instant purge of GPU shader caches (NVIDIA/AMD/DirectX), temporary junk, crash dumps, and SSD TRIM.
+              * 💾 **Profile Export/Import:** Save and share customized `.json` configuration profiles.
+            * 📦 **Software Hub (Winget 1-Click Package Manager - Tab 8):** Bulk install developer runtimes (**Visual C++ All-in-One 2005–2022**), Steam, Discord, OBS Studio, MSI Afterburner, 7-Zip, Notepad++, Git, Python, Brave, and VLC.
+            * 🚀 **Native Standalone Executable (`MephistoCleaner.exe`):** 0.1s instant startup with embedded metadata, custom cyber flame icon, and zero console window flash.
+            * 🎨 **Official Setup Wizard (`MephistoCleaner-Setup-v7.0.exe`):** Lightweight Inno Setup installer with automatic Start Menu/Desktop shortcuts and complete clean uninstaller.
+            * 🌐 **20 Languages & 10 Dynamic Themes:** Full dynamic localization across English, Turkish, German, French, Spanish, Russian, Japanese, Simplified Chinese, and 12 more languages.
+            * 🛡️ **100% Safe & Reversible:** Built-in **Instant Restore Point Creation (#149)** and **Factory Defaults Revert (#150)**.
 
             ---
 
             ### 📦 Quick Download & Run
 
-            #### Option A: One-Liner PowerShell (No Download Required)
+            #### 1. Official Windows Setup Installer (Recommended)
+            Download and run **`MephistoCleaner-Setup-v7.0.exe`** below for a standard Windows installation with Desktop and Start Menu shortcuts.
+
+            #### 2. Standalone Portable Bundle (No Installation Required)
+            1. Download **`MephistoCleaner-Portable.zip`** below.
+            2. Extract anywhere on your PC.
+            3. Double-click **`MephistoCleaner.exe`** to launch!
+
+            #### 3. One-Liner PowerShell Command (Instant Run)
             ```powershell
             irm https://raw.githubusercontent.com/jokallame350-lang/mephistocleaner/master/MephistoCleaner.ps1 | iex
             ```
-
-            #### Option B: Download Portable Bundle
-            1. Download **`MephistoCleaner-Portable.zip`** below.
-            2. Extract anywhere on your PC.
-            3. Double-click **`MephistoCleaner.vbs`** or **`MephistoCleaner.bat`** to launch!
 
             ---
 
             ### 🔍 High-Ranking Search Keywords & SEO Tags
 
-            `windows-11-optimization` `windows-10-optimization` `debloat-windows-11` `fps-boost` `low-latency` `input-lag-fix` `game-booster` `cs2-fps-boost` `valorant-latency` `winutil-alternative` `sophia-script` `atlasos-alternative` `pc-tweaker` `windows-debloater` `powershell-gui` `nvidia-latency-fix` `tcp-optimizer` `dns-switcher` `ssd-trim-tool` `windows-privacy`
+            `windows-11-optimization` `windows-10-optimization` `debloat-windows-11` `fps-boost` `low-latency` `input-lag-fix` `game-booster` `cs2-fps-boost` `valorant-latency` `winutil-alternative` `sophia-script` `atlasos-alternative` `pc-tweaker` `windows-debloater` `powershell-gui` `nvidia-latency-fix` `tcp-optimizer` `dns-switcher` `ssd-trim-tool` `windows-privacy` `hardware-hud` `winget-gui`

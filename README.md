@@ -32,7 +32,11 @@ Every single button in MephistoCleaner is paired with **real-time hover ToolTips
 
 ## ⚡ Key Highlights & Architecture
 
-* 🚀 **1-Click 100% Safe Optimization:** Apply the complete, curated master suite of proven kernel, CPU, GPU, memory, and network tweaks in under 15 seconds.
+* 🚀 **1-Click 100% Safe Optimization & Presets:** Apply the complete master suite or choose between **🎮 Esports Gamer Preset**, **🛡️ Privacy Preset**, or **🧹 Deep Clean Preset** in under 15 seconds.
+* 📊 **Real-Time Live Hardware HUD Dashboard:** Visual live monitoring for CPU Load & Clock (MHz), RAM Usage (% & GB), C: Disk Free Capacity, and GPU Status updated every 2 seconds.
+* 🔍 **Instant Search & Filter Bar:** Filter across all 150+ features and tooltips in real-time as you type in any language.
+* 📦 **Software Hub (Winget 1-Click Bulk Installer):** Bulk-install essential gaming runtimes (Visual C++ 2005-2022 All-in-One), Steam, Discord, OBS Studio, 7-Zip, and Brave with a single click.
+* 💾 **Export / Import Config Profiles:** Save and share customized system optimization profiles via `.json`.
 * 🛡️ **Zero Risk & 100% Reversible:** Filtered strictly to preserve Windows stability. Features built-in **Instant Restore Point Creation (Feature #149)** and a complete **Factory Defaults Revert (Feature #150)**.
 * 🎮 **Esports Low-Latency Engine:** Lock `MaxFrameLatency=1`, unpark all CPU cores, disable Nagle's algorithm (`TCPNoDelay=1`), and enable 1:1 hardware raw mouse input.
 * 💽 **Deep Storage Recovery:** Automatically purges multi-gigabyte corrupted DirectX/NVIDIA/AMD shader caches, DISM WinSxS backup stores, and sends hardware TRIM passes.
@@ -44,12 +48,16 @@ Every single button in MephistoCleaner is paired with **real-time hover ToolTips
 
 ## 📊 Comparison with Other Open-Source Tools
 
-| Feature / Metric | MephistoCleaner | ChrisTitus WinUtil | Sophia Script | AtlasOS / ReviOS |
+| Feature / Metric | MephistoCleaner v7.0 | ChrisTitus WinUtil | Sophia Script | AtlasOS / ReviOS |
 | :--- | :---: | :---: | :---: | :---: |
 | **Interface Style** | **Modern WPF GUI (Zero Console)** | PowerShell WinForms | CLI / Config Text | Custom OS / Playbook |
-| **Total Modular Features** | **150+ Features** | ~60 Features | ~100 Tweaks | OS Modification |
+| **Total Modular Features** | **150+ Features + 8 Tabs** | ~60 Features | ~100 Tweaks | OS Modification |
+| **Real-Time Live Hardware HUD** | :white_check_mark: **Yes (CPU/RAM/SSD/GPU)** | :x: No | :x: No | :x: No |
+| **Instant Real-Time Search Bar** | :white_check_mark: **Yes (Multi-language)** | :x: No | :x: No | :x: No |
+| **Software Hub (Bulk Winget)** | :white_check_mark: **Yes (One-Click)** | :white_check_mark: Yes | :x: No | :x: No |
+| **Preset Profiles & JSON Export** | :white_check_mark: **Yes (Gamer/Privacy/Clean)** | :warning: Partial | :x: No | :x: No |
 | **Hover ToolTips on Every Item** | :white_check_mark: **Yes (Detailed)** | :x: No | :x: No | :x: No |
-| **Multi-Language Support** | :white_check_mark: **20 Languages** | :x: English Only | :warning: Partial | :x: English Only |
+| **Multi-Language Support** | :white_check_mark: **20 Languages (Full UI)** | :x: English Only | :warning: Partial | :x: English Only |
 | **Dynamic Theme Engine** | :white_check_mark: **10 Themes** | :x: Fixed | :x: None | :x: Fixed |
 | **Real-time Live Console** | :white_check_mark: **Embedded WPF** | :warning: Separate Window | :x: Terminal | :x: Terminal |
 | **Safety & Factory Revert** | :white_check_mark: **1-Click Revert** | :warning: Manual | :warning: Manual | :x: Requires Reinstall |

@@ -1,3 +1,3 @@
-SHA256 (MephistoCleaner-Setup-v7.0.exe) = 9ba34f9452c2265daba50dc4139cdbfb49330ba3bd82fbab943caedd453025a4
-SHA256 (MephistoCleaner.exe) = 231564dec211ccb30ccbe0748ff7c7ed6126d0769dcdf86e1e6a6ff843b25a5d
-SHA256 (MephistoCleaner-Portable.zip) = 003896817b17783f138edc2a2c82caf91569c1511bc30b09bd8bba446b8bc289
+SHA256 (MephistoCleaner-Setup-v7.0.exe) = 67795252d939f5da50d9c331379ae3c81d97927e15c94f3902a889081f89ce05
+SHA256 (MephistoCleaner.exe) = 98f5754366e906b2b2fc848a903eb3330b3c5ba7a3e29108206ea4844a5cdd94
+SHA256 (MephistoCleaner-Portable.zip) = a1b5e237d85031611e13227f9fa02e8ef19a5d115a1e7a2de146f02cc59f5866

@@ -1,0 +1,13 @@
+# Visual Studio / .NET Build Artifacts
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+
+# Installers and build outputs
+dist/
+MephistoNative/bin/
+MephistoNative/obj/

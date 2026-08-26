@@ -18,9 +18,11 @@ namespace MephistoCleaner
     {
         private RootI18n _i18n;
         private string _currentLang = "en";
+        private string _currentTheme = "Cyber Slate (Default)";
         private readonly Dictionary<int, Button> _featureButtons = new();
         private readonly Dictionary<int, bool> _featureStates = new();
         private readonly DispatcherTimer _hudTimer = new();
+        private bool _isInitializing = true;
 
         public MainWindow()
         {
@@ -31,8 +33,11 @@ namespace MephistoCleaner
             BuildFeatureButtons();
             StartHudTimer();
             UpdateHardwareInfo();
-            AppendLog("MephistoCleaner v7.0 Standalone C# .NET Engine Initialized.");
-            AppendLog("150 Reversible Toggle Switches Active. Click any feature to toggle ON/OFF.");
+            LoadSavedConfiguration();
+            _isInitializing = false;
+
+            AppendLog("MephistoCleaner v7.0 Ultimate Standalone C# .NET Engine Active.");
+            AppendLog("150 Reversible Toggle Switches & Persistent State Configuration Ready.");
         }
 
         private void LoadI18n()
@@ -92,7 +97,7 @@ namespace MephistoCleaner
 
                 var btn = new Button
                 {
-                    Width = 355,
+                    Width = 360,
                     Height = 36,
                     Margin = new Thickness(2),
                     Cursor = System.Windows.Input.Cursors.Hand,
@@ -123,6 +128,62 @@ namespace MephistoCleaner
             ApplyLanguageTexts(_currentLang);
         }
 
+        private void LoadSavedConfiguration()
+        {
+            try
+            {
+                var cfg = ConfigManager.Load();
+                if (!string.IsNullOrEmpty(cfg.Language))
+                {
+                    for (int i = 0; i < CmbLanguage.Items.Count; i++)
+                    {
+                        if (CmbLanguage.Items[i].ToString().StartsWith(cfg.Language))
+                        {
+                            CmbLanguage.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(cfg.Theme))
+                {
+                    for (int i = 0; i < CmbTheme.Items.Count; i++)
+                    {
+                        if (CmbTheme.Items[i].ToString().Equals(cfg.Theme, StringComparison.OrdinalIgnoreCase))
+                        {
+                            CmbTheme.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (cfg.ActiveFeatures != null && cfg.ActiveFeatures.Count > 0)
+                {
+                    foreach (var fid in cfg.ActiveFeatures)
+                    {
+                        if (_featureButtons.ContainsKey(fid))
+                        {
+                            _featureStates[fid] = true;
+                            var btn = _featureButtons[fid];
+                            btn.Background = new BrushConverter().ConvertFromString("#065F46") as Brush;
+                            btn.BorderBrush = new BrushConverter().ConvertFromString("#10B981") as Brush;
+                            btn.Foreground = new BrushConverter().ConvertFromString("#ECFDF5") as Brush;
+                            UpdateSingleButtonText(fid);
+                        }
+                    }
+                    AppendLog($"[Profile Engine] Persistent profile loaded ({cfg.ActiveFeatures.Count} active optimizations restored from settings.json).");
+                }
+            }
+            catch { }
+        }
+
+        private void AutoSaveConfiguration()
+        {
+            if (_isInitializing) return;
+            var active = _featureStates.Where(x => x.Value).Select(x => x.Key);
+            ConfigManager.Save(_currentLang, _currentTheme, active);
+        }
+
         private void ToggleFeature(int id)
         {
             if (!_featureButtons.ContainsKey(id)) return;
@@ -150,6 +211,7 @@ namespace MephistoCleaner
             }
 
             UpdateSingleButtonText(id);
+            AutoSaveConfiguration();
         }
 
         private void UpdateSingleButtonText(int id)
@@ -195,8 +257,8 @@ namespace MephistoCleaner
                 Tab6.Header = ui.Tab6;
                 Tab7.Header = ui.Tab7;
                 Tab8.Header = ui.Tab8;
-                LblLang.Text = ui.LangLabel;
-                LblTheme.Text = ui.ThemeLabel;
+                LblLang.Text = $"🌐 {ui.LangLabel}";
+                LblTheme.Text = $"🎨 {ui.ThemeLabel}";
                 BtnInstallSelectedApps.Content = ui.InstallAppsBtn;
             }
 
@@ -204,6 +266,8 @@ namespace MephistoCleaner
             {
                 UpdateSingleButtonText(i);
             }
+
+            AutoSaveConfiguration();
         }
 
         private void StartHudTimer()
@@ -229,7 +293,6 @@ namespace MephistoCleaner
         {
             try
             {
-                string cpu = Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER") ?? "Processor";
                 int cores = Environment.ProcessorCount;
                 TxtHwInfo.Text = $"Hardware: {cores} Logical Cores | OS: Windows 10/11 x64 (Native C# .NET 7 Engine)";
             }
@@ -257,7 +320,9 @@ namespace MephistoCleaner
         {
             if (CmbTheme.SelectedItem is string theme)
             {
+                _currentTheme = theme;
                 AppendLog($"Theme applied: {theme}");
+                AutoSaveConfiguration();
             }
         }
 
@@ -282,46 +347,53 @@ namespace MephistoCleaner
 
         private void BtnQuickMaster_Click(object sender, RoutedEventArgs e)
         {
-            AppendLog("🔥 Applying Full Master Optimization Suite in Pure C#...");
-            int[] master = { 1, 5, 6, 7, 8, 11, 13, 14, 21, 22, 28, 41, 46, 49, 50, 62, 63, 64, 85, 90, 91, 96 };
+            AppendLog("==================================================================");
+            AppendLog("🔥 ENGAGING FULL MASTER OPTIMIZATION SUITE (STEP-BY-STEP AUDIT)...");
+            AppendLog("==================================================================");
+            int[] master = { 1, 3, 4, 5, 6, 7, 8, 11, 13, 14, 21, 22, 28, 41, 46, 49, 50, 62, 63, 64, 85, 90, 91, 96 };
             foreach (var id in master)
             {
                 if (!_featureStates[id]) ToggleFeature(id);
             }
-            AppendLog("Full Master Optimization Suite Applied Successfully!");
+            AppendLog("==================================================================");
+            AppendLog("✅ MASTER OPTIMIZATION SUITE COMPLETED (ALL 24 CORE TWEAKS ACTIVE & SAVED).");
+            AppendLog("==================================================================");
         }
 
         private void BtnPresetGamer_Click(object sender, RoutedEventArgs e)
         {
-            AppendLog("🎮 Engaging Esports Gamer Preset...");
-            int[] gamer = { 1, 5, 6, 7, 8, 11, 13, 14, 16, 17, 41, 46, 49, 50, 90, 91, 92, 93, 94, 95, 96 };
+            AppendLog("==================================================================");
+            AppendLog("🎮 ENGAGING ESPORTS GAMER PRESET (LOW LATENCY + CPU UNPARKING)...");
+            int[] gamer = { 1, 3, 5, 6, 7, 8, 11, 13, 14, 16, 17, 41, 46, 49, 50, 90, 91, 92, 93, 94, 95, 96 };
             foreach (var id in gamer)
             {
                 if (!_featureStates[id]) ToggleFeature(id);
             }
-            AppendLog("Esports Gamer Preset Active!");
+            AppendLog("✅ ESPORTS GAMER PRESET ACTIVE & SAVED!");
         }
 
         private void BtnPresetPrivacy_Click(object sender, RoutedEventArgs e)
         {
-            AppendLog("🛡️ Engaging Privacy & Debloat Preset...");
+            AppendLog("==================================================================");
+            AppendLog("🛡️ ENGAGING PRIVACY & DEBLOAT PRESET (TELEMETRY + COPILOT REMOVAL)...");
             int[] privacy = { 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 };
             foreach (var id in privacy)
             {
                 if (!_featureStates[id]) ToggleFeature(id);
             }
-            AppendLog("Privacy & Debloat Preset Active!");
+            AppendLog("✅ PRIVACY & DEBLOAT PRESET ACTIVE & SAVED!");
         }
 
         private void BtnPresetClean_Click(object sender, RoutedEventArgs e)
         {
-            AppendLog("🧹 Engaging Deep Disk Clean Preset...");
+            AppendLog("==================================================================");
+            AppendLog("🧹 ENGAGING DEEP DISK CLEAN PRESET (SHADERS + SYSTEM JUNK)...");
             int[] clean = { 4, 21, 22, 23, 24, 25, 26, 27, 28, 32, 33, 35, 36, 37, 38, 39 };
             foreach (var id in clean)
             {
                 if (!_featureStates[id]) ToggleFeature(id);
             }
-            AppendLog("Deep Disk Clean Completed!");
+            AppendLog("✅ DEEP DISK CLEAN COMPLETED!");
         }
 
         private void BtnExportProfile_Click(object sender, RoutedEventArgs e)
@@ -330,7 +402,7 @@ namespace MephistoCleaner
             string json = JsonSerializer.Serialize(new { Timestamp = DateTime.Now, Active = active });
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Mephisto_Profile.json");
             File.WriteAllText(path, json);
-            AppendLog($"Profile saved to Desktop\\Mephisto_Profile.json ({active.Count} active tweaks).");
+            AppendLog($"Profile exported to Desktop\\Mephisto_Profile.json ({active.Count} active tweaks).");
         }
 
         private void BtnImportProfile_Click(object sender, RoutedEventArgs e)
@@ -358,6 +430,55 @@ namespace MephistoCleaner
             {
                 AppendLog("No profile found at Desktop\\Mephisto_Profile.json");
             }
+        }
+
+        // Direct System Inspector Jumps
+        private void Jump_TempFolder_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri(Path.GetTempPath());
+            AppendLog($"[Inspector] Opened user temp folder: {Path.GetTempPath()}");
+        }
+
+        private void Jump_Regedit_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("regedit.exe");
+            AppendLog("[Inspector] Opened Windows Registry Editor (regedit.exe).");
+        }
+
+        private void Jump_Services_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("services.msc");
+            AppendLog("[Inspector] Opened Windows Services Management (services.msc).");
+        }
+
+        private void Jump_Power_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("powercfg.cpl");
+            AppendLog("[Inspector] Opened Windows Power Options (powercfg.cpl).");
+        }
+
+        private void Jump_Network_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("ncpa.cpl");
+            AppendLog("[Inspector] Opened Network Connections Adapter List (ncpa.cpl).");
+        }
+
+        private void Jump_Graphics_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("ms-settings:display-advancedgraphics");
+            AppendLog("[Inspector] Opened Windows Graphics Settings (HAGS & Variable Refresh Rate).");
+        }
+
+        private void Jump_Taskmgr_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("taskmgr.exe");
+            AppendLog("[Inspector] Opened Windows Task Manager (taskmgr.exe).");
+        }
+
+        private void Jump_Security_Click(object sender, RoutedEventArgs e)
+        {
+            OptimizationEngine.OpenUri("windowsdefender:");
+            AppendLog("[Inspector] Opened Windows Security Center.");
         }
 
         private void BtnInstallSelectedApps_Click(object sender, RoutedEventArgs e)

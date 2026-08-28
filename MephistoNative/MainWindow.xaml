@@ -31,23 +31,59 @@
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
-        <!-- Custom Dark ComboBox Style -->
+        <!-- High Contrast Custom Dark ComboBox Style -->
+        <ControlTemplate x:Key="DarkComboBoxToggleButton" TargetType="ToggleButton">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="4" Background="#0F172A" BorderBrush="#0EA5E9" BorderThickness="1.5" />
+                <Path x:Name="Arrow" Grid.Column="1" Fill="#38BDF8" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+            </Grid>
+        </ControlTemplate>
+
         <Style TargetType="ComboBox">
             <Setter Property="Background" Value="#0F172A"/>
-            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="#0EA5E9"/>
             <Setter Property="BorderThickness" Value="1.5"/>
             <Setter Property="FontSize" Value="11.5"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Padding" Value="6,3"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton" Template="{StaticResource DarkComboBoxToggleButton}" Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="8,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left" TextElement.Foreground="#FFFFFF"/>
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" Background="#0F172A" BorderThickness="1.5" BorderBrush="#0EA5E9" CornerRadius="4"/>
+                                    <ScrollViewer Margin="2" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" Background="#0F172A"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="ComboBoxItem">
             <Setter Property="Background" Value="#0F172A"/>
-            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="FontSize" Value="11.5"/>
-            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#1E293B"/>
+                    <Setter Property="Foreground" Value="#38BDF8"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <!-- TabItem Style -->
@@ -98,12 +134,12 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                     <StackPanel Margin="0,0,8,0">
-                        <TextBlock Name="LblLang" Text="🌐 Language / Dil:" FontSize="10" FontWeight="Bold" Foreground="#38BDF8" Margin="0,0,0,2"/>
-                        <ComboBox Name="CmbLanguage" Width="120" Height="26" SelectionChanged="CmbLanguage_SelectionChanged"/>
+                        <TextBlock Name="LblLang" Text="🌐 Language / Dil:" FontSize="10.5" FontWeight="Bold" Foreground="#38BDF8" Margin="0,0,0,2"/>
+                        <ComboBox Name="CmbLanguage" Width="130" Height="28" SelectionChanged="CmbLanguage_SelectionChanged"/>
                     </StackPanel>
                     <StackPanel Margin="0,0,10,0">
-                        <TextBlock Name="LblTheme" Text="🎨 Theme / Tema:" FontSize="10" FontWeight="Bold" Foreground="#38BDF8" Margin="0,0,0,2"/>
-                        <ComboBox Name="CmbTheme" Width="145" Height="26" SelectionChanged="CmbTheme_SelectionChanged"/>
+                        <TextBlock Name="LblTheme" Text="🎨 Theme / Tema:" FontSize="10.5" FontWeight="Bold" Foreground="#38BDF8" Margin="0,0,0,2"/>
+                        <ComboBox Name="CmbTheme" Width="150" Height="28" SelectionChanged="CmbTheme_SelectionChanged"/>
                     </StackPanel>
                     <Button Name="BtnQuickMaster" Content="⚡ 1-CLICK FULL OPTIMIZE" Background="#0284C7" FontSize="11.5" Padding="14,6" FontWeight="Bold" VerticalAlignment="Bottom" Click="BtnQuickMaster_Click"/>
                 </StackPanel>
@@ -124,15 +160,15 @@
                     <ProgressBar Name="HudCpuBar" Height="6" Minimum="0" Maximum="100" Value="12" Foreground="#38BDF8" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Margin="4,0">
-                    <TextBlock Name="HudRamLabel" Text="🧠 RAM Used: 2.8 GB / 32.0 GB" FontSize="11" FontWeight="Bold" Foreground="#34D399"/>
+                    <TextBlock Name="HudRamLabel" Text="🧠 RAM App: 12 MB (Low Overhead)" FontSize="11" FontWeight="Bold" Foreground="#34D399"/>
                     <ProgressBar Name="HudRamBar" Height="6" Minimum="0" Maximum="100" Value="25" Foreground="#34D399" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Margin="4,0">
-                    <TextBlock Name="HudDiskLabel" Text="💽 C: Free: 142.8 GB" FontSize="11" FontWeight="Bold" Foreground="#FBBF24"/>
+                    <TextBlock Name="HudDiskLabel" Text="💽 C: Free: Loading..." FontSize="11" FontWeight="Bold" Foreground="#FBBF24"/>
                     <ProgressBar Name="HudDiskBar" Height="6" Minimum="0" Maximum="100" Value="85" Foreground="#FBBF24" Background="#1E293B" Margin="0,3,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="3" Margin="4,0">
-                    <TextBlock Name="HudGpuLabel" Text="🎮 GPU: Active (48°C)" FontSize="11" FontWeight="Bold" Foreground="#C084FC"/>
+                    <TextBlock Name="HudGpuLabel" Text="🎮 GPU: Active" FontSize="11" FontWeight="Bold" Foreground="#C084FC"/>
                     <TextBlock Name="HudGpuSub" Text="DirectX 12 / HAGS Locked" FontSize="9.5" Foreground="#94A3B8" Margin="0,2,0,0"/>
                 </StackPanel>
             </Grid>

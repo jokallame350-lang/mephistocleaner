@@ -45,24 +45,48 @@ namespace MephistoCleaner
             try
             {
                 var assembly = Assembly.GetExecutingAssembly();
-                using (var stream = assembly.GetManifestResourceStream("i18n.json"))
+                var resNames = assembly.GetManifestResourceNames();
+                string targetRes = resNames.FirstOrDefault(n => n.EndsWith("i18n.json", StringComparison.OrdinalIgnoreCase));
+                
+                if (targetRes != null)
                 {
-                    if (stream != null)
+                    using (var stream = assembly.GetManifestResourceStream(targetRes))
                     {
-                        using (var reader = new StreamReader(stream))
+                        if (stream != null)
                         {
-                            string json = reader.ReadToEnd();
-                            _i18n = JsonSerializer.Deserialize<RootI18n>(json);
+                            using (var reader = new StreamReader(stream))
+                            {
+                                string json = reader.ReadToEnd();
+                                _i18n = JsonSerializer.Deserialize<RootI18n>(json);
+                            }
                         }
                     }
                 }
             }
             catch { }
 
-            if (_i18n == null && File.Exists("assets/i18n.json"))
+            if (_i18n == null)
             {
-                string json = File.ReadAllText("assets/i18n.json");
-                _i18n = JsonSerializer.Deserialize<RootI18n>(json);
+                string[] possiblePaths = {
+                    "assets/i18n.json",
+                    "../assets/i18n.json",
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets", "i18n.json"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "i18n.json")
+                };
+
+                foreach (var p in possiblePaths)
+                {
+                    if (File.Exists(p))
+                    {
+                        try
+                        {
+                            string json = File.ReadAllText(p);
+                            _i18n = JsonSerializer.Deserialize<RootI18n>(json);
+                            if (_i18n != null) break;
+                        }
+                        catch { }
+                    }
+                }
             }
         }
 
@@ -152,6 +176,7 @@ namespace MephistoCleaner
                         if (CmbTheme.Items[i].ToString().Equals(cfg.Theme, StringComparison.OrdinalIgnoreCase))
                         {
                             CmbTheme.SelectedIndex = i;
+                            ApplyTheme(cfg.Theme);
                             break;
                         }
                     }
@@ -231,6 +256,15 @@ namespace MephistoCleaner
                     tip = dict[id.ToString()].Tip;
                 }
             }
+            else if (_i18n?.Features != null && _i18n.Features.ContainsKey("en"))
+            {
+                var dict = _i18n.Features["en"];
+                if (dict.ContainsKey(id.ToString()))
+                {
+                    title = dict[id.ToString()].Title;
+                    tip = dict[id.ToString()].Tip;
+                }
+            }
 
             bool isToggled = _featureStates[id];
             string indicator = isToggled ? "🟢" : "⚪";
@@ -268,6 +302,63 @@ namespace MephistoCleaner
             }
 
             AutoSaveConfiguration();
+        }
+
+        private void ApplyTheme(string theme)
+        {
+            try
+            {
+                var conv = new BrushConverter();
+                string winBg = "#0B0F17";
+                string headBg = "#131C2E";
+                string accentBorder = "#2563EB";
+                string accentText = "#38BDF8";
+
+                if (theme.Contains("Midnight Velvet"))
+                {
+                    winBg = "#0A0A16"; headBg = "#141226"; accentBorder = "#7C3AED"; accentText = "#A78BFA";
+                }
+                else if (theme.Contains("Matrix Emerald"))
+                {
+                    winBg = "#05120B"; headBg = "#0A2315"; accentBorder = "#059669"; accentText = "#34D399";
+                }
+                else if (theme.Contains("Crimson Blood"))
+                {
+                    winBg = "#140A0A"; headBg = "#261212"; accentBorder = "#DC2626"; accentText = "#F87171";
+                }
+                else if (theme.Contains("Sunset Amber"))
+                {
+                    winBg = "#140E05"; headBg = "#261A0A"; accentBorder = "#D97706"; accentText = "#FBBF24";
+                }
+                else if (theme.Contains("AMOLED Pure Black"))
+                {
+                    winBg = "#000000"; headBg = "#0A0A0A"; accentBorder = "#27272A"; accentText = "#38BDF8";
+                }
+                else if (theme.Contains("Dracula Dusk"))
+                {
+                    winBg = "#1E1F29"; headBg = "#282A36"; accentBorder = "#6272A4"; accentText = "#BD93F9";
+                }
+                else if (theme.Contains("Nordic Frost"))
+                {
+                    winBg = "#0B131A"; headBg = "#11222E"; accentBorder = "#0284C7"; accentText = "#38BDF8";
+                }
+                else if (theme.Contains("Sakura Bloom"))
+                {
+                    winBg = "#1A0F14"; headBg = "#2B1420"; accentBorder = "#DB2777"; accentText = "#F472B6";
+                }
+                else if (theme.Contains("Solarized Dark"))
+                {
+                    winBg = "#002B36"; headBg = "#073642"; accentBorder = "#268BD2"; accentText = "#2AA198";
+                }
+
+                this.Background = conv.ConvertFromString(winBg) as Brush;
+                HeaderBorder.Background = conv.ConvertFromString(headBg) as Brush;
+                HeaderBorder.BorderBrush = conv.ConvertFromString(accentBorder) as Brush;
+                TxtMainTitle.Foreground = conv.ConvertFromString(accentText) as Brush;
+                HudBorder.Background = conv.ConvertFromString(headBg) as Brush;
+                MainTabControl.Background = conv.ConvertFromString(headBg) as Brush;
+            }
+            catch { }
         }
 
         private void StartHudTimer()
@@ -321,6 +412,7 @@ namespace MephistoCleaner
             if (CmbTheme.SelectedItem is string theme)
             {
                 _currentTheme = theme;
+                ApplyTheme(theme);
                 AppendLog($"Theme applied: {theme}");
                 AutoSaveConfiguration();
             }
